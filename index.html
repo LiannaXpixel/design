@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<meta charset="UTF-8"></meta>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
-<title>LiannaX Asset Store</title>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ShopLiannaX Assets</title>
 
 <style>
 *{
@@ -14,93 +14,129 @@
 
 html,
 body{
-    margin:0 !important;
-    padding:0 !important;
-    background:#0f0f0f;
+    background:#0b0b0b;
     color:white;
+    overflow-x:hidden;
 }
 
-.post,
-.post-body,
-.post-outer,
-.main,
-.content,
-.section{
-    margin:0 !important;
-    padding:0 !important;
+body{
+    min-height:100vh;
 }
 
-/* BANNER */
-.top-banner{
-    line-height:0;
-    margin:0 !important;
-    padding:0 !important;
-}
-
-.top-banner img{
+/* HERO BANNER */
+.hero-banner{
+    position:relative;
     width:100%;
+    height:620px;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
     display:block;
-    margin:0 !important;
-    padding:0 !important;
 }
 
-/* HEADER */
-header{
-    background:#111;
-    padding:20px;
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.75));
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
-    border-bottom:1px solid #222;
+    padding:20px;
 }
 
-header h1{
-    font-size:32px;
-    color:#fff;
+.hero-content h1{
+    font-size:64px;
+    margin-bottom:18px;
+    text-shadow:0 0 25px rgba(0,0,0,.6);
+}
+
+.hero-content p{
+    font-size:20px;
+    max-width:700px;
+    color:#e5e5e5;
+    line-height:1.6;
 }
 
 /* PRODUCTS */
 .products{
-    max-width:1200px;
+    width:100%;
+    max-width:1500px;
     margin:auto;
-    padding:30px 15px;
+    padding:70px 35px;
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:20px;
+    gap:35px;
 }
 
 .card{
-    background:#171717;
-    border-radius:15px;
+    background:#151515;
+    border-radius:22px;
     overflow:hidden;
-    transition:0.3s;
-    border:1px solid #222;
+    border:1px solid #252525;
+    transition:.35s;
+    position:relative;
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-8px);
     border-color:#ff0077;
+    box-shadow:0 0 40px rgba(255,0,119,.18);
 }
 
-.card img{
+.card-image{
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.card-image img{
     width:100%;
-    height:280px;
-    object-fit:contain;
-    background:#111;
+    height:420px;
+    object-fit:cover;
+    transition:.45s;
+    display:block;
+}
+
+.card:hover .card-image img{
+    transform:scale(1.08);
+}
+
+.zoom-label{
+    position:absolute;
+    bottom:15px;
+    right:15px;
+    background:rgba(0,0,0,.6);
+    padding:10px 14px;
+    border-radius:12px;
+    font-size:14px;
+    backdrop-filter:blur(5px);
 }
 
 .card-content{
-    padding:15px;
+    padding:24px;
 }
 
-.card h2{
-    font-size:20px;
-    margin-bottom:10px;
+.card-content h2{
+    font-size:26px;
+    margin-bottom:12px;
+}
+
+.description{
+    color:#bdbdbd;
+    line-height:1.6;
+    margin-bottom:20px;
 }
 
 .price{
     color:#ff0077;
-    font-size:22px;
+    font-size:30px;
     font-weight:bold;
-    margin-bottom:12px;
+    margin-bottom:22px;
 }
 
 .buy-btn{
@@ -108,70 +144,75 @@ header h1{
     background:#ff0077;
     color:white;
     text-decoration:none;
-    padding:10px 18px;
-    border-radius:10px;
-    transition:0.3s;
+    padding:14px 24px;
+    border-radius:14px;
     font-weight:bold;
+    transition:.3s;
+    font-size:16px;
 }
 
 .buy-btn:hover{
     background:#ff3399;
+    transform:translateY(-2px);
 }
 
-/* PAGINATION */
-.pagination{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin:40px 0;
-}
-
-.pagination a{
-    padding:12px 18px;
-    background:#1b1b1b;
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-    transition:0.3s;
-    font-weight:bold;
-}
-
-.pagination a:hover,
-.pagination .active{
-    background:#ff0077;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:25px;
-    color:#777;
-    border-top:1px solid #222;
-    margin-top:30px;
-}
-
-/* CUSTOM CHECKOUT POPUP */
-.checkout-overlay{
+/* IMAGE POPUP */
+.image-popup{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.78);
-    backdrop-filter:blur(6px);
+    background:rgba(0,0,0,.88);
     display:none;
     align-items:center;
     justify-content:center;
-    z-index:99999;
+    z-index:999999;
+    backdrop-filter:blur(8px);
+}
+
+.image-popup img{
+    width:90%;
+    max-width:1400px;
+    max-height:90vh;
+    object-fit:contain;
+    border-radius:18px;
+    box-shadow:0 0 50px rgba(255,255,255,.08);
+}
+
+.close-image{
+    position:absolute;
+    top:20px;
+    right:25px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#ff0077;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* PAYHIP POPUP */
+.checkout-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.82);
+    backdrop-filter:blur(8px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999999;
 }
 
 .checkout-popup{
     position:relative;
-    width:90%;
-    max-width:900px;
-    height:90vh;
+    width:92%;
+    max-width:1000px;
+    height:92vh;
     background:#111;
     border:1px solid #ff0077;
-    border-radius:18px;
+    border-radius:22px;
     overflow:hidden;
-    box-shadow:0 0 40px rgba(255,0,119,0.35);
+    box-shadow:0 0 45px rgba(255,0,119,0.35);
 }
 
 .checkout-popup iframe{
@@ -185,8 +226,8 @@ footer{
     position:absolute;
     top:14px;
     right:14px;
-    width:38px;
-    height:38px;
+    width:44px;
+    height:44px;
     border:none;
     border-radius:50%;
     background:#ff0077;
@@ -194,170 +235,241 @@ footer{
     font-size:24px;
     cursor:pointer;
     z-index:10;
-    transition:.3s;
 }
 
-.close-popup:hover{
-    background:#ff3399;
+/* FOOTER */
+/* PAGINATION */
+.pagination{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin:10px 0 60px;
+}
+
+.pagination a{
+    padding:14px 20px;
+    background:#171717;
+    color:white;
+    text-decoration:none;
+    border-radius:14px;
+    transition:.3s;
+    font-weight:bold;
+    border:1px solid #252525;
+}
+
+.pagination a:hover,
+.pagination .active{
+    background:#ff0077;
+    border-color:#ff0077;
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#777;
+    border-top:1px solid #1e1e1e;
 }
 
 /* MOBILE */
-@media(max-width:768px){
+@media(max-width:900px){
 
 .products{
     grid-template-columns:1fr;
 }
 
-.card img{
-    height:240px;
+
+.hero-banner{
+    height:420px;
+}
+
+.hero-content h1{
+    font-size:42px;
+}
+
+.hero-content p{
+    font-size:17px;
+}
+
+.products{
+    grid-template-columns:1fr;
+    padding:40px 18px;
+}
+
+.card-image img{
+    height:420px;
 }
 
 }
 </style>
-
 </head>
+
 <body>
 
+<!-- HERO BANNER -->
+<div class="hero-banner">
 
+    <img src="images/banner.jpg" alt="Banner">
 
-<header>
-    <h1>ShopLiannaX Store</h1>
-</header>
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <h1>ShopLiannaX Assets</h1>
+            <p>
+                Premium digital assets, realistic textures, alpha packs and creative resources.
+            </p>
+        </div>
+    </div>
 
+</div>
+
+<!-- PRODUCTS -->
 <section class="products">
 
-    <div class="card">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6YohZ1SSvMDr4n43419cEiphSGoqOtqwvTh7zM4_i08OiFLtpbe7SpTPAckWDjHfqv8yfJcBjlIq9Sc9qkO30tXgbnyoMeoc3d77VwUnfyqsuEXs2Ib_mqkiHx8CaTe7FiAl2XSZ3BgWSkWVI1wmqt9aVdPS21m38BFkJ5cUtSzXRRCbue2m5CRrbw2nf/s1300/36-realistic-eyebrows-pack-true-alpha-png-3000x500.png.png" />
-        <div class="card-content">
-            <h2>Product One</h2>
-            <div class="price">$14.99</div>
+    <!-- PRODUCTS START -->
+<!-- DUPLICATE THIS PRODUCT BLOCK WHEN ADDING NEW PRODUCTS -->
 
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+<!-- PRODUCT 1 -->
+<div class="card">
+    <div class="card-image">
+        <img src="36-realistic-eyebrows-pack-true-alpha.png" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
     </div>
-
-    <div class="card">
-        <img src="images/product2.png" />
-        <div class="card-content">
-            <h2>Product Two</h2>
-            <div class="price">$24.99</div>
-
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+    <div class="card-content">
+        <h2>Realistic Eyebrows Pack</h2>
+        <div class="description">High quality PNG eyebrow assets with realistic alpha detail.</div>
+        <div class="price">$14.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_1&amp;qty[YOUR_PAYHIP_LINK_1]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
     </div>
+</div>
 
-    <div class="card">
-        <img src="images/product3.png" />
-        <div class="card-content">
-            <h2>Product Three</h2>
-            <div class="price">$29.99</div>
-
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+<!-- PRODUCT 2 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product2.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
     </div>
-
-    <div class="card">
-        <img src="images/product4.png" />
-        <div class="card-content">
-            <h2>Product Four</h2>
-            <div class="price">$34.99</div>
-
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+    <div class="card-content">
+        <h2>Product Two</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$24.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_2&amp;qty[YOUR_PAYHIP_LINK_2]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
     </div>
+</div>
 
-    <div class="card">
-        <img src="images/product5.png" />
-        <div class="card-content">
-            <h2>Product Five</h2>
-            <div class="price">$39.99</div>
-
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+<!-- PRODUCT 3 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product3.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
     </div>
-
-    <div class="card">
-        <img src="images/product6.png" />
-        <div class="card-content">
-            <h2>Product Six</h2>
-            <div class="price">$44.99</div>
-
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+    <div class="card-content">
+        <h2>Product Three</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$29.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_3&amp;qty[YOUR_PAYHIP_LINK_3]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
     </div>
+</div>
 
-    <div class="card">
-        <img src="images/product7.png" />
-        <div class="card-content">
-            <h2>Product Seven</h2>
-            <div class="price">$49.99</div>
-
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+<!-- PRODUCT 4 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product4.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
     </div>
-
-    <div class="card">
-        <img src="images/product8.png" />
-        <div class="card-content">
-            <h2>Product Eight</h2>
-            <div class="price">$54.99</div>
-
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+    <div class="card-content">
+        <h2>Product Four</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$34.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_4&amp;qty[YOUR_PAYHIP_LINK_4]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
     </div>
+</div>
 
-    <div class="card">
-        <img src="images/product9.png" />
-        <div class="card-content">
-            <h2>Product Nine</h2>
-            <div class="price">$59.99</div>
-
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+<!-- PRODUCT 5 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product5.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
     </div>
-
-    <div class="card">
-        <img src="images/product10.png" />
-        <div class="card-content">
-            <h2>Product Ten</h2>
-            <div class="price">$64.99</div>
-
-            <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">
-            Get Asset
-            </a>
-
-        </div>
+    <div class="card-content">
+        <h2>Product Five</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$39.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_5&amp;qty[YOUR_PAYHIP_LINK_5]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
     </div>
+</div>
+
+<!-- PRODUCT 6 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product6.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Six</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$44.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_6&amp;qty[YOUR_PAYHIP_LINK_6]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 7 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product7.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Seven</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$49.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_7&amp;qty[YOUR_PAYHIP_LINK_7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 8 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product8.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Eight</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$54.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_8&amp;qty[YOUR_PAYHIP_LINK_8]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 9 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product9.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Nine</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$59.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_9&amp;qty[YOUR_PAYHIP_LINK_9]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 10 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product10.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Ten</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$64.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=YOUR_PAYHIP_LINK_10&amp;qty[YOUR_PAYHIP_LINK_10]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
 
 </section>
 
+<!-- PAGINATION -->
 <div class="pagination">
     <a class="active" href="products-page1.html">1</a>
     <a href="products-page2.html">2</a>
@@ -366,54 +478,61 @@ footer{
     <a href="products-page5.html">5</a>
 </div>
 
+<!-- IMAGE POPUP -->
+<div class="image-popup" id="imagePopup">
+    <button class="close-image" onclick="closeImage()">×</button>
+    <img id="popupImage">
+</div>
+
+<!-- PAYHIP POPUP -->
+<div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-popup">
+        <button class="close-popup" onclick="closeCheckout()">×</button>
+        <iframe id="checkoutFrame"></iframe>
+    </div>
+</div>
+
 <footer>
     © 2026 ShopLiannaX - All Rights Reserved
 </footer>
 
-<!-- CUSTOM CHECKOUT POPUP -->
-
-<div class="checkout-overlay" id="checkoutOverlay">
-
-    <div class="checkout-popup">
-
-        <button class="close-popup" onclick="closeCheckout()">×</button>
-
-        <iframe id="checkoutFrame"></iframe>
-
-    </div>
-
-</div>
-
 <script>
-
 function openCheckout(url){
-
     document.getElementById('checkoutOverlay').style.display='flex';
-
     document.getElementById('checkoutFrame').src=url;
-
     document.body.style.overflow='hidden';
 }
 
 function closeCheckout(){
-
     document.getElementById('checkoutOverlay').style.display='none';
-
     document.getElementById('checkoutFrame').src='';
+    document.body.style.overflow='auto';
+}
 
+function openImage(src){
+    document.getElementById('imagePopup').style.display='flex';
+    document.getElementById('popupImage').src=src;
+    document.body.style.overflow='hidden';
+}
+
+function closeImage(){
+    document.getElementById('imagePopup').style.display='none';
     document.body.style.overflow='auto';
 }
 
 window.addEventListener('click', function(e){
-
     const overlay = document.getElementById('checkoutOverlay');
+    const imagePopup = document.getElementById('imagePopup');
 
     if(e.target === overlay){
         closeCheckout();
     }
 
+    if(e.target === imagePopup){
+        closeImage();
+    }
 });
-
 </script>
 
 </body>
+</html>
