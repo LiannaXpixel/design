@@ -1,0 +1,208 @@
+# success.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message Sent - ShopLiannaX</title>
+
+<meta name="description" content="Your message has been sent successfully to ShopLiannaX.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+html,
+body{
+    background:#0b0b0b;
+    color:white;
+    overflow-x:hidden;
+}
+
+body{
+    min-height:100vh;
+}
+
+/* HERO BANNER */
+.hero-banner{
+    position:relative;
+    width:100%;
+    height:620px;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* MENU */
+.main-menu{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    padding:22px 15px;
+    background:#111;
+    border-top:1px solid #1d1d1d;
+    border-bottom:1px solid #1d1d1d;
+    flex-wrap:wrap;
+}
+
+.main-menu a{
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:14px;
+    background:#171717;
+    border:1px solid #252525;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.main-menu a:hover{
+    background:#ff0077;
+    border-color:#ff0077;
+    transform:translateY(-2px);
+}
+
+/* SUCCESS BOX */
+.success-wrapper{
+    width:100%;
+    max-width:900px;
+    margin:80px auto;
+    padding:0 25px;
+}
+
+.success-box{
+    background:#151515;
+    border:1px solid #252525;
+    border-radius:26px;
+    padding:60px 40px;
+    box-shadow:0 0 40px rgba(255,0,119,.08);
+    text-align:center;
+}
+
+.success-box h1{
+    font-size:42px;
+    color:#d8c0b2;
+    margin-bottom:22px;
+    font-weight:600;
+}
+
+.success-box p{
+    color:#9a9a9a;
+    line-height:1.8;
+    font-size:18px;
+    margin-bottom:35px;
+}
+
+.return-btn{
+    display:inline-block;
+    background:#ff0077;
+    color:white;
+    text-decoration:none;
+    padding:16px 28px;
+    border-radius:16px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.return-btn:hover{
+    background:#ff3399;
+    transform:translateY(-2px);
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#777;
+    border-top:1px solid #1e1e1e;
+    margin-top:60px;
+}
+
+@media(max-width:768px){
+
+.hero-banner{
+    height:420px;
+}
+
+.success-box{
+    padding:45px 24px;
+}
+
+.success-box h1{
+    font-size:32px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+
+    <img src="High quality asset image banner.png" alt="Banner">
+
+</div>
+
+<!-- MENU -->
+<nav class="main-menu">
+
+    <a href="index.html">Home</a>
+
+    <a href="products-page1.html">Products</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="faq.html">FAQ</a>
+
+    <a href="policy.html">Policy</a>
+
+    <a href="license.html">License</a>
+
+</nav>
+
+<!-- SUCCESS -->
+<section class="success-wrapper">
+
+    <div class="success-box">
+
+        <h1>Message Sent Successfully</h1>
+
+        <p>
+            Thank you for contacting ShopLiannaX. Your message has been received and you will receive a reply as soon as possible.
+        </p>
+
+        <a class="return-btn" href="contact.html">
+            Return to Contact Page
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 ShopLiannaX - All Rights Reserved
+</footer>
+
+</body>
+</html>
+```
+
+In contact.html make sure you use:
+
+```html
+<input type="hidden" name="redirectTo" value="https://shopliannax.com/success.html">
+```
