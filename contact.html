@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +26,21 @@ body{
     min-height:100vh;
 }
 
+/* HERO BANNER */
+.hero-banner{
+    position:relative;
+    width:100%;
+    height:620px;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
 /* MENU */
 .main-menu{
     width:100%;
@@ -36,6 +50,7 @@ body{
     gap:18px;
     padding:22px 15px;
     background:#111;
+    border-top:1px solid #1d1d1d;
     border-bottom:1px solid #1d1d1d;
     flex-wrap:wrap;
 }
@@ -71,22 +86,6 @@ body{
     border-radius:26px;
     padding:50px;
     box-shadow:0 0 40px rgba(255,0,119,.08);
-}
-
-.contact-box h1{
-    font-size:42px;
-    color:#d8c0b2;
-    margin-bottom:18px;
-    text-align:center;
-    font-weight:600;
-}
-
-.contact-box p{
-    color:#8f8f8f;
-    text-align:center;
-    line-height:1.8;
-    margin-bottom:40px;
-    font-size:17px;
 }
 
 .contact-form{
@@ -146,12 +145,12 @@ footer{
 
 @media(max-width:768px){
 
-.contact-box{
-    padding:35px 22px;
+.hero-banner{
+    height:420px;
 }
 
-.contact-box h1{
-    font-size:32px;
+.contact-box{
+    padding:35px 22px;
 }
 
 }
@@ -159,6 +158,13 @@ footer{
 </head>
 
 <body>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+
+    <img src="High quality asset image banner.png" alt="Banner">
+
+</div>
 
 <!-- MENU -->
 <nav class="main-menu">
@@ -176,36 +182,11 @@ footer{
     <a href="license.html">License</a>
 
 </nav>
-    
-<!-- HERO BANNER -->
-<section class="hero-banner">
 
-    <img src="High quality asset image banner.png" alt="Banner">
-
-    <div class="hero-overlay">
-        <div class="hero-content">
-
-            <h1>Contact ShopLiannaX</h1>
-
-            <p>
-                Questions, support requests or collaborations.
-            </p>
-
-        </div>
-    </div>
-
-</section>
-    
 <!-- CONTACT -->
 <section class="contact-wrapper">
 
     <div class="contact-box">
-
-        <h1>Contact ShopLiannaX</h1>
-
-        <p>
-            Questions, support requests or collaborations? Send a message and you will receive a reply as soon as possible.
-        </p>
 
         <form class="contact-form" action="https://formsubmit.co/bylissb@gmail.com" method="POST">
 
@@ -231,12 +212,3 @@ footer{
 
 </body>
 </html>
-```
-
-Save this file as:
-
-```text
-contact.html
-```
-
-Then upload or paste it into your GitHub repository.
