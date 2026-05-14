@@ -1,0 +1,614 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Perfect Pixel Asset</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+html,
+body{
+    background:#0b0b0b;
+    color:white;
+    overflow-x:hidden;
+}
+
+body{
+    min-height:100vh;
+}
+
+/* HERO BANNER */
+.hero-banner{
+    position:relative;
+    width:100%;
+    height:620px;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-content h1{
+    font-size:64px;
+    margin-bottom:18px;
+    text-shadow:0 0 25px rgba(0,0,0,.6);
+}
+
+.hero-content p{
+    font-size:20px;
+    max-width:700px;
+    color:#e5e5e5;
+    line-height:1.6;
+}
+
+/* HERO TEXT SECTION */
+.hero-text-section{
+    text-align:center;
+    padding:55px 20px 25px;
+    background:#0b0b0b;
+}
+
+.hero-text-section h1{
+    font-size:38px;
+    margin-bottom:16px;
+    color:#b8a79d;
+    font-weight:500;
+    letter-spacing:1px;
+    text-align:center;
+}
+
+.hero-text-section p{
+    font-size:17px;
+    max-width:760px;
+    margin:auto;
+    color:#8e8e8e;
+    line-height:1.8;
+    text-align:center;
+}
+
+/* PRODUCTS */
+.products{
+    width:100%;
+    max-width:1500px;
+    margin:auto;
+    padding:70px 35px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+}
+
+.card{
+    background:#151515;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid #252525;
+    transition:.35s;
+    position:relative;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#ff0077;
+    box-shadow:0 0 40px rgba(255,0,119,.18);
+}
+
+.card-image{
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.card-image img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    transition:.45s;
+    display:block;
+}
+
+.card:hover .card-image img{
+    transform:scale(1.08);
+}
+
+.zoom-label{
+    position:absolute;
+    bottom:15px;
+    right:15px;
+    background:rgba(0,0,0,.6);
+    padding:10px 14px;
+    border-radius:12px;
+    font-size:14px;
+    backdrop-filter:blur(5px);
+}
+
+.card-content{
+    padding:24px;
+}
+
+.card-content h2{
+    font-size:26px;
+    margin-bottom:12px;
+}
+
+.description{
+    color:#bdbdbd;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.price{
+    color:#ff0077;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:22px;
+}
+
+.buy-btn{
+    display:inline-block;
+    background:#ff0077;
+    color:white;
+    text-decoration:none;
+    padding:14px 24px;
+    border-radius:14px;
+    font-weight:bold;
+    transition:.3s;
+    font-size:16px;
+}
+
+.buy-btn:hover{
+    background:#ff3399;
+    transform:translateY(-2px);
+}
+
+/* IMAGE POPUP */
+.image-popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.88);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999999;
+    backdrop-filter:blur(8px);
+}
+
+.image-popup img{
+    width:90%;
+    max-width:1400px;
+    max-height:90vh;
+    object-fit:contain;
+    border-radius:18px;
+    box-shadow:0 0 50px rgba(255,255,255,.08);
+}
+
+.close-image{
+    position:absolute;
+    top:20px;
+    right:25px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#ff0077;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* PAYHIP POPUP */
+.checkout-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.82);
+    backdrop-filter:blur(8px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999999;
+}
+
+.checkout-popup{
+    position:relative;
+    width:92%;
+    max-width:1000px;
+    height:92vh;
+    background:#111;
+    border:1px solid #ff0077;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 0 45px rgba(255,0,119,0.35);
+}
+
+.checkout-popup iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    background:white;
+}
+
+.close-popup{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:50%;
+    background:#ff0077;
+    color:white;
+    font-size:24px;
+    cursor:pointer;
+    z-index:10;
+}
+
+
+/* MENU */
+.main-menu{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    padding:22px 15px;
+    background:#111;
+    border-top:1px solid #1d1d1d;
+    border-bottom:1px solid #1d1d1d;
+    flex-wrap:wrap;
+}
+
+.main-menu a{
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:14px;
+    background:#171717;
+    border:1px solid #252525;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.main-menu a:hover{
+    background:#ff0077;
+    border-color:#ff0077;
+    transform:translateY(-2px);
+}
+
+
+/* FOOTER */
+/* PAGINATION */
+.pagination{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin:10px 0 60px;
+}
+
+.pagination a{
+    padding:14px 20px;
+    background:#171717;
+    color:white;
+    text-decoration:none;
+    border-radius:14px;
+    transition:.3s;
+    font-weight:bold;
+    border:1px solid #252525;
+}
+
+.pagination a:hover,
+.pagination .active{
+    background:#ff0077;
+    border-color:#ff0077;
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#777;
+    border-top:1px solid #1e1e1e;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.products{
+    grid-template-columns:1fr;
+}
+
+
+.hero-banner{
+    height:420px;
+}
+
+.hero-content h1{
+    font-size:42px;
+}
+
+.hero-content p{
+    font-size:17px;
+}
+
+.products{
+    grid-template-columns:1fr;
+    padding:40px 18px;
+}
+
+.card-image img{
+    height:420px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+
+    <img src="High quality asset image banner.png" alt="Banner">
+
+
+
+</div>
+
+<!-- MENU -->
+<nav class="main-menu">
+
+    <a href="index.html">Home</a>
+
+    <a href="products-page1.html">Products</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="faq.html">FAQ</a>
+
+    <a href="policy.html">Policy</a>
+
+    <a href="license.html">License</a>
+
+</nav>
+
+<!-- HERO TEXT -->
+<section class="hero-text-section">
+    <h1>ShopLiannaX Digital Assets</h1>
+    <p>
+        High quality realistic assets for creators and character artists - true alpha eyebrow packs, beard textures, 3K-4K facial details, skin templates, body references, hands, feet and digital resources for Second Life and 3D character projects.
+    </p>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products">
+
+    <!-- PRODUCTS START -->
+<!-- DUPLICATE THIS PRODUCT BLOCK WHEN ADDING NEW PRODUCTS -->
+
+<!-- PRODUCT 1 -->
+<div class="card">
+    <div class="card-image">
+        <img src="36-realistic-eyebrows-pack-true-alpha.png" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Realistic Eyebrows Pack</h2>
+        <div class="description">High quality PNG eyebrow assets with realistic alpha detail.</div>
+        <div class="price">$14.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product2.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Two</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$24.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product3.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Three</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$29.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 4 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product4.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Four</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$34.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 5 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product5.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Five</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$39.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 6 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product6.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Six</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$44.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 7 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product7.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Seven</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$49.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 8 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product8.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Eight</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$54.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 9 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product9.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Nine</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$59.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+<!-- PRODUCT 10 -->
+<div class="card">
+    <div class="card-image">
+        <img src="images/product10.jpg" onclick="openImage(this.src)">
+        <div class="zoom-label">Click to Zoom</div>
+    </div>
+    <div class="card-content">
+        <h2>Product Ten</h2>
+        <div class="description">Premium quality digital asset preview showcase.</div>
+        <div class="price">$64.99</div>
+        <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+    </div>
+</div>
+
+</section>
+
+<!-- PAGINATION -->
+<div class="pagination">
+    <a class="active" href="products-page1.html">1</a>
+    <a href="products-page2.html">2</a>
+    <a href="products-page3.html">3</a>
+    <a href="products-page4.html">4</a>
+    <a href="products-page5.html">5</a>
+</div>
+
+<!-- IMAGE POPUP -->
+<div class="image-popup" id="imagePopup">
+    <button class="close-image" onclick="closeImage()">×</button>
+    <img id="popupImage">
+</div>
+
+<!-- PAYHIP POPUP -->
+<div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-popup">
+        <button class="close-popup" onclick="closeCheckout()">×</button>
+        <iframe id="checkoutFrame"></iframe>
+    </div>
+</div>
+
+<footer>
+    © 2026 ShopLiannaX - All Rights Reserved
+</footer>
+
+<script>
+function openCheckout(url){
+    document.getElementById('checkoutOverlay').style.display='flex';
+    document.getElementById('checkoutFrame').src=url;
+    document.body.style.overflow='hidden';
+}
+
+function closeCheckout(){
+    document.getElementById('checkoutOverlay').style.display='none';
+    document.getElementById('checkoutFrame').src='';
+    document.body.style.overflow='auto';
+}
+
+function openImage(src){
+    document.getElementById('imagePopup').style.display='flex';
+    document.getElementById('popupImage').src=src;
+    document.body.style.overflow='hidden';
+}
+
+function closeImage(){
+    document.getElementById('imagePopup').style.display='none';
+    document.body.style.overflow='auto';
+}
+
+window.addEventListener('click', function(e){
+    const overlay = document.getElementById('checkoutOverlay');
+    const imagePopup = document.getElementById('imagePopup');
+
+    if(e.target === overlay){
+        closeCheckout();
+    }
+
+    if(e.target === imagePopup){
+        closeImage();
+    }
+});
+</script>
+
+</body>
+</html>
