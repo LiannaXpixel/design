@@ -1,1 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Policy - ShopLiannaX</title>
 
+<style>
+:root{
+    --primary-color:#ff0077;
+    --secondary-color:#ff3399;
+    --dark-background:#0b0b0b;
+    --card-background:#151515;
+    --border-color:#252525;
+    --text-color-primary:white;
+    --text-color-muted:#8e8e8e;
+    --font-family:Arial,sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:var(--font-family);
+}
+
+html,
+body{
+    background:var(--dark-background);
+    color:var(--text-color-primary);
+    overflow-x:hidden;
+}
+
+body{
+    min-height:100vh;
+}
+
+/* HERO BANNER */
+.hero-banner{
+    position:relative;
+    width:100%;
+    height:auto;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+/* MENU */
+.main-menu{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    padding:22px 15px;
+    background:#111;
+    border-top:1px solid #1d1d1d;
+    border-bottom:1px solid #1d1d1d;
+    flex-wrap:wrap;
+}
+
+.main-menu a{
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:14px;
+    background:#171717;
+    border:1px solid var(--border-color);
+    transition:.3s;
+    font-weight:bold;
+}
+
+.main-menu a:hover{
+    background:var(--primary-color);
+    border-color:var(--primary-color);
+    transform:translateY(-2px);
+}
+
+/* HEADER */
+.page-header{
+    text-align:center;
+    padding:70px 20px 40px;
+}
+
+.page-header h1{
+    font-size:50px;
+    color:#d6b8a6;
+    margin-bottom:18px;
+    font-weight:500;
+}
+
+.page-header p{
+    max-width:850px;
+    margin:auto;
+    color:var(--text-color-muted);
+    line-height:1.9;
+    font-size:18px;
+}
+
+/* POLICY SECTION */
+.policy-section{
+    width:100%;
+    max-width:1100px;
+    margin:0 auto 90px;
+    padding:0 25px;
+}
+
+.policy-box{
+    background:var(--card-background);
+    border:1px solid var(--border-color);
+    border-radius:30px;
+    padding:60px;
+    box-shadow:0 0 45px rgba(255,0,119,.08);
+}
+
+.policy-item{
+    margin-bottom:45px;
+    padding-bottom:35px;
+    border-bottom:1px solid #222;
+}
+
+.policy-item:last-child{
+    margin-bottom:0;
+    padding-bottom:0;
+    border-bottom:none;
+}
+
+.policy-item h2{
+    font-size:28px;
+    margin-bottom:18px;
+    color:#f2f2f2;
+    font-weight:500;
+}
+
+.policy-item p{
+    color:var(--text-color-muted);
+    line-height:1.9;
+    font-size:17px;
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#777;
+    border-top:1px solid #1e1e1e;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.page-header h1{
+    font-size:38px;
+}
+
+.page-header p{
+    font-size:16px;
+}
+
+.policy-box{
+    padding:40px 25px;
+}
+
+.policy-item h2{
+    font-size:24px;
+}
+
+.policy-item p{
+    font-size:16px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+    <img src="High quality asset image banner.png" alt="Banner">
+</div>
+
+<!-- MENU -->
+<nav class="main-menu">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact</a>
+    <a href="faq.html">FAQ</a>
+    <a href="policy.html">Policy</a>
+    <a href="license.html">License</a>
+</nav>
+
+<!-- HEADER -->
+<section class="page-header">
+
+    <h1>Store Policy</h1>
+
+    <p>
+        Please review the following policies regarding digital purchases,
+        downloads, usage and customer support at ShopLiannaX.
+    </p>
+
+</section>
+
+<!-- POLICY -->
+<section class="policy-section">
+
+    <div class="policy-box">
+
+        <div class="policy-item">
+            <h2>Digital Products</h2>
+            <p>
+                All products sold on ShopLiannaX are digital products.
+                No physical items will be shipped to customers.
+            </p>
+        </div>
+
+        <div class="policy-item">
+            <h2>Instant Delivery</h2>
+            <p>
+                Purchased files are delivered digitally after successful payment.
+                Delivery methods may vary depending on the platform or product type.
+            </p>
+        </div>
+
+        <div class="policy-item">
+            <h2>Refund Policy</h2>
+            <p>
+                Due to the nature of digital products, refunds are generally
+                not available once files have been downloaded, accessed or delivered.
+            </p>
+        </div>
+
+        <div class="policy-item">
+            <h2>Product Compatibility</h2>
+            <p>
+                Compatibility information is provided inside product descriptions.
+                Please carefully review product details before purchasing.
+            </p>
+        </div>
+
+        <div class="policy-item">
+            <h2>Unauthorized Redistribution</h2>
+            <p>
+                Redistribution, resale, sharing or unauthorized uploading of purchased
+                digital assets is strictly prohibited.
+            </p>
+        </div>
+
+        <div class="policy-item">
+            <h2>Support</h2>
+            <p>
+                If you experience issues with a purchase or download,
+                please contact ShopLiannaX through the Contact page for assistance.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 ShopLiannaX - All Rights Reserved
+</footer>
+
+</body>
+</html>
