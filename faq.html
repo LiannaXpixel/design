@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FAQ - ShopLiannaX</title>
+
+<style>
+:root{
+    --primary-color:#ff0077;
+    --secondary-color:#ff3399;
+    --dark-background:#0b0b0b;
+    --card-background:#151515;
+    --border-color:#252525;
+    --text-color-primary:white;
+    --text-color-muted:#8e8e8e;
+    --font-family:Arial,sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:var(--font-family);
+}
+
+html,
+body{
+    background:var(--dark-background);
+    color:var(--text-color-primary);
+    overflow-x:hidden;
+}
+
+body{
+    min-height:100vh;
+}
+
+/* HERO BANNER */
+.hero-banner{
+    position:relative;
+    width:100%;
+    height:auto;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+/* MENU */
+.main-menu{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    padding:22px 15px;
+    background:#111;
+    border-top:1px solid #1d1d1d;
+    border-bottom:1px solid #1d1d1d;
+    flex-wrap:wrap;
+}
+
+.main-menu a{
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:14px;
+    background:#171717;
+    border:1px solid var(--border-color);
+    transition:.3s;
+    font-weight:bold;
+}
+
+.main-menu a:hover{
+    background:var(--primary-color);
+    border-color:var(--primary-color);
+    transform:translateY(-2px);
+}
+
+/* HEADER */
+.page-header{
+    text-align:center;
+    padding:70px 20px 40px;
+}
+
+.page-header h1{
+    font-size:50px;
+    color:#d6b8a6;
+    margin-bottom:18px;
+    font-weight:500;
+}
+
+.page-header p{
+    max-width:850px;
+    margin:auto;
+    color:var(--text-color-muted);
+    line-height:1.9;
+    font-size:18px;
+}
+
+/* FAQ SECTION */
+.faq-section{
+    width:100%;
+    max-width:1100px;
+    margin:0 auto 90px;
+    padding:0 25px;
+}
+
+.faq-box{
+    background:var(--card-background);
+    border:1px solid var(--border-color);
+    border-radius:30px;
+    padding:60px;
+    box-shadow:0 0 45px rgba(255,0,119,.08);
+}
+
+.faq-item{
+    margin-bottom:40px;
+    padding-bottom:35px;
+    border-bottom:1px solid #222;
+}
+
+.faq-item:last-child{
+    margin-bottom:0;
+    padding-bottom:0;
+    border-bottom:none;
+}
+
+.faq-item h2{
+    font-size:28px;
+    margin-bottom:18px;
+    color:#f2f2f2;
+    font-weight:500;
+}
+
+.faq-item p{
+    color:var(--text-color-muted);
+    line-height:1.9;
+    font-size:17px;
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#777;
+    border-top:1px solid #1e1e1e;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.page-header h1{
+    font-size:38px;
+}
+
+.page-header p{
+    font-size:16px;
+}
+
+.faq-box{
+    padding:40px 25px;
+}
+
+.faq-item h2{
+    font-size:24px;
+}
+
+.faq-item p{
+    font-size:16px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+    <img src="High quality asset image banner.png" alt="Banner">
+</div>
+
+<!-- MENU -->
+<nav class="main-menu">
+    <a href="index.html">Home</a>
+    <a href="products-page1.html">Products</a>
+    <a href="contact.html">Contact</a>
+    <a href="faq.html">FAQ</a>
+    <a href="policy.html">Policy</a>
+    <a href="license.html">License</a>
+</nav>
+
+<!-- HEADER -->
+<section class="page-header">
+
+    <h1>Frequently Asked Questions</h1>
+
+    <p>
+        Find answers to common questions regarding products, compatibility,
+        downloads, usage and customer support.
+    </p>
+
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+
+    <div class="faq-box">
+
+        <div class="faq-item">
+            <h2>What do I receive after purchase?</h2>
+            <p>
+                After completing your purchase, you will instantly receive downloadable
+                digital files in high quality format.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h2>Are all products compatible with Second Life?</h2>
+            <p>
+                Not all products are specifically made for Second Life.
+                Compatibility details will always be clearly mentioned inside
+                the individual product description when applicable.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h2>What file formats are included?</h2>
+            <p>
+                Depending on the product, files may include PNG, PSD,
+                high resolution textures, alpha files and reference images.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h2>Can I use the assets commercially?</h2>
+            <p>
+                Please review the License page carefully for complete information
+                regarding personal and commercial usage permissions.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h2>Do you offer refunds?</h2>
+            <p>
+                Due to the nature of digital products, refunds are generally not
+                available once files have been downloaded or accessed.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h2>How do I contact support?</h2>
+            <p>
+                You can contact ShopLiannaX anytime through the Contact page
+                for support questions, collaborations or assistance.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h2>Will more products be added?</h2>
+            <p>
+                Yes. ShopLiannaX will continue expanding with new premium
+                digital assets and creator resources over time.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 ShopLiannaX - All Rights Reserved
+</footer>
+
+</body>
+</html>
