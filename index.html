@@ -228,6 +228,26 @@ color:#777;
 
 }
 
+
+
+.install-btn{
+position:absolute;
+top:20px;
+right:20px;
+display:none;
+padding:12px 20px;
+background:#ff0077;
+color:#fff;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,.35);
+z-index:1000;
+}
+.install-btn:hover{background:#ff2d90;}
+.hero-banner{position:relative;}
+
 </style>
 
 </head>
@@ -235,6 +255,7 @@ color:#777;
 <body>
 
 <div class="hero-banner">
+<button id="installBtn" class="install-btn">📲 Install App</button>
 
 <img src="High quality asset image banner.png"
 alt="ShopLiannaX Premium Digital Assets Banner">
@@ -320,6 +341,28 @@ Unauthorized reproduction, redistribution, resale, modification, or commercial u
 </p>
 
 </footer>
+
+
+<script>
+if ('serviceWorker' in navigator){
+ window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+let deferredPrompt;
+const btn=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',(e)=>{
+ e.preventDefault();
+ deferredPrompt=e;
+ btn.style.display='block';
+});
+btn.addEventListener('click',async()=>{
+ if(!deferredPrompt)return;
+ deferredPrompt.prompt();
+ await deferredPrompt.userChoice;
+ deferredPrompt=null;
+ btn.style.display='none';
+});
+window.addEventListener('appinstalled',()=>btn.style.display='none');
+</script>
 
 </body>
 </html>
