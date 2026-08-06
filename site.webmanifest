@@ -1,6 +1,7 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "ShopLiannaX - Premium Digital Assets",
+  "short_name": "ShopLiannaX",
+  "description": "Premium digital assets for 3D artists, designers and virtual world creators.",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +16,9 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "theme_color": "#0b0b0b",
+  "background_color": "#0b0b0b",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
 }
