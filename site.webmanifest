@@ -10,7 +10,7 @@
   "background_color": "#0b0b0b",
   "icons": [
     {
-      "src": "/Logo%20aplicatie.png",
+      "src": "logo-aplicatie.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
