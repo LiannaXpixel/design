@@ -2,23 +2,18 @@
   "name": "ShopLiannaX - Premium Digital Assets",
   "short_name": "ShopLiannaX",
   "description": "Premium digital assets for 3D artists, designers and virtual world creators.",
-  "icons": [
-    {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#0b0b0b",
   "background_color": "#0b0b0b",
-  "display": "standalone",
-  "start_url": "/",
-  "scope": "/"
+  "icons": [
+    {
+      "src": "/Logo%20aplicatie.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
