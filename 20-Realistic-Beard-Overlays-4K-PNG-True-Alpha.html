@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>36 Realistic Eyebrow PNG Pack | ShopLiannaX</title>
+
+<meta name="description" content="36 realistic eyebrow PNG assets with true alpha transparency for Photoshop, Procreate, Second Life, Blender, Daz Studio and character creation. High-quality 3K digital resource.">
+
+<meta name="keywords" content="realistic eyebrows PNG, eyebrow textures, true alpha eyebrows, Photoshop eyebrows, Procreate assets, Second Life eyebrows, Blender textures, Daz Studio, character creator assets">
+
+<meta name="robots" content="index,follow">
+
+<link rel="canonical" href="https://shopliannax.com/realistic-eyebrows-asset.html">
+
+<style>
+    /* CSS Variables */
+    :root {
+        --primary-color: #ff0077;
+        --secondary-color: #ff3399;
+        --dark-background: #0b0b0b;
+        --card-background: #151515;
+        --border-color: #252525;
+        --text-color-primary: white;
+        --text-color-secondary: #e5e5e5;
+        --text-color-muted: #8e8e8e;
+        --text-color-highlight: #bdbdbd;
+        --font-family: Arial, sans-serif;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: var(--font-family);
+    }
+
+    html,
+    body {
+        background: var(--dark-background);
+        color: var(--text-color-primary);
+        overflow-x: hidden;
+    }
+
+    body {
+        min-height: 100vh;
+    }
+
+  /* HERO BANNER */
+.hero-banner{
+    position:relative;
+    width:100%;
+    height:auto;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 64px;
+        margin-bottom: 18px;
+        text-shadow: 0 0 25px rgba(0, 0, 0, .6);
+    }
+
+    .hero-content p {
+        font-size: 20px;
+        max-width: 700px;
+        color: var(--text-color-secondary);
+        line-height: 1.6;
+    }
+
+    /* HERO TEXT SECTION */
+    .hero-text-section {
+        text-align: center;
+        padding: 55px 20px 25px;
+        background: var(--dark-background);
+    }
+
+    .hero-text-section h1 {
+        font-size: 38px;
+        margin-bottom: 16px;
+        color: #b8a79d;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .hero-text-section p {
+        font-size: 17px;
+        max-width: 760px;
+        margin: auto;
+        color: var(--text-color-muted);
+        line-height: 1.8;
+        text-align: center;
+    }
+
+    /* PRODUCTS */
+    .products {
+        width: 100%;
+        max-width: 1100px;
+        margin: auto;
+        padding: 30px 35px;
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    .card {
+        background: var(--card-background);
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        transition: .35s;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        max-width:1100px;
+        margin:0 auto;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 40px rgba(255, 0, 119, .18);
+    }
+
+    /* Image Gallery within Card */
+    .card-gallery {
+        position: relative;
+        overflow: hidden;
+        cursor: default;
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        width: 100%;
+        height: 700px;
+        background-color: var(--border-color); /* Fallback background */
+    }
+
+    .card-gallery-images {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .card-gallery-image-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-gallery img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        border-radius: inherit;
+    }
+
+    .card-gallery img.loaded {
+        opacity: 1;
+    }
+
+    .card-gallery-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        z-index: 10;
+        pointer-events: auto;
+    }
+
+    .card-gallery-nav button {
+        background: rgba(0, 0, 0, .6);
+        color: var(--text-color-primary);
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 50%;
+        margin: 0 15px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        transition: background 0.3s ease;
+    }
+
+    .card-gallery-nav button:hover {
+        background: var(--primary-color);
+    }
+
+    .zoom-label {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, .6);
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 14px;
+        backdrop-filter: blur(5px);
+        z-index: 5;
+        opacity: 1; /* Initially hidden */
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    /* Show zoom label when an image is displayed */
+    .card-gallery-image-wrapper:not([style*="display: none"]) .zoom-label {
+        opacity: 1;
+    }
+
+    .card-content {
+        padding: 24px;
+        flex-grow: 1;
+    }
+
+    .card-content h2 {
+        font-size: 26px;
+        margin: 0 0 12px 0; /* Added margin reset for clarity */
+    }
+
+    .description {
+        color: var(--text-color-highlight);
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .price {
+        color: var(--primary-color);
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 22px;
+    }
+
+    .buy-btn {
+        display:block;
+        width:320px;
+        max-width:100%;
+        margin:30px auto 10px;
+        text-align:center;
+        background: var(--primary-color);
+        color: var(--text-color-primary);
+        text-decoration: none;
+        padding:18px 32px;
+        border-radius: 14px;
+        font-weight: bold;
+        transition: .3s;
+        font-size:18px;
+        letter-spacing:.5px;
+        box-shadow:0 10px 25px rgba(255,0,119,.25);
+        border: none;
+        cursor: pointer;
+    }
+
+    .buy-btn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+    }
+
+    /* IMAGE POPUP */
+    .image-popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .88);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999999;
+        backdrop-filter: blur(8px);
+    }
+
+    .image-popup img {
+        width: 90%;
+        max-width: 1400px;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 18px;
+        box-shadow: 0 0 50px rgba(255, 255, 255, .08);
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .image-popup img.loaded {
+        opacity: 1;
+    }
+
+    .close-image {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: var(--text-color-primary);
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 1000000;
+        transition: background 0.3s ease;
+    }
+
+    .close-image:hover {
+        background: var(--secondary-color);
+    }
+
+    /* PAYHIP POPUP */
+    .checkout-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.82);
+        backdrop-filter: blur(8px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999999;
+    }
+
+    .checkout-popup {
+        position: relative;
+        width: 92%;
+        max-width: 1000px;
+        height: 92vh;
+        background: #111;
+        border: 1px solid var(--primary-color);
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 0 45px rgba(255, 0, 119, .35);
+    }
+
+    .checkout-popup iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: white;
+    }
+
+    /* Keeps Payhip's secure-payment notice visible while branding the lower popup area. */
+    .checkout-branding {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 5;
+        min-height: 145px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 18px 56px 24px;
+        pointer-events: auto;
+        text-align: center;
+        color: #fff;
+        background: linear-gradient(135deg, #080808 0%, #1a1015 52%, #080808 100%);
+        border-top: 1px solid rgba(255, 0, 119, 0.9);
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.42), 0 -1px 18px rgba(255, 0, 119, 0.22);
+    }
+
+    .checkout-branding-name {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+    }
+
+    .checkout-branding-secure {
+        color:#d8d8d8;
+        font-size:13px;
+        font-weight:500;
+        letter-spacing:.02em;
+    }
+
+    .checkout-branding-tagline {
+        color: #ff8bc4;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+        .checkout-branding {
+            min-height: 68px;
+            padding: 10px 52px;
+        }
+    }
+
+    .close-popup {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 44px;
+        height: 44px;
+        border: none;
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: var(--text-color-primary);
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10;
+        transition: background 0.3s ease;
+    }
+
+    .close-popup:hover {
+        background: var(--secondary-color);
+    }
+
+    /* MENU */
+    .main-menu {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        padding: 22px 15px;
+        background: #111;
+        border-top: 1px solid #1d1d1d;
+        border-bottom: 1px solid #1d1d1d;
+        flex-wrap: wrap;
+    }
+
+    .main-menu a {
+        color: var(--text-color-primary);
+        text-decoration: none;
+        padding: 12px 22px;
+        border-radius: 14px;
+        background: #171717;
+        border: 1px solid var(--border-color);
+        transition: .3s;
+        font-weight: bold;
+    }
+
+    .main-menu a:hover {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+
+    /* PAGINATION */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 10px 0 60px;
+    }
+
+    .pagination a {
+        padding: 14px 20px;
+        background: #171717;
+        color: var(--text-color-primary);
+        text-decoration: none;
+        border-radius: 14px;
+        transition: .3s;
+        font-weight: bold;
+        border: 1px solid var(--border-color);
+    }
+
+    .pagination a:hover,
+    .pagination .active {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+    footer {
+        text-align: center;
+        padding: 40px 20px;
+        color: #777;
+        border-top: 1px solid #1e1e1e;
+    }
+
+    /* MOBILE */
+    @media(max-width: 900px) {
+        .products {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-banner {
+            height: 420px;
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+        }
+
+        .hero-content p {
+            font-size: 17px;
+        }
+
+        .products {
+            padding: 40px 18px;
+        }
+
+        .card-gallery {
+            height: 450px;
+        }
+
+        .card-gallery-nav button {
+            padding: 8px;
+            font-size: 16px;
+            width: 35px;
+            height: 35px;
+            margin: 0 10px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <nav class="main-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="policy.html">Policy</a>
+        <a href="license.html">License</a>
+    </nav>
+
+    <!-- PRODUCTS -->
+    <section class="products">
+
+        <!-- PRODUCT 1 -->
+        <div class="card">
+            <div class="card-gallery" id="gallery1">
+                <div class="card-gallery-images">
+                    <div class="card-gallery-image-wrapper">
+                        <img src="35-realistic-eyebrows-pack-true-alpha.png" alt="Product 1 Image 1" loading="lazy">
+                    </div>
+                    <div class="card-gallery-image-wrapper">
+                        <img src="35-realistic-eyebrows-true-alpha-preview.png" alt="Product 1 Image 2" loading="lazy">
+                    </div>
+                    <div class="card-gallery-image-wrapper">
+                        <img src="35-realistic-eyebrows-character-preview.png" alt="Product 1 Image 3" loading="lazy">
+                    </div>
+                </div>
+                <div class="card-gallery-nav">
+                    <button onclick="changeImage(-1, 'gallery1')">&#8592;</button>
+                    <button onclick="changeImage(1, 'gallery1')">&#8594;</button>
+                </div>
+                
+            </div>
+            <div class="card-content">
+                <h2>35 Realistic Eyebrows Pack</h2>
+                <div class="description">35 high-quality eyebrow PNGs with true alpha transparency and realistic detail. Designed for digital artists, character creators, photo editing, and content creation. Compatible with Photoshop, Procreate, and other editing software.</div>
+                <div class="price">$13.99</div>
+                <a class="buy-btn" href="https://payhip.com/buy?link[]=Qyma7&amp;qty[Qyma7]=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+            </div>
+        </div>
+
+        </section>
+
+   <!-- IMAGE POPUP -->
+    <div class="image-popup" id="imagePopup">
+        <button class="close-image" onclick="closeImage()">×</button>
+        <img id="popupImage" src="" alt="Enlarged Product Image" loading="lazy">
+    </div>
+
+    <!-- PAYHIP POPUP -->
+    <div class="checkout-overlay" id="checkoutOverlay">
+        <div class="checkout-popup">
+            <button class="close-popup" onclick="closeCheckout()">×</button>
+            <iframe id="checkoutFrame" src="" title="Checkout Frame"></iframe>
+            <div class="checkout-branding" aria-hidden="true">
+                <span class="checkout-branding-secure">🔒 All transactions are secure and encrypted</span>
+                <span class="checkout-branding-name">ShopLiannaX</span>
+                <span class="checkout-branding-tagline">Premium Digital Assets</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 ShopLiannaX - All Rights Reserved
+    </footer>
+
+    <script>
+        function openCheckout(url) {
+            document.getElementById('checkoutOverlay').style.display = 'flex';
+            document.getElementById('checkoutFrame').src = url;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutOverlay').style.display = 'none';
+            document.getElementById('checkoutFrame').src = ''; /* Clear src */
+            document.body.style.overflow = 'auto';
+        }
+
+        function openImage(src, altText) {
+            const popupImage = document.getElementById('popupImage');
+            popupImage.src = src;
+            popupImage.alt = altText;
+            popupImage.classList.remove('loaded'); /* Reset for fade-in */
+            document.getElementById('imagePopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            popupImage.onload = () => {
+                popupImage.classList.add('loaded');
+            };
+            if (popupImage.complete) {
+                 popupImage.classList.add('loaded');
+            }
+        }
+
+        function closeImage() {
+            document.getElementById('imagePopup').style.display = 'none';
+            document.getElementById('popupImage').src = ''; /* Clear src */
+            document.getElementById('popupImage').alt = ''; /* Clear alt text */
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('click', function (e) {
+            const overlay = document.getElementById('checkoutOverlay');
+            const imagePopup = document.getElementById('imagePopup');
+
+            if (e.target === overlay) {
+                closeCheckout();
+            }
+
+            if (e.target === imagePopup) {
+                closeImage();
+            }
+        });
+
+        /* Function to handle image switching and apply zoom listener */
+        function updateGalleryImage(wrapperElement, imgElement) {
+            const img = imgElement;
+            img.style.opacity = '0'; /* Start hidden for fade effect */
+
+            /* Set the onclick handler directly on the image */
+            img.onclick = null;
+
+            img.onload = () => {
+                img.classList.add('loaded');
+                img.style.opacity = '1'; /* Make visible after loaded */
+            };
+            if (img.complete) { /* For cached images */
+                img.classList.add('loaded');
+                img.style.opacity = '1';
+            }
+        }
+
+        function changeImage(direction, galleryId) {
+            const gallery = document.getElementById(galleryId);
+            const imagesContainer = gallery.querySelector('.card-gallery-images');
+            const imageWrappers = Array.from(imagesContainer.querySelectorAll('.card-gallery-image-wrapper'));
+
+            let currentIndex = -1;
+            for (let i = 0; i < imageWrappers.length; i++) {
+                if (imageWrappers[i].style.display === 'block') {
+                    currentIndex = i;
+                    break;
+                }
+            }
+            if (currentIndex === -1) currentIndex = 0; /* Default to first image if none active */
+
+            let newIndex = currentIndex + direction;
+
+            if (newIndex < 0) {
+                newIndex = imageWrappers.length - 1;
+            } else if (newIndex >= imageWrappers.length) {
+                newIndex = 0;
+            }
+
+            imageWrappers.forEach((wrapper, index) => {
+                if (index === newIndex) {
+                    wrapper.style.display = 'block';
+                    const img = wrapper.querySelector('img');
+                    if (img) {
+                        updateGalleryImage(wrapper, img); /* Apply updates and listener */
+                    }
+                } else {
+                    wrapper.style.display = 'none';
+                }
+            });
+        }
+
+        /* Initialize the gallery display and set up onclick for first image */
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleries = document.querySelectorAll('.card-gallery');
+            galleries.forEach(gallery => {
+                const imageWrappers = gallery.querySelectorAll('.card-gallery-image-wrapper');
+                imageWrappers.forEach((wrapper, index) => {
+                    if (index === 0) {
+                        wrapper.style.display = 'block';
+                        const img = wrapper.querySelector('img');
+                        if (img) {
+                            updateGalleryImage(wrapper, img); /* Initialize for the first image */
+                        }
+                    } else {
+                        wrapper.style.display = 'none';
+                    }
+                });
+            });
+
+            /* Ensure popup image is handled */
+            const popupImage = document.getElementById('popupImage');
+            if (popupImage && popupImage.src) {
+                popupImage.onload = () => {
+                    popupImage.classList.add('loaded');
+                };
+                if (popupImage.complete) {
+                    popupImage.classList.add('loaded');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
