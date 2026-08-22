@@ -6,8 +6,8 @@
 <title>Welcome to Your Grid</title>
 <style>
 :root{
-  --accent:#ff0077;
-  --accent2:#ff3399;
+  --accent:#651f42;
+  --accent2:#7d2854;
   --bg:#0b0b0b;
   --card:#151515;
   --border:#252525;
@@ -46,9 +46,25 @@ body{
   background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.75));
 }
 .hero-content{position:relative;z-index:1}
-.kicker{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#ddd;margin-bottom:14px}
-h1{font-size:clamp(42px,7vw,76px);font-weight:500;line-height:1}
-.subtitle{margin-top:16px;max-width:680px;color:#d0d0d0;font-size:18px;line-height:1.7}
+.kicker{
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#ddd;
+  margin-bottom:14px
+}
+h1{
+  font-size:clamp(42px,7vw,76px);
+  font-weight:500;
+  line-height:1
+}
+.subtitle{
+  margin-top:16px;
+  max-width:680px;
+  color:#d0d0d0;
+  font-size:18px;
+  line-height:1.7
+}
 .box{
   margin-top:24px;
   background:var(--card);
@@ -68,16 +84,23 @@ a{
   border-radius:16px;
   font-weight:bold;
   color:white;
-  background:#171717;
-  border:1px solid #303030;
+  background:#651f42;
+  border:1px solid #76264d;
   transition:.2s;
 }
-a:hover{background:#202020;border-color:#555;transform:translateY(-2px)}
-a.primary{
-  background:var(--accent);
-  border-color:var(--accent);
+a:hover{
+  background:#7d2854;
+  border-color:#91305f;
+  transform:translateY(-2px)
 }
-a.primary:hover{background:var(--accent2);border-color:var(--accent2)}
+a.primary{
+  background:#651f42;
+  border-color:#76264d;
+}
+a.primary:hover{
+  background:#7d2854;
+  border-color:#91305f;
+}
 .footer{
   text-align:center;
   color:#777;
@@ -86,7 +109,10 @@ a.primary:hover{background:var(--accent2);border-color:var(--accent2)}
 }
 @media(max-width:650px){
   body{padding:15px}
-  .hero{min-height:270px;padding:28px}
+  .hero{
+    min-height:270px;
+    padding:28px
+  }
   .box{padding:22px}
   .actions{grid-template-columns:1fr}
 }
