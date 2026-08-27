@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login — LiannaX</title><style>
+:root{
+ --bg:#080708; --panel:rgba(20,12,20,.78); --line:rgba(235,75,155,.42);
+ --pink:#ed4f9c; --soft:#d9a4c1; --purple:#b77adf; --text:#eee8ed; --muted:#aaa1a9;
+}
+*{box-sizing:border-box} html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);
+font-family:Arial,Helvetica,sans-serif} body{overflow-x:hidden}
+#particles{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.glow{position:fixed;inset:0;z-index:1;pointer-events:none;
+background:radial-gradient(circle at 18% 25%,rgba(180,25,105,.20),transparent 32%),
+radial-gradient(circle at 82% 72%,rgba(100,30,150,.16),transparent 35%);}
+.page{position:relative;z-index:2;width:min(900px,94%);margin:auto;padding:48px 18px 55px;text-align:center}
+.brand{letter-spacing:7px;font-size:15px;color:var(--soft);margin-bottom:15px}
+.brand span{color:var(--pink)}
+h1{margin:0;font-size:clamp(38px,7vw,65px);font-weight:300;letter-spacing:4px;
+background:linear-gradient(90deg,#fff,#f19bc7,#fff,#c59be8,#fff);background-size:300% auto;
+-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:300% center}}
+.subtitle{margin:13px 0 28px;color:var(--soft);letter-spacing:4px;font-size:14px}
+.divider{width:170px;height:1px;margin:0 auto 30px;background:linear-gradient(90deg,transparent,var(--pink),var(--purple),transparent)}
+.card{max-width:570px;margin:auto;padding:34px 38px 32px;background:var(--panel);
+border:1px solid var(--line);border-radius:18px;box-shadow:0 0 35px rgba(180,30,105,.12),inset 0 0 25px rgba(120,20,80,.08);
+backdrop-filter:blur(7px);text-align:left}
+.card h2{text-align:center;font-weight:normal;letter-spacing:2px;margin:0 0 8px}
+.card .intro{text-align:center;color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 25px}
+label{display:block;margin:14px 0 7px;color:#d8cbd3;font-size:12px;letter-spacing:1px;text-transform:uppercase}
+input[type=text],input[type=password],input[type=email],input[type=input]{
+width:100%;padding:12px 13px;border-radius:9px;border:1px solid rgba(235,75,155,.28);
+background:rgba(5,4,6,.72);color:#fff;outline:none}
+input:focus{border-color:var(--pink);box-shadow:0 0 14px rgba(237,79,156,.16)}
+.avatar{margin:7px 5px 7px 0;accent-color:var(--pink)}
+.avatarRow{color:#cfc4cb;font-size:13px;display:flex;flex-wrap:wrap;gap:14px}
+button,.button{
+width:100%;margin-top:24px;padding:13px 16px;border:1px solid rgba(237,79,156,.65);
+border-radius:10px;background:linear-gradient(135deg,rgba(120,20,70,.72),rgba(55,15,55,.82));
+color:#fff;font-weight:bold;letter-spacing:1px;cursor:pointer;text-decoration:none;display:block;text-align:center;
+transition:.3s}
+button:hover,.button:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(225,40,130,.25);border-color:var(--pink)}
+.links{text-align:center;margin-top:22px;font-size:12px;color:#999}
+.links a{color:#df75aa;text-decoration:none;margin:0 7px}.links a:hover{color:#fff}
+.footer{margin-top:28px;color:#70686f;font-size:11px;letter-spacing:1px;text-align:center}
+.footer span{color:#b94a82}
+@media(max-width:600px){.card{padding:28px 20px}.page{padding-top:32px}.brand{letter-spacing:4px}.subtitle{letter-spacing:2px}}
+</style></head><body>
+<canvas id="particles"></canvas><div class="glow"></div><main class="page">
+<div class="brand">LIANNAX <span>GRID</span></div>
+
+<h1>Welcome Back</h1><div class="subtitle">ENTER THE LIANNAX WORLD</div><div class="divider"></div>
+<div class="card"><h2>LOGIN</h2><p class="intro">Welcome back to LiannaX. Your world is waiting.</p>
+<form action="/wifi/login" method="post">
+<input name="METHOD" type="hidden" value="login">
+<label>First Name</label><input name="firstname" type="text" required>
+<label>Last Name</label><input name="lastname" type="text" required>
+<label>Password</label><input name="password" type="password" required>
+<button type="submit">ENTER LIANNAX</button></form>
+<div class="links"><a href="register.html">CREATE ACCOUNT</a> · <a href="forgot.html">FORGOT PASSWORD</a></div></div>
+
+<div class="footer">© 2026 <span>LiannaX Grid</span> · Create · Sell · Earn · Explore · Connect</div>
+</main><script>
+const c=document.getElementById('particles'),x=c.getContext('2d');let W,H,P=[],mx=null,my=null;
+function resize(){W=c.width=innerWidth;H=c.height=innerHeight;P=[];
+let n=Math.min(135,Math.max(60,Math.floor(W*H/11000)));
+for(let i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,
+vy:(Math.random()-.5)*.22,s:Math.random()*2.2+.5,a:Math.random()*.5+.12,p:Math.random()*6.28});}
+function draw(t){
+x.clearRect(0,0,W,H);
+for(let i=0;i<P.length;i++){let p=P[i];p.x+=p.vx;p.y+=p.vy+Math.sin(t*.00025+p.p)*.015;
+if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
+if(mx!==null){let dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);if(d<130&&d>1){let f=(1-d/130)*.25;p.x+=dx/d*f;p.y+=dy/d*f;}}
+for(let j=i+1;j<P.length;j++){let q=P[j],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<105){
+x.strokeStyle=`rgba(215,70,160,${(1-d/105)*.13})`;x.lineWidth=.6;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke();}}
+let a=Math.max(.03,p.a+Math.sin(t*.0015+p.p)*.14),g=x.createRadialGradient(p.x,p.y,0,p.x,p.y,p.s*7);
+g.addColorStop(0,`rgba(238,70,155,${a})`);g.addColorStop(1,'rgba(0,0,0,0)');
+x.fillStyle=g;x.beginPath();x.arc(p.x,p.y,p.s*7,0,Math.PI*2);x.fill();
+x.fillStyle=`rgba(255,210,235,${a+.12})`;x.beginPath();x.arc(p.x,p.y,p.s/2,0,Math.PI*2);x.fill();}
+requestAnimationFrame(draw)}
+addEventListener('resize',resize);addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+addEventListener('mouseleave',()=>{mx=my=null});resize();requestAnimationFrame(draw);
+</script></body></html>
