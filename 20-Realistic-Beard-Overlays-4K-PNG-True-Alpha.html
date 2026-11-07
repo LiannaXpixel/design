@@ -412,7 +412,7 @@
         bottom: 0;
         left: 0;
         z-index: 5;
-        min-height: 145px;
+        min-height: 170px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -696,17 +696,21 @@ Designed for realistic facial hair results
     </div>
 
     <!-- PAYHIP POPUP -->
-    <div class="checkout-overlay" id="checkoutOverlay">
-        <div class="checkout-popup">
-            <button class="close-popup" onclick="closeCheckout()">×</button>
-            <iframe id="checkoutFrame" src="" title="Checkout Frame"></iframe>
-            <div class="checkout-branding" aria-hidden="true">
-                <span class="checkout-branding-secure">🔒 All transactions are secure and encrypted</span>
-                <span class="checkout-branding-name">ShopLiannaX</span>
-                <span class="checkout-branding-tagline">Premium Digital Assets</span>
-            </div>
-        </div>
-    </div>
+<div class="checkout-overlay" id="checkoutOverlay">
+<div class="checkout-popup">
+<button class="close-popup" onclick="closeCheckout()">×</button>
+<iframe id="checkoutFrame" src="" title="Checkout Frame"></iframe>
+<div aria-hidden="true" class="checkout-branding">
+<!-- NOTA ADĂUGATĂ PENTRU BUTONUL ALBASTRU GOL -->
+<span style="color: #ff8bc4; font-size: 11px; font-weight: 700; margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase; display: block;">
+    ℹ️ Note: Please click the blue button below to complete your card purchase.
+</span>
+<span class="checkout-branding-secure">🔒 All transactions are secure and encrypted</span>
+<span class="checkout-branding-name">ShopLiannaX</span>
+<span class="checkout-branding-tagline">Premium Digital Assets</span>
+</div>
+</div>
+</div>
 
     <footer>
         © 2026 ShopLiannaX - All Rights Reserved
