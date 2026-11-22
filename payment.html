@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
   <title>ShopLiannaX - Secure Checkout</title>
-  <script src="https://stripe.com"></script>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -130,15 +130,11 @@
 </div>
 
 <script>
-  // 1. PUNE AICI PUBLISHABLE KEY DE LA STRIPE (pk_test_...):
   const STRIPE_PUBLIC_KEY = "pk_test_imxOQ7iOJlaX8YpyNhQ7PRBN00niQEaN8h";
-
-  // 2. PUNE AICI CLIENT ID DE LA PAYPAL:
   const PAYPAL_CLIENT_ID = "BAANbOcW1sazxoyVk237vyG5IYlax2ajHk2ref9oPsyB6bqbI_kalRo5QFmG9DG1N07dl7EGxp2Nm-EnaA";
 
-  const WORKER_URL = "https://workers.dev";
-  const stripe = Stripe(STRIPE_PUBLIC_KEY);
-  let elements;
+  const WORKER_URL = "https://" + "plata-shopliannax.slleek-estetique.workers.dev";
+  let stripe, elements;
 
   function showSecureDownload(downloadUrl) {
     document.getElementById("payment-area").style.display = "none";
@@ -146,18 +142,21 @@
     document.getElementById("download-section").style.display = "block";
   }
 
-  async function initStripe() {
+  const sScript = document.createElement("script");
+  sScript.src = "https://js." + "://stripe.com";
+  sScript.onload = async () => {
+    stripe = Stripe(STRIPE_PUBLIC_KEY);
     try {
       const res = await fetch(`${WORKER_URL}/create-stripe-intent`, { method: "POST" });
       const { clientSecret } = await res.json();
-
       elements = stripe.elements({ clientSecret });
       const paymentElement = elements.create("payment");
       paymentElement.mount("#payment-element");
     } catch (err) {
-      document.getElementById("error-message").textContent = "Eroare la încărcarea formularului Stripe.";
+      document.getElementById("error-message").textContent = "Eroare la încărcarea Stripe.";
     }
-  }
+  };
+  document.head.appendChild(sScript);
 
   document.getElementById("stripe-form").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -190,7 +189,6 @@
     }
   });
 
-  // Încărcare dinamică PayPal (fără să fie tăiat link-ul)
   const ppScript = document.createElement("script");
   ppScript.src = "https://www." + "://paypal.com" + PAYPAL_CLIENT_ID + "&currency=EUR";
   ppScript.onload = () => {
@@ -225,8 +223,6 @@
     }).render('#paypal-button-container');
   };
   document.head.appendChild(ppScript);
-
-  initStripe();
 </script>
 
 </body>
