@@ -614,7 +614,7 @@
             <div class="card-content">
                 <h2>20 REALISTIC BEARD OVERLAYS – 4K PNG TRUE ALPHA</h2>
                 <div class="price price-top">$14.50</div>
-                <a class="buy-btn buy-btn-top" href="https://pixel.shopliannax.com/buy?s=1&cart_links%5B%5D=y0pTq&qty%5By0pTq%5D=1" onclick="openCheckout(this.href); return false;">Get Asset</a>
+                <a class="buy-btn buy-btn-top" href="#" onclick="openCheckout('beard-20'); return false;">Get Asset</a>
                 <div class="description"><div class="description">
 
 <p>Add realistic facial hair to your edits with this high-quality beard overlay pack.</p>
@@ -717,9 +717,13 @@ Designed for realistic facial hair results
     </footer>
 
     <script>
-        function openCheckout(url) {
-            document.getElementById('checkoutOverlay').style.display = 'flex';
-            document.getElementById('checkoutFrame').src = url;
+        const PAYPAL_CHECKOUT_URL = "https://plata-shopliannax.slleek-estetique.workers.dev";
+
+        function openCheckout(productId) {
+            const overlay = document.getElementById('checkoutOverlay');
+            const frame = document.getElementById('checkoutFrame');
+            overlay.style.display = 'flex';
+            frame.src = PAYPAL_CHECKOUT_URL + "/?product=" + encodeURIComponent(productId);
             document.body.style.overflow = 'hidden';
         }
 
