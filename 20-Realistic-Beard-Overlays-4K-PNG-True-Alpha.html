@@ -574,52 +574,57 @@
         }
     }
 
-    /* No zoom prompt on individual product pages */
-    .zoom-label { display: none !important; }
-
-    /* ShopLiannaX product-page refinements */
-    .buy-btn {
-        background: #d982a0 !important;
-        color: #ffffff !important;
-        box-shadow: 0 8px 20px rgba(217, 130, 160, 0.16) !important;
-    }
-    .buy-btn:hover {
-        background: #c96f8e !important;
-    }
-    .description {
-        color: #ffffff !important;
-    }
-
-    .card-gallery { background: var(--card-background) !important; }
-
-    /* Consistent softer rose purchase buttons and white product descriptions */
-    .buy-btn {
-        background: #d98eae !important;
-        color: #ffffff !important;
-        box-shadow: 0 8px 20px rgba(217, 142, 174, 0.16) !important;
-    }
-    .buy-btn:hover {
-        background: #e5a9c1 !important;
-    }
-    .description {
-        color: #ffffff !important;
-    }
-
-    /* Keep the image area dark and remove the oversized empty strip */
+    
+    /* Individual product pages: preserve each preview image's original proportions */
     .card-gallery {
-        height: 500px !important;
-        background-color: #151515 !important;
-        background: #151515 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        background: #0b0b0b !important;
+        display: block !important;
     }
-
-/* Final individual product page overrides */
-:root { --primary-color: #d98fa3; --secondary-color: #c97b90; }
-.card-gallery { height: 450px !important; background: #0b0b0b !important; background-color: #0b0b0b !important; }
-.card-gallery-images, .card-gallery-image-wrapper { background: #0b0b0b !important; }
-.zoom-label { display: none !important; }
-.buy-btn, .buy-btn:visited { background: #d98fa3 !important; color: #ffffff !important; }
-.buy-btn:hover { background: #c97b90 !important; color: #ffffff !important; }
-.description { color: #ffffff !important; }
+    .card-gallery-images {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+    .card-gallery-image-wrapper {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-gallery-image-wrapper[style*="display: none"] {
+        display: none !important;
+    }
+    .card-gallery-image-wrapper[style*="display: block"] {
+        display: block !important;
+    }
+    .card-gallery img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        object-fit: contain !important;
+    }
+    .zoom-label { display: none !important; }
+    .description {
+        color: #b8a79d !important;
+    }
+    /* Keep the approved Buy Now button exactly as it is */
+    .buy-btn, .buy-btn:visited {
+        background: #d98fa3 !important;
+        color: #ffffff !important;
+    }
+    .buy-btn:hover {
+        background: #c97b90 !important;
+        color: #ffffff !important;
+    }
 </style>
 </head>
 
