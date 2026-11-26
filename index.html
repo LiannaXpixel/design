@@ -33,9 +33,9 @@
 --dark-background:#0b0b0b;
 --card-background:#151515;
 --border-color:#252525;
---text-color-primary:#b8a79d;
---text-color-secondary:#b8a79d;
---text-color-muted:#b8a79d;
+--text-color-primary:white;
+--text-color-secondary:#e5e5e5;
+--text-color-muted:#8e8e8e;
 --font-family:Arial,sans-serif;
 
 }
@@ -277,35 +277,6 @@ border-radius:12px;
 outline:2px solid #d6b36a;
 outline-offset:5px;
 border-radius:12px;
-}
-
-
-/* ShopLiannaX global text correction: consistent warm cream, never white */
-:root {
-  --text-color-primary: #b8a79d;
-  --text-color-secondary: #b8a79d;
-  --text-color-muted: #b8a79d;
-  --text-color-highlight: #b8a79d;
-}
-html body *:not(img):not(svg):not(path) {
-  color: #b8a79d !important;
-}
-/* Preserve image rendering and the existing black / soft-gold visual design. */
-.slx-fresh-gallery,
-.slx-fresh-gallery * {
-  color: inherit;
-}
-.slx-fresh-gallery img {
-  object-fit: contain !important;
-  object-position: center center !important;
-}
-/* Product listing thumbnails: fixed 12:7 viewing window, full image visible. */
-#productGrid .slx-fresh-gallery {
-  width: 100% !important;
-  max-width: none !important;
-  aspect-ratio: 12 / 7 !important;
-  height: auto !important;
-  overflow: hidden !important;
 }
 
 </style>

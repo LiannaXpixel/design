@@ -483,186 +483,6 @@
         background: rgba(255, 0, 119, .04);
     }
 
-
-    /* ShopLiannaX product-page refinements */
-    .buy-btn {
-        background: #d982a0 !important;
-        color: #ffffff !important;
-        box-shadow: 0 8px 20px rgba(217, 130, 160, 0.16) !important;
-    }
-    .buy-btn:hover {
-        background: #c96f8e !important;
-    }
-    .description {
-        color: #ffffff !important;
-    }
-
-    /* Consistent softer rose purchase buttons and white product descriptions */
-    .buy-btn {
-        background: #d98eae !important;
-        color: #ffffff !important;
-        box-shadow: 0 8px 20px rgba(217, 142, 174, 0.16) !important;
-    }
-    .buy-btn:hover {
-        background: #e5a9c1 !important;
-    }
-    .description {
-        color: #ffffff !important;
-    }
-
-    /* Prevent a lighter grey strip behind product previews */
-    .card-gallery {
-        background-color: #151515 !important;
-    }
-
-/* Final catalog layout and gallery sizing */
-:root {
-    --primary-color: #d98fa3;
-    --secondary-color: #c97b90;
-}
-
-.buy-btn, .buy-btn:visited {
-    background: #d98fa3 !important;
-    color: #ffffff !important;
-}
-.buy-btn:hover {
-    background: #c97b90 !important;
-    color: #ffffff !important;
-}
-
-/* The section width includes its horizontal padding: prevents right-side overflow */
-#productGrid.products {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 35px !important;
-    width: 100% !important;
-    max-width: 1500px !important;
-    margin: 0 auto !important;
-    padding: 70px 35px !important;
-    box-sizing: border-box !important;
-    justify-content: center !important;
-    align-items: start !important;
-}
-
-#productGrid .card {
-    min-width: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-}
-
-#productGrid .card-gallery {
-    position: relative !important;
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 12 / 7 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-    background: #151515 !important;
-}
-
-#productGrid .card-gallery-images {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-}
-
-#productGrid .card-gallery-image-wrapper {
-    position: absolute !important;
-    inset: 0 !important;
-    display: none !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-}
-#productGrid .card-gallery-image-wrapper[style*="display: block"] {
-    display: flex !important;
-}
-#productGrid .card-gallery-image-wrapper[style*="display: none"] {
-    display: none !important;
-}
-
-#productGrid .card-gallery img {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    margin: auto !important;
-    padding: 0 !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-}
-
-@media (max-width: 900px) {
-    #productGrid.products {
-        grid-template-columns: minmax(0, 1fr) !important;
-        padding: 40px 20px !important;
-    }
-}
-
-/* FINAL GALLERY: centered 12:7 frame, supports up to three product images */
-#productGrid.products { box-sizing:border-box !important; width:100% !important; max-width:1500px !important; margin:0 auto !important; padding:70px 35px !important; display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:35px !important; }
-#productGrid .card { min-width:0 !important; width:100% !important; max-width:none !important; margin:0 !important; overflow:hidden !important; }
-#productGrid .card-gallery { position:relative !important; display:block !important; width:100% !important; height:auto !important; aspect-ratio:12/7 !important; margin:0 !important; padding:0 !important; overflow:hidden !important; box-sizing:border-box !important; }
-#productGrid .card-gallery-images { position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; }
-#productGrid .card-gallery-image-wrapper { position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; margin:0 !important; padding:0 !important; box-sizing:border-box !important; }
-#productGrid .card-gallery-image-wrapper[style*="display: none"] { display:none !important; }
-#productGrid .card-gallery-image-wrapper[style*="display: block"] { display:flex !important; align-items:center !important; justify-content:center !important; }
-#productGrid .card-gallery img { position:absolute !important; inset:0 !important; display:block !important; width:100% !important; height:100% !important; max-width:100% !important; max-height:100% !important; margin:0 !important; object-fit:contain !important; object-position:center !important; }
-#productGrid .card-content h2 { text-align:center !important; }
-@media(max-width:900px) { #productGrid.products { grid-template-columns:minmax(0,1fr) !important; padding:40px 18px !important; } }
-
-
-/* Shadow-DOM gallery host sizing only; all gallery design and behavior lives in its own fresh component. */
-.slx-fresh-gallery { display:block; width:100%; max-width:1200px; aspect-ratio:12 / 7; margin:0 auto; }
-#productGrid .slx-fresh-gallery { max-width:none; }
-
-
-/* ShopLiannaX global text correction: consistent warm cream, never white */
-:root {
-  --text-color-primary: #b8a79d;
-  --text-color-secondary: #b8a79d;
-  --text-color-muted: #b8a79d;
-  --text-color-highlight: #b8a79d;
-}
-html body *:not(img):not(svg):not(path) {
-  color: #b8a79d !important;
-}
-/* Preserve image rendering and the existing black / soft-gold visual design. */
-.slx-fresh-gallery,
-.slx-fresh-gallery * {
-  color: inherit;
-}
-.slx-fresh-gallery img {
-  object-fit: contain !important;
-  object-position: center center !important;
-}
-/* Product listing thumbnails: fixed 12:7 viewing window, full image visible. */
-#productGrid .slx-fresh-gallery {
-  width: 100% !important;
-  max-width: none !important;
-  aspect-ratio: 12 / 7 !important;
-  height: auto !important;
-  overflow: hidden !important;
-}
-
 </style>
 <meta content="ShopLiannaX digital assets including realistic eyebrow PNG overlays, beard overlays, true alpha PNG textures and premium resources for digital artists and creators." name="description"/><meta content="index,follow" name="robots"/><link href="https://shopliannax.com/products.html" rel="canonical"/></head>
 <body>
@@ -862,65 +682,52 @@ html body *:not(img):not(svg):not(path) {
     return image;
   }
 
-
-  function createFreshProductGallery(imageSources, altText) {
-    const host = document.createElement("div");
-    host.className = "slx-fresh-gallery";
-    host.setAttribute("role", "region");
-    host.setAttribute("aria-label", "Product image gallery");
-    const shadow = host.attachShadow({ mode: "open" });
-    shadow.innerHTML = `
-      <style>
-        :host {
-          display:block; position:relative; width:100%; max-width:1200px;
-          aspect-ratio:12 / 7; margin:0 auto; overflow:hidden;
-          background:#090909; border:1px solid rgba(211,181,125,.7);
-          box-sizing:border-box; isolation:isolate;
-        }
-        .viewport { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#090909; }
-        img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; max-width:none; max-height:none; margin:0; padding:0; border:0; border-radius:0; cursor:zoom-in; }
-        .arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:46px; height:46px; display:grid; place-items:center; padding:0; border:1px solid #d4b477; border-radius:50%; background:rgba(8,8,8,.82); color:#e8cc95; font:26px/1 Arial,sans-serif; cursor:pointer; }
-        .arrow:hover { background:#d4b477; color:#090909; }
-        .previous { left:14px; } .next { right:14px; }
-        .counter { position:absolute; z-index:3; bottom:12px; left:50%; transform:translateX(-50%); padding:5px 11px; border:1px solid rgba(212,180,119,.55); border-radius:20px; background:rgba(0,0,0,.72); color:#f0dfbd; font:12px/1.2 Arial,sans-serif; letter-spacing:.08em; }
-        @media(max-width:600px) { .arrow { width:34px; height:34px; font-size:20px; } .previous {left:7px} .next {right:7px} }
-      </style>
-      <div class="viewport"><img alt=""></div>
-      <button class="arrow previous" type="button" aria-label="Previous image">‹</button>
-      <button class="arrow next" type="button" aria-label="Next image">›</button>
-      <div class="counter" aria-live="polite"></div>
-    `;
-    const img = shadow.querySelector("img");
-    const previous = shadow.querySelector(".previous");
-    const next = shadow.querySelector(".next");
-    const counter = shadow.querySelector(".counter");
-    const sources = (Array.isArray(imageSources) ? imageSources : []).filter(Boolean).slice(0, 3).map(imageUrl);
-    let index = 0;
-    function render() {
-      if (!sources.length) {
-        img.removeAttribute("src");
-        img.alt = altText || "Product image unavailable";
-        counter.textContent = "NO IMAGE";
-        previous.hidden = next.hidden = true;
-        return;
-      }
-      img.src = sources[index];
-      img.alt = (altText || "Product image") + " — " + (index + 1);
-      counter.textContent = (index + 1) + " / " + sources.length;
-      previous.hidden = next.hidden = sources.length < 2;
-    }
-    previous.addEventListener("click", () => { index = (index - 1 + sources.length) % sources.length; render(); });
-    next.addEventListener("click", () => { index = (index + 1) % sources.length; render(); });
-    img.addEventListener("click", () => { if (img.src && typeof openImage === "function") openImage(img.src, img.alt); });
-    render();
-    return host;
-  }
-
   function createCard(product, index) {
     const card = document.createElement("div");
     card.className = "card";
-    const images = Array.isArray(product.images) ? product.images.filter(Boolean).slice(0, 3) : [];
-    const gallery = createFreshProductGallery(images, product.name || "Product preview");
+    const galleryId = "catalog-gallery-" + index;
+    const images = Array.isArray(product.images) ? product.images.filter(Boolean) : [];
+    const gallery = document.createElement("div");
+    gallery.className = "card-gallery";
+    gallery.id = galleryId;
+    const imageContainer = document.createElement("div");
+    imageContainer.className = "card-gallery-images";
+
+    (images.length ? images : [""]).forEach((src, imageIndex) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "card-gallery-image-wrapper";
+      wrapper.style.display = imageIndex === 0 ? "block" : "none";
+      if (!src) wrapper.classList.add("placeholder-visible");
+      const img = document.createElement("img");
+      img.alt = product.name + " – product preview " + (imageIndex + 1);
+      img.loading = imageIndex === 0 ? "eager" : "lazy";
+      if (src) img.src = imageUrl(src);
+      img.onerror = function () {
+        this.style.display = "none";
+        wrapper.classList.add("placeholder-visible");
+      };
+      wrapper.appendChild(img);
+      imageContainer.appendChild(wrapper);
+    });
+
+    gallery.appendChild(imageContainer);
+    const nav = document.createElement("div");
+    nav.className = "card-gallery-nav";
+    const prev = document.createElement("button");
+    prev.type = "button"; prev.textContent = "←";
+    prev.setAttribute("aria-label", "Previous image");
+    prev.addEventListener("click", () => changeImage(-1, galleryId));
+    const next = document.createElement("button");
+    next.type = "button"; next.textContent = "→";
+    next.setAttribute("aria-label", "Next image");
+    next.addEventListener("click", () => changeImage(1, galleryId));
+    nav.append(prev, next);
+    gallery.appendChild(nav);
+
+    const zoom = document.createElement("div");
+    zoom.className = "zoom-label";
+    zoom.textContent = "Click on image to Zoom";
+    gallery.appendChild(zoom);
     card.appendChild(gallery);
 
     const content = document.createElement("div");
@@ -940,6 +747,8 @@ html body *:not(img):not(svg):not(path) {
     content.append(title, description, price, more);
     card.appendChild(content);
 
+    const firstImage = imageContainer.querySelector("img");
+    if (firstImage) updateGalleryImage(imageContainer.firstElementChild, firstImage);
     return card;
   }
 

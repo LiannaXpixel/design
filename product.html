@@ -575,436 +575,8 @@
         }
     }
 
-    
-    /* Individual product pages: show every preview image edge-to-edge without cropping */
-    .card {
-        overflow: visible !important;
-    }
-    .card-gallery {
-        box-sizing: border-box !important;
-        height: auto !important;
-        min-height: 0 !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: visible !important;
-        background: #0b0b0b !important;
-        display: block !important;
-    }
-    .card-gallery-images {
-        box-sizing: border-box !important;
-        display: block !important;
-        position: relative !important;
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: visible !important;
-    }
-    .card-gallery-image-wrapper {
-        box-sizing: border-box !important;
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: visible !important;
-        justify-content: center;
-        align-items: center;
-    }
-    .card-gallery-image-wrapper[style*="display: none"] {
-        display: none !important;
-    }
-    .card-gallery-image-wrapper[style*="display: block"] {
-        display: block !important;
-    }
-    .card-gallery img {
-        box-sizing: border-box !important;
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        max-width: 100% !important;
-        max-height: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        object-fit: contain !important;
-        object-position: center !important;
-    }
+    /* No zoom prompt on individual product pages */
     .zoom-label { display: none !important; }
-    .description {
-        color: #b8a79d !important;
-    }
-    /* Keep the approved Buy Now button exactly as it is */
-    .buy-btn, .buy-btn:visited {
-        background: #d98fa3 !important;
-        color: #ffffff !important;
-    }
-    .buy-btn:hover {
-        background: #c97b90 !important;
-        color: #ffffff !important;
-    }
-
-/* Product preview resolution: preserve the original 1200 × 700 ratio */
-.card-gallery {
-    aspect-ratio: 12 / 7 !important;
-}
-.card-gallery img {
-    aspect-ratio: 12 / 7;
-}
-
-
-/* Exact 1200 × 700 preview frame — individual product pages only */
-.card-gallery {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 12 / 7 !important;
-    position: relative !important;
-    overflow: hidden !important;
-}
-.card-gallery-images {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-}
-.card-gallery-image-wrapper {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: flex;
-    align-items: center !important;
-    justify-content: center !important;
-}
-.card-gallery img {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    object-fit: contain !important;
-    object-position: center !important;
-}
-
-
-/* Individual product previews: source images are 1200 × 700 (12:7). Keep every edge visible. */
-.card-gallery {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 12 / 7 !important;
-    overflow: visible !important;
-    display: block !important;
-    box-sizing: border-box !important;
-}
-.card-gallery-images {
-    display: block !important;
-    position: relative !important;
-    width: 100% !important;
-    height: 100% !important;
-}
-.card-gallery-image-wrapper {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: none;
-}
-.card-gallery-image-wrapper[style*="display: block"] {
-    display: block !important;
-}
-.card-gallery img {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    object-fit: contain !important;
-    object-position: center !important;
-}
-
-
-/* Individual product layout width: 1200px maximum, responsive on smaller screens */
-.products {
-    width: 100% !important;
-    max-width: 1270px !important;
-    box-sizing: border-box !important;
-}
-.card {
-    width: 100% !important;
-    max-width: 1200px !important;
-    box-sizing: border-box !important;
-}
-.card-gallery {
-    width: 100% !important;
-    max-width: 1200px !important;
-    height: auto !important;
-    aspect-ratio: 12 / 7 !important;
-    box-sizing: border-box !important;
-}
-.card-gallery-images,
-.card-gallery-image-wrapper {
-    width: 100% !important;
-    height: 100% !important;
-}
-.card-gallery img {
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    max-height: none !important;
-    object-fit: contain !important;
-}
-@media (max-width: 1270px) {
-    .products { max-width: 100% !important; }
-    .card, .card-gallery { max-width: 100% !important; }
-}
-
-
-/* Center the 1200px individual-product gallery so both side borders remain visible */
-.card-gallery {
-    width: 1200px !important;
-    max-width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    left: auto !important;
-    right: auto !important;
-    box-sizing: border-box !important;
-}
-.card-gallery-images,
-.card-gallery-image-wrapper {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    box-sizing: border-box !important;
-}
-.card-gallery img {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-}
-
-
-/* Final alignment correction: remove the 35px side inset that was narrowing
-   the parent and causing the gallery to overflow the card on the right. */
-.products {
-    display: block !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    overflow: visible !important;
-}
-.card {
-    display: flex !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    overflow: visible !important;
-}
-.card-gallery {
-    display: block !important;
-    position: relative !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    height: auto !important;
-    aspect-ratio: 12 / 7 !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    overflow: visible !important;
-}
-.card-gallery-images {
-    position: relative !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-}
-.card-gallery-image-wrapper {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-}
-.card-gallery img {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 100% !important;
-    max-height: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-}
-@media (max-width: 1200px) {
-    .products, .card, .card-gallery {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-}
-
-
-/* Final targeted fix: keep the product gallery and its title on the same
-   centered 1200px axis, with the complete preview image visible. */
-#dynamicProductDetail.products {
-    display: block !important;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 auto !important;
-    padding: 30px 20px !important;
-    box-sizing: border-box !important;
-    overflow: visible !important;
-}
-
-#dynamicProductDetail > .card {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    min-width: 0 !important;
-    margin: 0 auto !important;
-    box-sizing: border-box !important;
-    overflow: visible !important;
-}
-
-#dynamicProductDetail .card-gallery {
-    position: relative !important;
-    display: block !important;
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 12 / 7 !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    overflow: visible !important;
-}
-
-#dynamicProductDetail .card-gallery-images {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-}
-
-#dynamicProductDetail .card-gallery-image-wrapper {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-}
-
-#dynamicProductDetail .card-gallery-image-wrapper[style*="display: none"] {
-    display: none !important;
-}
-
-#dynamicProductDetail .card-gallery-image-wrapper[style*="display: block"] {
-    display: block !important;
-}
-
-#dynamicProductDetail .card-gallery img {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: auto !important;
-    height: auto !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    margin: auto !important;
-    padding: 0 !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-}
-
-#dynamicProductDetail .card-content {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-}
-
-#dynamicProductDetail .card-content h2 {
-    width: 100% !important;
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-
-/* FINAL GALLERY: centered responsive 1200x700 frame, supports up to three images */
-#dynamicProductDetail.products { display:block !important; width:100% !important; max-width:none !important; margin:0 auto !important; padding:30px 20px !important; box-sizing:border-box !important; }
-#dynamicProductDetail > .card { display:flex !important; flex-direction:column !important; align-items:stretch !important; width:100% !important; max-width:1200px !important; min-width:0 !important; margin:0 auto !important; padding:0 !important; box-sizing:border-box !important; overflow:hidden !important; }
-#dynamicProductDetail .card-gallery { position:relative !important; display:block !important; flex:0 0 auto !important; width:100% !important; max-width:1200px !important; height:auto !important; min-height:0 !important; aspect-ratio:12/7 !important; margin:0 auto !important; padding:0 !important; overflow:hidden !important; box-sizing:border-box !important; }
-#dynamicProductDetail .card-gallery-images { position:absolute !important; inset:0 !important; display:block !important; width:100% !important; height:100% !important; margin:0 !important; padding:0 !important; }
-#dynamicProductDetail .card-gallery-image-wrapper { position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; margin:0 !important; padding:0 !important; box-sizing:border-box !important; }
-#dynamicProductDetail .card-gallery-image-wrapper[style*="display: none"] { display:none !important; }
-#dynamicProductDetail .card-gallery-image-wrapper[style*="display: block"] { display:flex !important; align-items:center !important; justify-content:center !important; }
-#dynamicProductDetail .card-gallery img { position:absolute !important; inset:0 !important; display:block !important; width:100% !important; height:100% !important; max-width:100% !important; max-height:100% !important; margin:0 !important; object-fit:contain !important; object-position:center !important; }
-#dynamicProductDetail .card-content { width:100% !important; min-width:0 !important; box-sizing:border-box !important; }
-#dynamicProductDetail .card-content h2 { width:100% !important; text-align:center !important; margin-left:auto !important; margin-right:auto !important; }
-
-
-/* Fresh gallery host sizing; its internal markup/styles are fully isolated in Shadow DOM. */
-#dynamicProductDetail.products { display:block; width:100%; max-width:none; margin:0; padding:30px 20px; box-sizing:border-box; }
-#dynamicProductDetail > .card { display:flex; flex-direction:column; align-items:center; width:100%; max-width:1200px; min-width:0; margin:0 auto; padding:0; overflow:hidden; box-sizing:border-box; }
-#dynamicProductDetail .slx-fresh-gallery { flex:0 0 auto; width:100%; max-width:1200px; aspect-ratio:12 / 7; }
-#dynamicProductDetail .card-content { width:100%; min-width:0; box-sizing:border-box; }
-#dynamicProductDetail .card-content h2 { width:100%; text-align:center; margin:0 auto 12px; }
-
-
-/* ShopLiannaX global text correction: consistent warm cream, never white */
-:root {
-  --text-color-primary: #b8a79d;
-  --text-color-secondary: #b8a79d;
-  --text-color-muted: #b8a79d;
-  --text-color-highlight: #b8a79d;
-}
-html body *:not(img):not(svg):not(path) {
-  color: #b8a79d !important;
-}
-/* Preserve image rendering and the existing black / soft-gold visual design. */
-.slx-fresh-gallery,
-.slx-fresh-gallery * {
-  color: inherit;
-}
-.slx-fresh-gallery img {
-  object-fit: contain !important;
-  object-position: center center !important;
-}
-/* Product listing thumbnails: fixed 12:7 viewing window, full image visible. */
-#productGrid .slx-fresh-gallery {
-  width: 100% !important;
-  max-width: none !important;
-  aspect-ratio: 12 / 7 !important;
-  height: auto !important;
-  overflow: hidden !important;
-}
-
 </style>
 </head>
 
@@ -1200,61 +772,6 @@ html body *:not(img):not(svg):not(path) {
     if (image.startsWith("product-images/")) return WORKER_URL + "/asset?key=" + encodeURIComponent(image);
     return image;
   }
-  function wrapClick(img) { img.onclick = () => { if (img.src) openImage(img.src, img.alt); }; }
-
-  function createFreshProductGallery(imageSources, altText) {
-    const host = document.createElement("div");
-    host.className = "slx-fresh-gallery";
-    host.setAttribute("role", "region");
-    host.setAttribute("aria-label", "Product image gallery");
-    const shadow = host.attachShadow({ mode: "open" });
-    shadow.innerHTML = `
-      <style>
-        :host {
-          display:block; position:relative; width:100%; max-width:1200px;
-          aspect-ratio:12 / 7; margin:0 auto; overflow:hidden;
-          background:#090909; border:1px solid rgba(211,181,125,.7);
-          box-sizing:border-box; isolation:isolate;
-        }
-        .viewport { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#090909; }
-        img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; max-width:none; max-height:none; margin:0; padding:0; border:0; border-radius:0; cursor:zoom-in; }
-        .arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:46px; height:46px; display:grid; place-items:center; padding:0; border:1px solid #d4b477; border-radius:50%; background:rgba(8,8,8,.82); color:#e8cc95; font:26px/1 Arial,sans-serif; cursor:pointer; }
-        .arrow:hover { background:#d4b477; color:#090909; }
-        .previous { left:14px; } .next { right:14px; }
-        .counter { position:absolute; z-index:3; bottom:12px; left:50%; transform:translateX(-50%); padding:5px 11px; border:1px solid rgba(212,180,119,.55); border-radius:20px; background:rgba(0,0,0,.72); color:#f0dfbd; font:12px/1.2 Arial,sans-serif; letter-spacing:.08em; }
-        @media(max-width:600px) { .arrow { width:34px; height:34px; font-size:20px; } .previous {left:7px} .next {right:7px} }
-      </style>
-      <div class="viewport"><img alt=""></div>
-      <button class="arrow previous" type="button" aria-label="Previous image">‹</button>
-      <button class="arrow next" type="button" aria-label="Next image">›</button>
-      <div class="counter" aria-live="polite"></div>
-    `;
-    const img = shadow.querySelector("img");
-    const previous = shadow.querySelector(".previous");
-    const next = shadow.querySelector(".next");
-    const counter = shadow.querySelector(".counter");
-    const sources = (Array.isArray(imageSources) ? imageSources : []).filter(Boolean).slice(0, 3).map(imageUrl);
-    let index = 0;
-    function render() {
-      if (!sources.length) {
-        img.removeAttribute("src");
-        img.alt = altText || "Product image unavailable";
-        counter.textContent = "NO IMAGE";
-        previous.hidden = next.hidden = true;
-        return;
-      }
-      img.src = sources[index];
-      img.alt = (altText || "Product image") + " — " + (index + 1);
-      counter.textContent = (index + 1) + " / " + sources.length;
-      previous.hidden = next.hidden = sources.length < 2;
-    }
-    previous.addEventListener("click", () => { index = (index - 1 + sources.length) % sources.length; render(); });
-    next.addEventListener("click", () => { index = (index + 1) % sources.length; render(); });
-    img.addEventListener("click", () => { if (img.src && typeof openImage === "function") openImage(img.src, img.alt); });
-    render();
-    return host;
-  }
-
   async function loadProductDetail() {
     const id = new URLSearchParams(location.search).get("id");
     const root = document.getElementById("dynamicProductDetail");
@@ -1268,19 +785,42 @@ html body *:not(img):not(svg):not(path) {
       document.title = product.name + " | ShopLiannaX";
       const card = document.createElement("div");
       card.className = "card";
-      const galleryImages = Array.isArray(product.images) ? product.images.slice(0, 3) : [];
-      const gallery = createFreshProductGallery(galleryImages, product.name || "Product preview");
+      const gallery = document.createElement("div");
+      gallery.className = "card-gallery";
+      gallery.id = "dynamic-product-gallery";
+      const images = document.createElement("div");
+      images.className = "card-gallery-images";
+      (product.images && product.images.length ? product.images : [""]).forEach((src, i) => {
+        const wrap = document.createElement("div");
+        wrap.className = "card-gallery-image-wrapper";
+        wrap.style.display = i === 0 ? "block" : "none";
+        if (!src) wrap.classList.add("placeholder-visible");
+        const img = document.createElement("img");
+        img.alt = product.name + " preview " + (i + 1);
+        img.loading = i ? "lazy" : "eager";
+        if (src) img.src = imageUrl(src);
+        img.onerror = function(){ this.style.display="none"; wrap.classList.add("placeholder-visible"); };
+        wrap.appendChild(img); images.appendChild(wrap);
+      });
+      gallery.appendChild(images);
+      const nav = document.createElement("div"); nav.className = "card-gallery-nav";
+      const prev = document.createElement("button"); prev.textContent = "←"; prev.type="button";
+      prev.onclick = () => changeImage(-1, gallery.id);
+      const next = document.createElement("button"); next.textContent = "→"; next.type="button";
+      next.onclick = () => changeImage(1, gallery.id);
+      nav.append(prev,next); gallery.appendChild(nav);
       card.appendChild(gallery);
 
       const content = document.createElement("div"); content.className = "card-content";
       const title = document.createElement("h2"); title.textContent = product.name;
       const price = document.createElement("div"); price.className = "price price-top"; price.textContent = "$" + product.amount;
-      const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="Buy Now";
+      const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="Get Asset";
       buy.onclick = function(e){ e.preventDefault(); openCheckout(product.id); };
       const description = document.createElement("div"); description.className="description";
       description.textContent = product.longDescription || product.description || "";
       content.append(title,price,buy,description); card.append(content); root.replaceChildren(card);
-
+      const first = images.querySelector("img");
+      if (first) updateGalleryImage(images.firstElementChild, first);
     } catch (error) {
       root.textContent = "This product could not be loaded. Please try again later.";
       console.error(error);
