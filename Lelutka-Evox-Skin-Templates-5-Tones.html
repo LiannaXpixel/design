@@ -179,7 +179,7 @@
         align-items: center; /* Center content vertically */
         width: 100%;
         height: 700px;
-        background-color: var(--border-color); /* Fallback background */
+        background: linear-gradient(135deg, #e6d7c8 0%, #f5eee5 48%, #ddc9b7 100%);
     }
 
     .card-gallery-images {
@@ -320,28 +320,26 @@
     }
 
     .buy-btn {
-        display:block;
-        width:320px;
-        max-width:100%;
-        margin:30px auto 10px;
-        text-align:center;
-        background: var(--primary-color);
-        color: var(--text-color-primary);
+        display: inline-block;
+        background: linear-gradient(135deg, #e6d7c8 0%, #f5eee5 48%, #ddc9b7 100%);
+        color: #17120f;
         text-decoration: none;
-        padding:18px 32px;
+        padding: 14px 24px;
+        border: 1px solid rgba(255, 250, 243, .9);
         border-radius: 14px;
         font-weight: bold;
         transition: .3s;
-        font-size:18px;
-        letter-spacing:.5px;
-        box-shadow:0 10px 25px rgba(255,0,119,.25);
-        border: none;
+        font-size: 16px;
+        margin-top: auto;
         cursor: pointer;
+        box-shadow: 0 7px 18px rgba(160, 128, 101, .18), inset 0 1px 0 rgba(255,255,255,.8);
     }
 
     .buy-btn:hover {
-        background: var(--secondary-color);
+        background: linear-gradient(135deg, #eee1d4 0%, #fbf6ef 48%, #e7d5c5 100%);
+        color: #100d0b;
         transform: translateY(-2px);
+        box-shadow: 0 9px 22px rgba(160, 128, 101, .23), inset 0 1px 0 rgba(255,255,255,.95);
     }
 
     /* IMAGE POPUP */
@@ -634,7 +632,7 @@
             <div class="card-content">
                 <h2>LELUTKA EVOX SKIN TEMPLATES – 5 TONES</h2>
                 <div class="price price-top">$11.99</div>
-                <a class="buy-btn buy-btn-top" href="#" onclick="openCheckout('evox-templates'); return false;">Get Asset</a>
+                <a class="buy-btn buy-btn-top" href="#" onclick="openCheckout('evox-templates'); return false;">BUY NOW</a>
                 <div class="description"><div class="description">
 
 <p>Lelutka EvoX skin templates supplied in five tones for Second Life creators.</p>
