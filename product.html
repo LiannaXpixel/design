@@ -577,6 +577,21 @@
 
     /* No zoom prompt on individual product pages */
     .zoom-label { display: none !important; }
+
+    /* ShopLiannaX product-page refinements */
+    .buy-btn {
+        background: #d982a0 !important;
+        color: #ffffff !important;
+        box-shadow: 0 8px 20px rgba(217, 130, 160, 0.16) !important;
+    }
+    .buy-btn:hover {
+        background: #c96f8e !important;
+    }
+    .description {
+        color: #ffffff !important;
+    }
+
+    .card-gallery { background: var(--card-background) !important; }
 </style>
 </head>
 
@@ -814,7 +829,7 @@
       const content = document.createElement("div"); content.className = "card-content";
       const title = document.createElement("h2"); title.textContent = product.name;
       const price = document.createElement("div"); price.className = "price price-top"; price.textContent = "$" + product.amount;
-      const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="Get Asset";
+      const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="Buy Now";
       buy.onclick = function(e){ e.preventDefault(); openCheckout(product.id); };
       const description = document.createElement("div"); description.className="description";
       description.textContent = product.longDescription || product.description || "";
