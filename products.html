@@ -638,13 +638,14 @@
             const galleries = document.querySelectorAll('.card-gallery');
             galleries.forEach(gallery => {
                 const imageWrappers = gallery.querySelectorAll('.card-gallery-image-wrapper');
-                imageWrappers.forEach((wrapper, index) => {
+                                imageWrappers.forEach((wrapper, index) => {
                     if (index === 0) {
-                        wrapper.style.display = 'block';
+                        wrapper.style.display = 'flex';
                         const img = wrapper.querySelector('img');
                         if (img) {
                             updateGalleryImage(wrapper, img); /* Initialize for the first image */
                         }
+
                     } else {
                         wrapper.style.display = 'none';
                     }
