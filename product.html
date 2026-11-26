@@ -309,8 +309,8 @@
         max-width:100%;
         margin:30px auto 10px;
         text-align:center;
-        background: var(--primary-color);
-        color: var(--text-color-primary);
+        background: #d9789f;
+        color: #292126;
         text-decoration: none;
         padding:18px 32px;
         border-radius: 14px;
@@ -318,13 +318,14 @@
         transition: .3s;
         font-size:18px;
         letter-spacing:.5px;
-        box-shadow:0 10px 25px rgba(255,0,119,.25);
+        box-shadow:0 8px 20px rgba(190,90,130,.16);
         border: none;
         cursor: pointer;
     }
 
     .buy-btn:hover {
-        background: var(--secondary-color);
+        background: #e18bab;
+        color: #211b20;
         transform: translateY(-2px);
     }
 
@@ -814,7 +815,7 @@
       const content = document.createElement("div"); content.className = "card-content";
       const title = document.createElement("h2"); title.textContent = product.name;
       const price = document.createElement("div"); price.className = "price price-top"; price.textContent = "$" + product.amount;
-      const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="Get Asset";
+      const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="Buy Now";
       buy.onclick = function(e){ e.preventDefault(); openCheckout(product.id); };
       const description = document.createElement("div"); description.className="description";
       description.textContent = product.longDescription || product.description || "";
