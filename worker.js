@@ -401,8 +401,8 @@ export default {
         const catalog = await readCatalog(env);
         const products = catalog.products
           .filter(p => p && p.active)
-          .map(({ id, name, description, amount, currency, images, detailUrl }) => ({
-            id, name, description, amount, currency, images, detailUrl: detailUrl || ""
+          .map(({ id, name, description, shortDescription, longDescription, amount, currency, images, detailUrl }) => ({
+            id, name, description, shortDescription: shortDescription || description || "", longDescription: longDescription || description || "", amount, currency, images, detailUrl: detailUrl || ""
           }));
         return withCors(json({ products }), request, env);
       }
