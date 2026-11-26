@@ -655,6 +655,41 @@
     aspect-ratio: 12 / 7;
 }
 
+
+/* Exact 1200 × 700 preview frame — individual product pages only */
+.card-gallery {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 12 / 7 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+.card-gallery-images {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.card-gallery-image-wrapper {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.card-gallery img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
 </style>
 </head>
 
