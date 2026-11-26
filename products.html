@@ -543,6 +543,44 @@
     object-fit: contain !important;
 }
 
+
+/* Exact 1200 × 700 preview frame — catalog cards only */
+.card-gallery {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 12 / 7 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+.card-gallery-images {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.card-gallery-image-wrapper {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.card-gallery img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+@media(max-width: 900px) {
+    .card-gallery { height: auto !important; aspect-ratio: 12 / 7 !important; }
+}
+
 </style>
 <meta content="ShopLiannaX digital assets including realistic eyebrow PNG overlays, beard overlays, true alpha PNG textures and premium resources for digital artists and creators." name="description"/><meta content="index,follow" name="robots"/><link href="https://shopliannax.com/products.html" rel="canonical"/></head>
 <body>
