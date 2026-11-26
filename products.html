@@ -515,7 +515,7 @@
         background-color: #151515 !important;
     }
 
-/* Final catalog gallery rules — one consistent 12:7 frame, no cropping */
+/* Final catalog layout and gallery sizing */
 :root {
     --primary-color: #d98fa3;
     --secondary-color: #c97b90;
@@ -530,19 +530,24 @@
     color: #ffffff !important;
 }
 
+/* The section width includes its horizontal padding: prevents right-side overflow */
 #productGrid.products {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    align-items: start !important;
+    gap: 35px !important;
     width: 100% !important;
-    max-width: 1600px !important;
+    max-width: 1500px !important;
     margin: 0 auto !important;
+    padding: 70px 35px !important;
     box-sizing: border-box !important;
+    justify-content: center !important;
+    align-items: start !important;
 }
 
 #productGrid .card {
     min-width: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
 }
@@ -558,7 +563,7 @@
     padding: 0 !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
-    background: #0b0b0b !important;
+    background: #151515 !important;
 }
 
 #productGrid .card-gallery-images {
@@ -584,7 +589,6 @@
     justify-content: center !important;
     box-sizing: border-box !important;
 }
-
 #productGrid .card-gallery-image-wrapper[style*="display: block"] {
     display: flex !important;
 }
@@ -609,9 +613,9 @@
 @media (max-width: 900px) {
     #productGrid.products {
         grid-template-columns: minmax(0, 1fr) !important;
+        padding: 40px 20px !important;
     }
 }
-
 </style>
 <meta content="ShopLiannaX digital assets including realistic eyebrow PNG overlays, beard overlays, true alpha PNG textures and premium resources for digital artists and creators." name="description"/><meta content="index,follow" name="robots"/><link href="https://shopliannax.com/products.html" rel="canonical"/></head>
 <body>
