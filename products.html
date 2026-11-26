@@ -525,6 +525,24 @@
 @media(max-width: 900px) { .card-gallery { height: 300px; } }
 .buy-btn, .buy-btn:visited { background: #d98fa3 !important; color: #ffffff !important; }
 .buy-btn:hover { background: #c97b90 !important; color: #ffffff !important; }
+
+/* Product preview resolution: preserve the original 1200 × 700 ratio */
+.card-gallery {
+    height: auto !important;
+    aspect-ratio: 12 / 7 !important;
+}
+.card-gallery-images,
+.card-gallery-image-wrapper {
+    height: 100% !important;
+}
+.card-gallery img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+}
+
 </style>
 <meta content="ShopLiannaX digital assets including realistic eyebrow PNG overlays, beard overlays, true alpha PNG textures and premium resources for digital artists and creators." name="description"/><meta content="index,follow" name="robots"/><link href="https://shopliannax.com/products.html" rel="canonical"/></head>
 <body>
