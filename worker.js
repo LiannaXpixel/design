@@ -397,6 +397,15 @@ export default {
     if (request.method === "OPTIONS") return new Response(null, { headers: corsHeaders(request, env) });
     try {
       if (url.pathname.startsWith("/admin/")) return withCors(await adminApi(request, env, url), request, env);
+      if (url.pathname === "/catalog" && request.method === "GET") {
+        const catalog = await readCatalog(env);
+        const products = catalog.products
+          .filter(p => p && p.active)
+          .map(({ id, name, description, amount, currency, images, detailUrl }) => ({
+            id, name, description, amount, currency, images, detailUrl: detailUrl || ""
+          }));
+        return withCors(json({ products }), request, env);
+      }
       if (url.pathname === "/asset" && request.method === "GET") return publicAsset(request, env);
       if (request.method === "GET" && url.pathname === "/") {
         const catalog = await readCatalog(env);
