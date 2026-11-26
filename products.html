@@ -139,8 +139,7 @@
         align-items: center; /* Center content vertically */
         width: 100%;
         height: 420px;
-        background-color: #151515; /* Keep the image area dark */
-        box-shadow: 0 8px 0 #d9789f; /* Slim dusty-rose separator below the gallery */
+        background-color: var(--border-color); /* Fallback background */
     }
 
     .card-gallery-images {
@@ -254,14 +253,13 @@
 
     .buy-btn {
         display: inline-block;
-        background: #d9789f;
-        color: #292126;
+        background: var(--primary-color);
+        color: var(--text-color-primary);
         text-decoration: none;
         padding: 14px 24px;
         border-radius: 14px;
         font-weight: bold;
         transition: .3s;
-        box-shadow: 0 6px 18px rgba(217, 120, 159, .18);
         font-size: 16px;
         margin-top: auto;
         border: none;
@@ -269,8 +267,7 @@
     }
 
     .buy-btn:hover {
-        background: #e18eae;
-        color: #292126;
+        background: var(--secondary-color);
         transform: translateY(-2px);
     }
 
