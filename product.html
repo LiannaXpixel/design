@@ -690,6 +690,43 @@
     object-position: center !important;
 }
 
+
+/* Individual product previews: source images are 1200 × 700 (12:7). Keep every edge visible. */
+.card-gallery {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 12 / 7 !important;
+    overflow: visible !important;
+    display: block !important;
+    box-sizing: border-box !important;
+}
+.card-gallery-images {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.card-gallery-image-wrapper {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: none;
+}
+.card-gallery-image-wrapper[style*="display: block"] {
+    display: block !important;
+}
+.card-gallery img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
 </style>
 </head>
 
