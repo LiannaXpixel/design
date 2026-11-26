@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopLiannaX | Admin</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0b0b;--panel:#151515;--line:#292323;--gold:#c9a66b;--pink:#ff0077;--muted:#aaa}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f5f0eb;font:15px Arial,sans-serif;min-height:100vh}
+.wrap{width:min(1120px,94%);margin:38px auto}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;margin-bottom:22px;box-shadow:0 12px 35px #0006}
+h1,h2{margin:0 0 18px}h1{color:var(--gold);font-size:28px}h2{font-size:19px;color:#ead7b7}
+label{display:block;color:#d8c9b3;font-size:13px;margin:13px 0 7px}
+input,textarea{width:100%;background:#090909;color:#fff;border:1px solid #39302a;border-radius:9px;padding:12px;font:inherit}
+textarea{min-height:105px;resize:vertical}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+button{border:0;border-radius:9px;padding:12px 18px;font-weight:700;cursor:pointer;background:var(--gold);color:#17120c}
+button.secondary{background:#302923;color:#f3e5cf}button.danger{background:#6f183b;color:#fff}
+button:disabled{opacity:.55;cursor:wait}
+#status{margin-top:14px;white-space:pre-wrap;color:#e8c78e;line-height:1.5}
+.product{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.product strong{display:block;margin-bottom:5px}.muted{color:var(--muted);font-size:13px}
+.hidden{display:none!important}.file-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.file-row input{max-width:100%}
+small{color:var(--muted)}@media(max-width:650px){.grid{grid-template-columns:1fr}.panel{padding:18px}.wrap{margin:20px auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="panel" id="loginPanel">
+    <h1>ShopLiannaX Admin</h1>
+    <p class="muted">Secure product catalog management</p>
+    <label for="password">Admin password</label>
+    <input id="password" type="password" autocomplete="current-password">
+    <div class="actions"><button id="loginBtn">Sign in</button></div>
+    <div id="loginStatus" role="status"></div>
+  </section>
+
+  <div id="app" class="hidden">
+    <section class="panel">
+      <div class="actions" style="justify-content:space-between;align-items:center;margin-top:0">
+        <h1 style="margin:0">Product Catalog</h1>
+        <button class="secondary" id="logoutBtn">Sign out</button>
+      </div>
+      <div id="productsList"></div>
+      <div class="actions"><button id="newBtn">Add new product</button><button class="secondary" id="refreshBtn">Refresh catalog</button></div>
+    </section>
+
+    <section class="panel" id="editor">
+      <h2 id="editorTitle">Add product</h2>
+      <input type="hidden" id="originalId">
+      <div class="grid">
+        <div><label for="id">Product ID (lowercase letters, numbers, hyphens)</label><input id="id" placeholder="new-product"></div>
+        <div><label for="name">Product name</label><input id="name"></div>
+        <div><label for="amount">Price (USD)</label><input id="amount" inputmode="decimal" placeholder="12.99"></div>
+        <div><label for="file">R2 archive key / filename</label><input id="file" placeholder="product-files/archive.zip"></div>
+      </div>
+      <label for="description">Description</label><textarea id="description"></textarea>
+      <label>Product images (R2 upload)</label>
+      <div class="file-row"><input id="imageUpload" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><button class="secondary" id="uploadImageBtn" type="button">Upload image</button></div>
+      <small>Uploaded image keys are added to the image list below. Upload limit: 100 MB per file.</small>
+      <label for="images">Image keys / URLs (one per line)</label><textarea id="images" placeholder="product-images/123-preview.png"></textarea>
+      <label>Product archive (R2 upload)</label>
+      <div class="file-row"><input id="archiveUpload" type="file" accept=".zip,.rar,.7z,.psd"><button class="secondary" id="uploadArchiveBtn" type="button">Upload archive</button></div>
+      <div class="grid">
+        <div><label for="detailUrl">More Info page URL</label><input id="detailUrl" placeholder="product-detail.html"></div>
+        <div><label for="active">Status</label><input id="active" value="true" readonly></div>
+      </div>
+      <div class="actions"><button id="saveBtn">Save product</button><button class="secondary" id="cancelBtn">Cancel</button></div>
+      <div id="status" role="status"></div>
+    </section>
+  </div>
+</main>
+<script>
+const WORKER_URL = "https://plata-shopliannax.slleek-estetique.workers.dev";
+let token = sessionStorage.getItem("shopliannax_admin_token") || "";
+let catalog = [];
+
+const el = id => document.getElementById(id);
+function status(message, error=false){el("status").textContent=message;el("status").style.color=error?"#ff8bc4":"#e8c78e";}
+async function api(path, options={}) {
+  const headers = new Headers(options.headers || {});
+  if(token) headers.set("Authorization","Bearer "+token);
+  const response = await fetch(WORKER_URL+path,{...options,headers});
+  const data = await response.json().catch(()=>({error:"Invalid server response."}));
+  if(!response.ok) throw new Error(data.error || "Request failed ("+response.status+").");
+  return data;
+}
+function showApp(){el("loginPanel").classList.add("hidden");el("app").classList.remove("hidden");}
+function showLogin(){el("app").classList.add("hidden");el("loginPanel").classList.remove("hidden");}
+async function login(){
+  el("loginStatus").textContent="Checking credentials...";
+  try{
+    const data=await api("/admin/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password:el("password").value})});
+    token=data.token;sessionStorage.setItem("shopliannax_admin_token",token);el("password").value="";
+    showApp();await loadCatalog();el("loginStatus").textContent="";
+  }catch(e){el("loginStatus").textContent=e.message;token="";}
+}
+async function loadCatalog(){
+  status("Loading catalog...");
+  try{const data=await api("/admin/catalog");catalog=data.products||[];renderProducts();status("Loaded "+catalog.length+" products from R2 catalog.json.");}
+  catch(e){status(e.message,true);if(e.message==="Unauthorized.")logout(false);}
+}
+function renderProducts(){
+  const list=el("productsList");list.innerHTML="";
+  if(!catalog.length){list.textContent="No products in catalog.";return;}
+  catalog.forEach(p=>{
+    const row=document.createElement("div");row.className="product";
+    const info=document.createElement("div");
+    const title=document.createElement("strong");title.textContent=p.name;
+    const meta=document.createElement("div");meta.className="muted";meta.textContent=p.id+" · $"+p.amount+" USD · "+(p.active?"Active":"Inactive");
+    info.append(title,meta);
+    const buttons=document.createElement("div");buttons.className="actions";
+    const edit=document.createElement("button");edit.className="secondary";edit.textContent="Edit";edit.onclick=()=>editProduct(p.id);
+    const del=document.createElement("button");del.className="danger";del.textContent="Delete";del.onclick=()=>deleteProduct(p.id);
+    buttons.append(edit,del);row.append(info,buttons);list.append(row);
+  });
+}
+function resetForm(){
+  ["originalId","id","name","amount","file","description","images","detailUrl"].forEach(id=>el(id).value="");
+  el("editorTitle").textContent="Add product";el("active").value="true";status("");
+}
+function editProduct(id){
+  const p=catalog.find(x=>x.id===id);if(!p)return;
+  el("originalId").value=p.id;el("id").value=p.id;el("name").value=p.name;el("amount").value=p.amount;
+  el("file").value=p.file;el("description").value=p.description||"";el("images").value=(p.images||[]).join("\n");
+  el("detailUrl").value=p.detailUrl||"";el("active").value=String(p.active);
+  el("editorTitle").textContent="Edit product: "+p.name;status("");
+  el("editor").scrollIntoView({behavior:"smooth"});
+}
+async function upload(kind){
+  const input=el(kind==="image"?"imageUpload":"archiveUpload");
+  const file=input.files[0];if(!file){status("Choose a file first.",true);return;}
+  const form=new FormData();form.append("file",file);form.append("kind",kind);
+  status("Uploading "+file.name+" to R2...");
+  try{
+    const data=await api("/admin/upload",{method:"POST",body:form});
+    if(kind==="image"){const lines=el("images").value.split("\n").map(x=>x.trim()).filter(Boolean);lines.push(data.key);el("images").value=lines.join("\n");}
+    else el("file").value=data.key;
+    input.value="";status("Uploaded successfully: "+data.key);
+  }catch(e){status(e.message,true);}
+}
+async function saveProduct(){
+  const id=el("id").value.trim(), oldId=el("originalId").value.trim();
+  const p={id,name:el("name").value.trim(),amount:el("amount").value.trim(),currency:"USD",
+    file:el("file").value.trim(),description:el("description").value.trim(),
+    images:el("images").value.split("\n").map(x=>x.trim()).filter(Boolean),
+    detailUrl:el("detailUrl").value.trim(),active:true};
+  if(!/^[a-z0-9][a-z0-9-]{1,63}$/.test(p.id)){status("Product ID must use lowercase letters, numbers and hyphens.",true);return;}
+  if(!p.name||!/^\d{1,7}\.\d{2}$/.test(p.amount)||!p.file){status("Enter a name, a price with two decimals and an archive key.",true);return;}
+  const next=catalog.filter(x=>x.id!==oldId&&x.id!==p.id);next.push(p);
+  status("Saving catalog.json...");
+  try{const data=await api("/admin/catalog",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({products:next})});catalog=data.catalog.products;renderProducts();resetForm();status("Product saved to R2 catalog.json.");}
+  catch(e){status(e.message,true);}
+}
+async function deleteProduct(id){
+  const p=catalog.find(x=>x.id===id);if(!p||!confirm("Delete "+p.name+" from the catalog? The uploaded R2 files will not be deleted."))return;
+  try{await api("/admin/product?id="+encodeURIComponent(id),{method:"DELETE"});catalog=catalog.filter(x=>x.id!==id);renderProducts();status("Product removed from catalog. R2 files were kept.");}
+  catch(e){status(e.message,true);}
+}
+function logout(clear=true){token="";if(clear)sessionStorage.removeItem("shopliannax_admin_token");showLogin();}
+el("loginBtn").addEventListener("click",login);el("password").addEventListener("keydown",e=>{if(e.key==="Enter")login();});
+el("logoutBtn").addEventListener("click",()=>logout());el("newBtn").addEventListener("click",()=>{resetForm();el("editor").scrollIntoView({behavior:"smooth"});});
+el("refreshBtn").addEventListener("click",loadCatalog);el("saveBtn").addEventListener("click",saveProduct);el("cancelBtn").addEventListener("click",resetForm);
+el("uploadImageBtn").addEventListener("click",()=>upload("image"));el("uploadArchiveBtn").addEventListener("click",()=>upload("archive"));
+if(token){showApp();loadCatalog().catch(()=>logout());}else showLogin();
+</script>
+</body>
+</html>
