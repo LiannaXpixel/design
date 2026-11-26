@@ -849,11 +849,15 @@
         if (parsedUrl && (parsedUrl.hostname === "youtube.com" || parsedUrl.hostname.endsWith(".youtube.com") || parsedUrl.hostname === "youtu.be")) {
           const link = document.createElement("a");
           link.href = parsedUrl.href;
-          link.textContent = cleanUrl;
+          link.textContent = "Watch the free YouTube preview ↗";
+          link.className = "youtube-demo-link";
           link.target = "_blank";
           link.rel = "noopener noreferrer";
-          link.style.color = "#e2c9b3";
+          link.style.display = "inline-block";
+          link.style.color = "#f0d9c2";
           link.style.textDecoration = "underline";
+          link.style.fontWeight = "700";
+          link.style.cursor = "pointer";
           description.appendChild(link);
         } else {
           description.appendChild(document.createTextNode(cleanUrl));
