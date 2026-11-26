@@ -179,7 +179,7 @@
         align-items: center; /* Center content vertically */
         width: 100%;
         height: 700px;
-        background: linear-gradient(135deg, #e6d7c8 0%, #f5eee5 48%, #ddc9b7 100%);
+        background-color: var(--border-color); /* Fallback background */
     }
 
     .card-gallery-images {
@@ -320,26 +320,28 @@
     }
 
     .buy-btn {
-        display: inline-block;
-        background: linear-gradient(135deg, #e6d7c8 0%, #f5eee5 48%, #ddc9b7 100%);
-        color: #17120f;
+        display:block;
+        width:320px;
+        max-width:100%;
+        margin:30px auto 10px;
+        text-align:center;
+        background: var(--primary-color);
+        color: var(--text-color-primary);
         text-decoration: none;
-        padding: 14px 24px;
-        border: 1px solid rgba(255, 250, 243, .9);
+        padding:18px 32px;
         border-radius: 14px;
         font-weight: bold;
         transition: .3s;
-        font-size: 16px;
-        margin-top: auto;
+        font-size:18px;
+        letter-spacing:.5px;
+        box-shadow:0 10px 25px rgba(255,0,119,.25);
+        border: none;
         cursor: pointer;
-        box-shadow: 0 7px 18px rgba(160, 128, 101, .18), inset 0 1px 0 rgba(255,255,255,.8);
     }
 
     .buy-btn:hover {
-        background: linear-gradient(135deg, #eee1d4 0%, #fbf6ef 48%, #e7d5c5 100%);
-        color: #100d0b;
+        background: var(--secondary-color);
         transform: translateY(-2px);
-        box-shadow: 0 9px 22px rgba(160, 128, 101, .23), inset 0 1px 0 rgba(255,255,255,.95);
     }
 
     /* IMAGE POPUP */
@@ -632,7 +634,7 @@
             <div class="card-content">
                 <h2>SOLENE • LELUTKA EVOX & BODY SKIN TEMPLATES</h2>
                 <div class="price price-top">$11.00</div>
-                <a class="buy-btn buy-btn-top" href="#" onclick="openCheckout('solene-skin'); return false;">BUY NOW</a>
+                <a class="buy-btn buy-btn-top" href="#" onclick="openCheckout('solene-skin'); return false;">Get Asset</a>
                 <div class="description"><div class="description">
 
 <p>Solene skin template PSD for Lelutka EvoX and body, created for digital skin work in Second Life.</p>

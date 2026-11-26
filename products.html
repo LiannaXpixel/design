@@ -139,7 +139,7 @@
         align-items: center; /* Center content vertically */
         width: 100%;
         height: 420px;
-        background: linear-gradient(135deg, #e6d7c8 0%, #f5eee5 48%, #ddc9b7 100%);
+        background-color: var(--border-color); /* Fallback background */
     }
 
     .card-gallery-images {
@@ -253,25 +253,22 @@
 
     .buy-btn {
         display: inline-block;
-        background: linear-gradient(135deg, #e6d7c8 0%, #f5eee5 48%, #ddc9b7 100%);
-        color: #17120f;
+        background: var(--primary-color);
+        color: var(--text-color-primary);
         text-decoration: none;
         padding: 14px 24px;
-        border: 1px solid rgba(255, 250, 243, .9);
         border-radius: 14px;
         font-weight: bold;
         transition: .3s;
         font-size: 16px;
         margin-top: auto;
+        border: none;
         cursor: pointer;
-        box-shadow: 0 7px 18px rgba(160, 128, 101, .18), inset 0 1px 0 rgba(255,255,255,.8);
     }
 
     .buy-btn:hover {
-        background: linear-gradient(135deg, #eee1d4 0%, #fbf6ef 48%, #e7d5c5 100%);
-        color: #100d0b;
+        background: var(--secondary-color);
         transform: translateY(-2px);
-        box-shadow: 0 9px 22px rgba(160, 128, 101, .23), inset 0 1px 0 rgba(255,255,255,.95);
     }
 
     /* IMAGE POPUP */
