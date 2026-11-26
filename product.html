@@ -764,6 +764,33 @@
     .card, .card-gallery { max-width: 100% !important; }
 }
 
+
+/* Center the 1200px individual-product gallery so both side borders remain visible */
+.card-gallery {
+    width: 1200px !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    left: auto !important;
+    right: auto !important;
+    box-sizing: border-box !important;
+}
+.card-gallery-images,
+.card-gallery-image-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+.card-gallery img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+}
+
 </style>
 </head>
 
