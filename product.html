@@ -179,7 +179,7 @@
         align-items: center; /* Center content vertically */
         width: 100%;
         height: 700px;
-        background-color: var(--border-color); /* Fallback background */
+        background: linear-gradient(135deg, #d8c6b5 0%, #eee1d4 46%, #d2bca9 100%); /* Soft champagne satin */
     }
 
     .card-gallery-images {
@@ -309,10 +309,13 @@
         max-width:100%;
         margin:30px auto 10px;
         text-align:center;
-        background: var(--primary-color);
-        color: var(--text-color-primary);
+        background: linear-gradient(135deg, #d9bfae 0%, #f0dfd1 48%, #d3b7a4 100%);
+        color: #211a17;
         text-decoration: none;
         padding:18px 32px;
+        border: 1px solid rgba(255, 245, 235, .72);
+        text-shadow: 0 1px 0 rgba(255,255,255,.35);
+        box-shadow: 0 8px 22px rgba(190, 153, 128, .16), inset 0 1px 0 rgba(255,255,255,.55);
         border-radius: 14px;
         font-weight: bold;
         transition: .3s;
@@ -324,8 +327,10 @@
     }
 
     .buy-btn:hover {
-        background: var(--secondary-color);
+        background: linear-gradient(135deg, #e4cdbd 0%, #f6e9de 48%, #dfc4b2 100%);
+        color: #17110e;
         transform: translateY(-2px);
+        box-shadow: 0 10px 26px rgba(190, 153, 128, .22), inset 0 1px 0 rgba(255,255,255,.7);
     }
 
     /* IMAGE POPUP */
@@ -814,7 +819,7 @@
       const content = document.createElement("div"); content.className = "card-content";
       const title = document.createElement("h2"); title.textContent = product.name;
       const price = document.createElement("div"); price.className = "price price-top"; price.textContent = "$" + product.amount;
-      const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="Get Asset";
+      const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="Buy Now";
       buy.onclick = function(e){ e.preventDefault(); openCheckout(product.id); };
       const description = document.createElement("div"); description.className="description";
       description.textContent = product.longDescription || product.description || "";
