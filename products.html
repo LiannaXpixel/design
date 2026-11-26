@@ -630,99 +630,9 @@
 @media(max-width:900px) { #productGrid.products { grid-template-columns:minmax(0,1fr) !important; padding:40px 18px !important; } }
 
 
-/* SLX GALLERY V2 — independent single-slide viewer */
-.slx-product-gallery {
-  position:relative !important;
-  display:block !important;
-  width:100% !important;
-  max-width:1200px !important;
-  aspect-ratio:12 / 7 !important;
-  height:auto !important;
-  margin:0 auto !important;
-  padding:0 !important;
-  overflow:hidden !important;
-  box-sizing:border-box !important;
-  background:#090909 !important;
-  border:1px solid rgba(215,184,125,.55) !important;
-  border-radius:3px !important;
-  box-shadow:0 12px 36px rgba(0,0,0,.38) !important;
-}
-.slx-gallery-stage {
-  position:absolute !important;
-  inset:0 !important;
-  display:block !important;
-  width:100% !important;
-  height:100% !important;
-  margin:0 !important;
-  padding:0 !important;
-  overflow:hidden !important;
-}
-.slx-gallery-slide {
-  position:absolute !important;
-  inset:0 !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  width:100% !important;
-  height:100% !important;
-  margin:0 !important;
-  padding:0 !important;
-  background:#090909 !important;
-  box-sizing:border-box !important;
-}
-.slx-gallery-slide[hidden] { display:none !important; }
-.slx-gallery-slide img {
-  display:block !important;
-  width:100% !important;
-  height:100% !important;
-  max-width:none !important;
-  max-height:none !important;
-  margin:0 !important;
-  padding:0 !important;
-  object-fit:contain !important;
-  object-position:center !important;
-  border:0 !important;
-  border-radius:0 !important;
-  opacity:1 !important;
-  cursor:zoom-in !important;
-}
-.slx-gallery-controls {
-  position:absolute !important;
-  z-index:20 !important;
-  inset:0 !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  padding:0 14px !important;
-  pointer-events:none !important;
-}
-.slx-gallery-controls button {
-  pointer-events:auto !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  width:44px !important;
-  height:44px !important;
-  padding:0 !important;
-  margin:0 !important;
-  border:1px solid #c9a96e !important;
-  border-radius:50% !important;
-  background:rgba(8,8,8,.88) !important;
-  color:#e3c58d !important;
-  font-size:24px !important;
-  line-height:1 !important;
-  box-shadow:0 2px 12px rgba(0,0,0,.4) !important;
-  cursor:pointer !important;
-}
-.slx-gallery-controls button:hover {
-  background:#c9a96e !important;
-  color:#080808 !important;
-}
-.slx-product-gallery .zoom-label { display:none !important; }
-@media(max-width:600px) {
-  .slx-gallery-controls { padding:0 7px !important; }
-  .slx-gallery-controls button { width:34px !important; height:34px !important; font-size:19px !important; }
-}
+/* Shadow-DOM gallery host sizing only; all gallery design and behavior lives in its own fresh component. */
+.slx-fresh-gallery { display:block; width:100%; max-width:1200px; aspect-ratio:12 / 7; margin:0 auto; }
+#productGrid .slx-fresh-gallery { max-width:none; }
 
 </style>
 <meta content="ShopLiannaX digital assets including realistic eyebrow PNG overlays, beard overlays, true alpha PNG textures and premium resources for digital artists and creators." name="description"/><meta content="index,follow" name="robots"/><link href="https://shopliannax.com/products.html" rel="canonical"/></head>
@@ -924,56 +834,64 @@
   }
 
 
-  function slxMoveGallery(galleryId, direction) {
-    const gallery = document.getElementById(galleryId);
-    if (!gallery) return;
-    const slides = Array.from(gallery.querySelectorAll(".slx-gallery-slide"));
-    if (slides.length < 2) return;
-    const current = slides.findIndex(slide => !slide.hidden);
-    const next = (Math.max(0, current) + direction + slides.length) % slides.length;
-    slides.forEach((slide, index) => { slide.hidden = index !== next; });
+  function createFreshProductGallery(imageSources, altText) {
+    const host = document.createElement("div");
+    host.className = "slx-fresh-gallery";
+    host.setAttribute("role", "region");
+    host.setAttribute("aria-label", "Product image gallery");
+    const shadow = host.attachShadow({ mode: "open" });
+    shadow.innerHTML = `
+      <style>
+        :host {
+          display:block; position:relative; width:100%; max-width:1200px;
+          aspect-ratio:12 / 7; margin:0 auto; overflow:hidden;
+          background:#090909; border:1px solid rgba(211,181,125,.7);
+          box-sizing:border-box; isolation:isolate;
+        }
+        .viewport { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#090909; }
+        img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; max-width:none; max-height:none; margin:0; padding:0; border:0; border-radius:0; cursor:zoom-in; }
+        .arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:46px; height:46px; display:grid; place-items:center; padding:0; border:1px solid #d4b477; border-radius:50%; background:rgba(8,8,8,.82); color:#e8cc95; font:26px/1 Arial,sans-serif; cursor:pointer; }
+        .arrow:hover { background:#d4b477; color:#090909; }
+        .previous { left:14px; } .next { right:14px; }
+        .counter { position:absolute; z-index:3; bottom:12px; left:50%; transform:translateX(-50%); padding:5px 11px; border:1px solid rgba(212,180,119,.55); border-radius:20px; background:rgba(0,0,0,.72); color:#f0dfbd; font:12px/1.2 Arial,sans-serif; letter-spacing:.08em; }
+        @media(max-width:600px) { .arrow { width:34px; height:34px; font-size:20px; } .previous {left:7px} .next {right:7px} }
+      </style>
+      <div class="viewport"><img alt=""></div>
+      <button class="arrow previous" type="button" aria-label="Previous image">‹</button>
+      <button class="arrow next" type="button" aria-label="Next image">›</button>
+      <div class="counter" aria-live="polite"></div>
+    `;
+    const img = shadow.querySelector("img");
+    const previous = shadow.querySelector(".previous");
+    const next = shadow.querySelector(".next");
+    const counter = shadow.querySelector(".counter");
+    const sources = (Array.isArray(imageSources) ? imageSources : []).filter(Boolean).slice(0, 3).map(imageUrl);
+    let index = 0;
+    function render() {
+      if (!sources.length) {
+        img.removeAttribute("src");
+        img.alt = altText || "Product image unavailable";
+        counter.textContent = "NO IMAGE";
+        previous.hidden = next.hidden = true;
+        return;
+      }
+      img.src = sources[index];
+      img.alt = (altText || "Product image") + " — " + (index + 1);
+      counter.textContent = (index + 1) + " / " + sources.length;
+      previous.hidden = next.hidden = sources.length < 2;
+    }
+    previous.addEventListener("click", () => { index = (index - 1 + sources.length) % sources.length; render(); });
+    next.addEventListener("click", () => { index = (index + 1) % sources.length; render(); });
+    img.addEventListener("click", () => { if (img.src && typeof openImage === "function") openImage(img.src, img.alt); });
+    render();
+    return host;
   }
 
   function createCard(product, index) {
     const card = document.createElement("div");
     card.className = "card";
-    const galleryId = "catalog-gallery-" + index;
     const images = Array.isArray(product.images) ? product.images.filter(Boolean).slice(0, 3) : [];
-    const gallery = document.createElement("div");
-    gallery.className = "slx-product-gallery";
-    gallery.id = galleryId;
-    const imageContainer = document.createElement("div");
-    imageContainer.className = "slx-gallery-stage";
-
-    (images.length ? images : [""]).forEach((src, imageIndex) => {
-      const slide = document.createElement("div");
-      slide.className = "slx-gallery-slide";
-      slide.hidden = imageIndex !== 0;
-      if (!src) slide.classList.add("placeholder-visible");
-      const img = document.createElement("img");
-      img.alt = product.name + " – product preview " + (imageIndex + 1);
-      img.loading = imageIndex === 0 ? "eager" : "lazy";
-      if (src) img.src = imageUrl(src);
-      img.onerror = function () { this.hidden = true; slide.classList.add("placeholder-visible"); };
-      img.onclick = () => openImage(img.src, img.alt);
-      slide.appendChild(img);
-      imageContainer.appendChild(slide);
-    });
-
-    gallery.appendChild(imageContainer);
-    const nav = document.createElement("div");
-    nav.className = "slx-gallery-controls";
-    const prev = document.createElement("button");
-    prev.type = "button"; prev.textContent = "←";
-    prev.setAttribute("aria-label", "Previous image");
-    prev.addEventListener("click", () => slxMoveGallery(galleryId, -1));
-    const next = document.createElement("button");
-    next.type = "button"; next.textContent = "→";
-    next.setAttribute("aria-label", "Next image");
-    next.addEventListener("click", () => slxMoveGallery(galleryId, 1));
-    nav.append(prev, next);
-    gallery.appendChild(nav);
-
+    const gallery = createFreshProductGallery(images, product.name || "Product preview");
     card.appendChild(gallery);
 
     const content = document.createElement("div");
