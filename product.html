@@ -835,7 +835,33 @@
       const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="BUY NOW";
       buy.onclick = function(e){ e.preventDefault(); openCheckout(product.id); };
       const description = document.createElement("div"); description.className="description";
-      description.textContent = product.longDescription || product.description || "";
+      const descriptionText = product.longDescription || product.description || "";
+      const urlPattern = /https?:\/\/[^\s<]+/g;
+      let lastIndex = 0;
+      for (const match of descriptionText.matchAll(urlPattern)) {
+        const before = descriptionText.slice(lastIndex, match.index);
+        if (before) description.appendChild(document.createTextNode(before));
+        const rawUrl = match[0];
+        const cleanUrl = rawUrl.replace(/[),.!?]+$/, "");
+        const trailing = rawUrl.slice(cleanUrl.length);
+        let parsedUrl;
+        try { parsedUrl = new URL(cleanUrl); } catch (_) { parsedUrl = null; }
+        if (parsedUrl && (parsedUrl.hostname === "youtube.com" || parsedUrl.hostname.endsWith(".youtube.com") || parsedUrl.hostname === "youtu.be")) {
+          const link = document.createElement("a");
+          link.href = parsedUrl.href;
+          link.textContent = cleanUrl;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.style.color = "#e2c9b3";
+          link.style.textDecoration = "underline";
+          description.appendChild(link);
+        } else {
+          description.appendChild(document.createTextNode(cleanUrl));
+        }
+        if (trailing) description.appendChild(document.createTextNode(trailing));
+        lastIndex = match.index + rawUrl.length;
+      }
+      if (lastIndex < descriptionText.length) description.appendChild(document.createTextNode(descriptionText.slice(lastIndex)));
       content.append(title,price,buy,description); card.append(content); root.replaceChildren(card);
       const first = images.querySelector("img");
       if (first) updateGalleryImage(images.firstElementChild, first);
