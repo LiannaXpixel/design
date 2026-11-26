@@ -273,15 +273,15 @@
     }
 
     .card-content h2 {
-    font-size: 26px;
-    margin: 0 0 12px 0; /* Added margin reset for clarity */
-
-    text-align: center;
-    color: #b8a79d;
-}
+        font-size: 26px;
+        margin: 0 0 12px 0;
+        text-align: center;
+        color: #e8e8e8;
+    }
 
     .description {
-        color: #b8a79d;
+        color: var(--text-color-highlight);
+        font-weight: 700;
         white-space: pre-line;
         line-height: 1.6;
         margin-bottom: 20px;
@@ -806,7 +806,6 @@
       const next = document.createElement("button"); next.textContent = "→"; next.type="button";
       next.onclick = () => changeImage(1, gallery.id);
       nav.append(prev,next); gallery.appendChild(nav);
-      const zoom = document.createElement("div"); zoom.className = "zoom-label"; zoom.textContent = "Click on image to Zoom"; gallery.appendChild(zoom);
       card.appendChild(gallery);
 
       const content = document.createElement("div"); content.className = "card-content";
