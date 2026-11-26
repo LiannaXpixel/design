@@ -629,6 +629,20 @@
 #productGrid .card-content h2 { text-align:center !important; }
 @media(max-width:900px) { #productGrid.products { grid-template-columns:minmax(0,1fr) !important; padding:40px 18px !important; } }
 
+
+/* Independent replacement gallery component — deliberately isolated from legacy .card-gallery CSS */
+.slx-product-gallery { position:relative; display:block; width:100%; max-width:1200px; aspect-ratio:12/7; height:auto; margin:0 auto; padding:0; overflow:hidden; box-sizing:border-box; background:#151515; }
+.slx-gallery-stage { position:absolute; inset:0; width:100%; height:100%; margin:0; padding:0; }
+.slx-gallery-slide { position:absolute; inset:0; width:100%; height:100%; margin:0; padding:0; display:flex; align-items:center; justify-content:center; box-sizing:border-box; }
+.slx-gallery-slide[hidden] { display:none !important; }
+.slx-gallery-slide img { display:block; width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; object-position:center; margin:0; padding:0; cursor:zoom-in; }
+.slx-gallery-controls { position:absolute; z-index:5; inset:0; display:flex; align-items:center; justify-content:space-between; padding:0 12px; pointer-events:none; }
+.slx-gallery-controls button { pointer-events:auto; display:flex; align-items:center; justify-content:center; width:42px; height:42px; border:1px solid rgba(220,190,130,.75); border-radius:50%; background:rgba(0,0,0,.72); color:#e7c98d; font-size:25px; line-height:1; cursor:pointer; }
+.slx-gallery-controls button:hover { background:rgba(220,190,130,.2); }
+#productGrid .slx-product-gallery { width:100%; max-width:none; }
+#dynamicProductDetail .slx-product-gallery { width:100%; max-width:1200px; }
+@media(max-width:600px) { .slx-gallery-controls { padding:0 6px; } .slx-gallery-controls button { width:34px; height:34px; font-size:20px; } }
+
 </style>
 <meta content="ShopLiannaX digital assets including realistic eyebrow PNG overlays, beard overlays, true alpha PNG textures and premium resources for digital artists and creators." name="description"/><meta content="index,follow" name="robots"/><link href="https://shopliannax.com/products.html" rel="canonical"/></head>
 <body>
@@ -828,45 +842,54 @@
     return image;
   }
 
+
+  function slxMoveGallery(galleryId, direction) {
+    const gallery = document.getElementById(galleryId);
+    if (!gallery) return;
+    const slides = Array.from(gallery.querySelectorAll(".slx-gallery-slide"));
+    if (slides.length < 2) return;
+    const current = slides.findIndex(slide => !slide.hidden);
+    const next = (Math.max(0, current) + direction + slides.length) % slides.length;
+    slides.forEach((slide, index) => { slide.hidden = index !== next; });
+  }
+
   function createCard(product, index) {
     const card = document.createElement("div");
     card.className = "card";
     const galleryId = "catalog-gallery-" + index;
     const images = Array.isArray(product.images) ? product.images.filter(Boolean).slice(0, 3) : [];
     const gallery = document.createElement("div");
-    gallery.className = "card-gallery";
+    gallery.className = "slx-product-gallery";
     gallery.id = galleryId;
     const imageContainer = document.createElement("div");
-    imageContainer.className = "card-gallery-images";
+    imageContainer.className = "slx-gallery-stage";
 
     (images.length ? images : [""]).forEach((src, imageIndex) => {
-      const wrapper = document.createElement("div");
-      wrapper.className = "card-gallery-image-wrapper";
-      wrapper.style.display = imageIndex === 0 ? "block" : "none";
-      if (!src) wrapper.classList.add("placeholder-visible");
+      const slide = document.createElement("div");
+      slide.className = "slx-gallery-slide";
+      slide.hidden = imageIndex !== 0;
+      if (!src) slide.classList.add("placeholder-visible");
       const img = document.createElement("img");
       img.alt = product.name + " – product preview " + (imageIndex + 1);
       img.loading = imageIndex === 0 ? "eager" : "lazy";
       if (src) img.src = imageUrl(src);
-      img.onerror = function () {
-        this.style.display = "none";
-        wrapper.classList.add("placeholder-visible");
-      };
-      wrapper.appendChild(img);
-      imageContainer.appendChild(wrapper);
+      img.onerror = function () { this.hidden = true; slide.classList.add("placeholder-visible"); };
+      img.onclick = () => openImage(img.src, img.alt);
+      slide.appendChild(img);
+      imageContainer.appendChild(slide);
     });
 
     gallery.appendChild(imageContainer);
     const nav = document.createElement("div");
-    nav.className = "card-gallery-nav";
+    nav.className = "slx-gallery-controls";
     const prev = document.createElement("button");
     prev.type = "button"; prev.textContent = "←";
     prev.setAttribute("aria-label", "Previous image");
-    prev.addEventListener("click", () => changeImage(-1, galleryId));
+    prev.addEventListener("click", () => slxMoveGallery(galleryId, -1));
     const next = document.createElement("button");
     next.type = "button"; next.textContent = "→";
     next.setAttribute("aria-label", "Next image");
-    next.addEventListener("click", () => changeImage(1, galleryId));
+    next.addEventListener("click", () => slxMoveGallery(galleryId, 1));
     nav.append(prev, next);
     gallery.appendChild(nav);
 
