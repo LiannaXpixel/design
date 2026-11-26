@@ -804,7 +804,9 @@
       prev.onclick = () => changeImage(-1, gallery.id);
       const next = document.createElement("button"); next.textContent = "→"; next.type="button";
       next.onclick = () => changeImage(1, gallery.id);
-      nav.append(prev,next); gallery.appendChild(nav); card.appendChild(gallery);
+      nav.append(prev,next); gallery.appendChild(nav);
+      const zoom = document.createElement("div"); zoom.className = "zoom-label"; zoom.textContent = "Click on image to Zoom"; gallery.appendChild(zoom);
+      card.appendChild(gallery);
 
       const content = document.createElement("div"); content.className = "card-content";
       const title = document.createElement("h2"); title.textContent = product.name;
