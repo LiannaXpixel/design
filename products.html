@@ -234,11 +234,12 @@
 
     .card-content h2 {
         font-size: 26px;
+        color: #b8a79d;
         margin: 0 0 12px 0; /* Added margin reset for clarity */
     }
 
     .description {
-        color: var(--text-color-highlight);
+        color: #b8a79d;
         line-height: 1.6;
         margin-bottom: 20px;
     }
@@ -735,7 +736,7 @@
     title.textContent = product.name || "";
     const description = document.createElement("div");
     description.className = "description";
-    description.textContent = product.description || "";
+    description.textContent = product.shortDescription || product.description || "";
     const price = document.createElement("div");
     price.className = "price";
     price.textContent = "$" + product.amount;
