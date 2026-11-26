@@ -582,6 +582,26 @@
     }
 
     .card-gallery { background: var(--card-background) !important; }
+
+    /* Consistent softer rose purchase buttons and white product descriptions */
+    .buy-btn {
+        background: #d98eae !important;
+        color: #ffffff !important;
+        box-shadow: 0 8px 20px rgba(217, 142, 174, 0.16) !important;
+    }
+    .buy-btn:hover {
+        background: #e5a9c1 !important;
+    }
+    .description {
+        color: #ffffff !important;
+    }
+
+    /* Keep the image area dark and remove the oversized empty strip */
+    .card-gallery {
+        height: 500px !important;
+        background-color: #151515 !important;
+        background: #151515 !important;
+    }
 </style>
 </head>
 <body>
@@ -618,7 +638,7 @@
 <div class="card-content">
 <h2>35 Realistic Eyebrows Pack</h2>
 <div class="price price-top">$13.99</div>
-<a class="buy-btn buy-btn-top" href="#" onclick="openCheckout('eyebrows-35'); return false;">Buy Now/a>
+<a class="buy-btn buy-btn-top" href="#" onclick="openCheckout('eyebrows-35'); return false;">Buy Now</a>
 <div class="description">
 <p>This pack includes 35 unique realistic eyebrow PNG assets, each provided in high resolution at 3000×500 px with a true transparent alpha channel. The collection includes a variety of natural, bold, soft, and detailed eyebrow styles, making it easy to find the right look for your project.</p>
 <p>Designed for easy drag-and-drop use, these high-resolution eyebrow overlays are suitable for photo editing, retouching, digital art, beauty content, makeup concepts, and creative projects.</p>
