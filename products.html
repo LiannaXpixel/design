@@ -268,22 +268,26 @@
 
     .buy-btn {
         display: inline-block;
-        background: var(--primary-color);
-        color: var(--text-color-primary);
+        background: linear-gradient(135deg, #e8dbce 0%, #f7f1e9 50%, #dfcdbc 100%);
+        color: #211a16;
         text-decoration: none;
         padding: 14px 24px;
+        border: 1px solid rgba(255, 250, 243, .85);
+        text-shadow: 0 1px 0 rgba(255,255,255,.5);
+        box-shadow: 0 5px 14px rgba(120, 91, 68, .14), inset 0 1px 0 rgba(255,255,255,.8);
         border-radius: 14px;
         font-weight: bold;
         transition: .3s;
         font-size: 16px;
         margin-top: auto;
-        border: none;
         cursor: pointer;
     }
 
     .buy-btn:hover {
-        background: var(--secondary-color);
+        background: linear-gradient(135deg, #efe4d9 0%, #fbf7f1 50%, #e8d8c9 100%);
+        color: #17110e;
         transform: translateY(-2px);
+        box-shadow: 0 7px 17px rgba(120, 91, 68, .18), inset 0 1px 0 rgba(255,255,255,.95);
     }
 
     /* IMAGE POPUP */
@@ -425,19 +429,24 @@
 
     .pagination a {
         padding: 14px 20px;
-        background: #171717;
-        color: var(--text-color-primary);
+        background: linear-gradient(135deg, #e8dbce 0%, #f7f1e9 50%, #dfcdbc 100%);
+        color: #211a16;
         text-decoration: none;
         border-radius: 14px;
         transition: .3s;
         font-weight: bold;
-        border: 1px solid var(--border-color);
+        border: 1px solid rgba(255, 250, 243, .85);
+        text-shadow: 0 1px 0 rgba(255,255,255,.5);
+        box-shadow: 0 5px 14px rgba(120, 91, 68, .14), inset 0 1px 0 rgba(255,255,255,.8);
     }
 
     .pagination a:hover,
     .pagination .active {
-        background: var(--primary-color);
-        border-color: var(--primary-color);
+        background: linear-gradient(135deg, #efe4d9 0%, #fbf7f1 50%, #e8d8c9 100%);
+        color: #17110e;
+        border-color: rgba(255, 250, 243, .95);
+        box-shadow: 0 7px 17px rgba(120, 91, 68, .18), inset 0 1px 0 rgba(255,255,255,.95);
+        transform: translateY(-2px);
     }
 
     footer {
