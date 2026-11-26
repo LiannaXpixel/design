@@ -147,10 +147,8 @@ async function saveProduct(){
     detailUrl:el("detailUrl").value.trim(),active:true};
   if(!/^[a-z0-9][a-z0-9-]{1,63}$/.test(p.id)){status("Product ID must use lowercase letters, numbers and hyphens.",true);return;}
   if(!p.name||!/^\d{1,7}\.\d{2}$/.test(p.amount)||!p.file){status("Enter a name, a price with two decimals and an archive key.",true);return;}
-  const existingIndex=catalog.findIndex(x=>x.id===oldId);
-  let next;
-  if(oldId&&existingIndex!==-1){next=[...catalog];next[existingIndex]=p;}
-  else{next=catalog.filter(x=>x.id!==p.id);next.unshift(p);}
+  const next=catalog.filter(x=>x.id!==p.id);
+  next.unshift(p);
   status("Saving catalog.json...");
   try{const data=await api("/admin/catalog",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({products:next})});catalog=data.catalog.products;renderProducts();resetForm();status("Product saved to R2 catalog.json.");}
   catch(e){status(e.message,true);}
