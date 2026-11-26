@@ -182,6 +182,21 @@
         background-color: var(--border-color); /* Fallback background */
     }
 
+
+    /* Slim champagne satin strip — gallery dimensions and images unchanged */
+    .card-gallery::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 7px;
+        background: linear-gradient(180deg, #f5eee5 0%, #e6d7c8 55%, #d9c4b1 100%);
+        box-shadow: 0 -1px 4px rgba(255, 250, 243, .25);
+        pointer-events: none;
+        z-index: 5;
+    }
+
     .card-gallery-images {
         display: flex;
         transition: transform 0.5s ease-in-out;
@@ -320,28 +335,31 @@
     }
 
     .buy-btn {
-        display:block;
-        width:320px;
-        max-width:100%;
-        margin:30px auto 10px;
-        text-align:center;
-        background: var(--primary-color);
-        color: var(--text-color-primary);
+        display: block;
+        width: 320px;
+        max-width: 100%;
+        margin: 30px auto 10px;
+        text-align: center;
+        background: linear-gradient(135deg, #e8dbce 0%, #f7f1e9 50%, #dfcdbc 100%);
+        color: #211a16;
         text-decoration: none;
-        padding:18px 32px;
+        padding: 18px 32px;
+        border: 1px solid rgba(255, 250, 243, .85);
+        text-shadow: 0 1px 0 rgba(255,255,255,.5);
+        box-shadow: 0 5px 14px rgba(120, 91, 68, .14), inset 0 1px 0 rgba(255,255,255,.8);
         border-radius: 14px;
         font-weight: bold;
         transition: .3s;
-        font-size:18px;
-        letter-spacing:.5px;
-        box-shadow:0 10px 25px rgba(255,0,119,.25);
-        border: none;
+        font-size: 18px;
+        letter-spacing: .5px;
         cursor: pointer;
     }
 
     .buy-btn:hover {
-        background: var(--secondary-color);
+        background: linear-gradient(135deg, #efe4d9 0%, #fbf7f1 50%, #e8d8c9 100%);
+        color: #17110e;
         transform: translateY(-2px);
+        box-shadow: 0 7px 17px rgba(120, 91, 68, .18), inset 0 1px 0 rgba(255,255,255,.95);
     }
 
     /* IMAGE POPUP */
@@ -634,7 +652,7 @@
             <div class="card-content">
                 <h2>LELUTKA EVOX SKIN TEMPLATES – 5 TONES</h2>
                 <div class="price price-top">$11.99</div>
-                <a class="buy-btn buy-btn-top" href="#" onclick="openCheckout('evox-templates'); return false;">Get Asset</a>
+                <a class="buy-btn buy-btn-top" href="#" onclick="openCheckout('evox-templates'); return false;">BUY NOW</a>
                 <div class="description"><div class="description">
 
 <p>Lelutka EvoX skin templates supplied in five tones for Second Life creators.</p>
