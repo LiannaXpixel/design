@@ -742,10 +742,7 @@
     const more = document.createElement("a");
     more.className = "buy-btn";
     more.textContent = "More Info";
-    const detailUrl = String(product.detailUrl || "").trim();
-    more.href = detailUrl && !/^javascript:/i.test(detailUrl)
-      ? detailUrl
-      : "product.html?id=" + encodeURIComponent(product.id);
+    more.href = "product.html?id=" + encodeURIComponent(product.id);
     content.append(title, description, price, more);
     card.appendChild(content);
 
