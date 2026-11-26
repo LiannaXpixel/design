@@ -602,12 +602,13 @@
             const imagesContainer = gallery.querySelector('.card-gallery-images');
             const imageWrappers = Array.from(imagesContainer.querySelectorAll('.card-gallery-image-wrapper'));
 
-            let currentIndex = -1;
+                       let currentIndex = -1;
             for (let i = 0; i < imageWrappers.length; i++) {
-                if (imageWrappers[i].style.display === 'block') {
+                if (imageWrappers[i].style.display === 'flex') {
                     currentIndex = i;
                     break;
                 }
+
             }
             if (currentIndex === -1) currentIndex = 0; /* Default to first image if none active */
 
