@@ -576,26 +576,42 @@
     }
 
     
-    /* Individual product pages: preserve each preview image's original proportions */
+    /* Individual product pages: show every preview image edge-to-edge without cropping */
+    .card {
+        overflow: visible !important;
+    }
     .card-gallery {
+        box-sizing: border-box !important;
         height: auto !important;
         min-height: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
         background: #0b0b0b !important;
         display: block !important;
     }
     .card-gallery-images {
+        box-sizing: border-box !important;
         display: block !important;
         position: relative !important;
         width: 100% !important;
         height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
     }
     .card-gallery-image-wrapper {
+        box-sizing: border-box !important;
         position: relative !important;
         top: auto !important;
         left: auto !important;
         width: 100% !important;
         height: auto !important;
         min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
         justify-content: center;
         align-items: center;
     }
@@ -606,12 +622,16 @@
         display: block !important;
     }
     .card-gallery img {
+        box-sizing: border-box !important;
         display: block !important;
         width: 100% !important;
         height: auto !important;
         max-width: 100% !important;
         max-height: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
         object-fit: contain !important;
+        object-position: center !important;
     }
     .zoom-label { display: none !important; }
     .description {
