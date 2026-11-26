@@ -53,7 +53,8 @@ small{color:var(--muted)}@media(max-width:650px){.grid{grid-template-columns:1fr
         <div><label for="amount">Price (USD)</label><input id="amount" inputmode="decimal" placeholder="12.99"></div>
         <div><label for="file">R2 archive key / filename</label><input id="file" placeholder="product-files/archive.zip"></div>
       </div>
-      <label for="description">Description</label><textarea id="description"></textarea>
+      <label for="shortDescription">Short Description (shown on Products page)</label><textarea id="shortDescription" placeholder="A brief product summary, like the first two products."></textarea>
+      <label for="longDescription">Long Description (shown on the individual More Info page)</label><textarea id="longDescription" placeholder="Full product description, features, contents and license terms."></textarea>
       <label>Product images (R2 upload)</label>
       <div class="file-row"><input id="imageUpload" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><button class="secondary" id="uploadImageBtn" type="button">Upload image</button></div>
       <small>Uploaded image keys are added to the image list below. Upload limit: 100 MB per file.</small>
@@ -115,13 +116,13 @@ function renderProducts(){
   });
 }
 function resetForm(){
-  ["originalId","id","name","amount","file","description","images","detailUrl"].forEach(id=>el(id).value="");
+  ["originalId","id","name","amount","file","shortDescription","longDescription","images","detailUrl"].forEach(id=>el(id).value="");
   el("editorTitle").textContent="Add product";el("active").value="true";status("");
 }
 function editProduct(id){
   const p=catalog.find(x=>x.id===id);if(!p)return;
   el("originalId").value=p.id;el("id").value=p.id;el("name").value=p.name;el("amount").value=p.amount;
-  el("file").value=p.file;el("description").value=p.description||"";el("images").value=(p.images||[]).join("\n");
+  el("file").value=p.file;el("shortDescription").value=p.shortDescription||p.description||"";el("longDescription").value=p.longDescription||p.description||"";el("images").value=(p.images||[]).join("\n");
   el("detailUrl").value=p.detailUrl||"";el("active").value=String(p.active);
   el("editorTitle").textContent="Edit product: "+p.name;status("");
   el("editor").scrollIntoView({behavior:"smooth"});
@@ -141,7 +142,7 @@ async function upload(kind){
 async function saveProduct(){
   const id=el("id").value.trim(), oldId=el("originalId").value.trim();
   const p={id,name:el("name").value.trim(),amount:el("amount").value.trim(),currency:"USD",
-    file:el("file").value.trim(),description:el("description").value.trim(),
+    file:el("file").value.trim(),shortDescription:el("shortDescription").value.trim(),longDescription:el("longDescription").value.trim(),description:el("shortDescription").value.trim(),
     images:el("images").value.split("\n").map(x=>x.trim()).filter(Boolean),
     detailUrl:el("detailUrl").value.trim(),active:true};
   if(!/^[a-z0-9][a-z0-9-]{1,63}$/.test(p.id)){status("Product ID must use lowercase letters, numbers and hyphens.",true);return;}
