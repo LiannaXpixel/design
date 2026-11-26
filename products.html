@@ -634,6 +634,35 @@
 .slx-fresh-gallery { display:block; width:100%; max-width:1200px; aspect-ratio:12 / 7; margin:0 auto; }
 #productGrid .slx-fresh-gallery { max-width:none; }
 
+
+/* ShopLiannaX global text correction: consistent warm cream, never white */
+:root {
+  --text-color-primary: #b8a79d;
+  --text-color-secondary: #b8a79d;
+  --text-color-muted: #b8a79d;
+  --text-color-highlight: #b8a79d;
+}
+html, body, body * {
+  color: #b8a79d !important;
+}
+/* Preserve image rendering and the existing black / soft-gold visual design. */
+.slx-fresh-gallery,
+.slx-fresh-gallery * {
+  color: inherit;
+}
+.slx-fresh-gallery img {
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+/* Product listing thumbnails: fixed 12:7 viewing window, full image visible. */
+#productGrid .slx-fresh-gallery {
+  width: 100% !important;
+  max-width: none !important;
+  aspect-ratio: 12 / 7 !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
 </style>
 <meta content="ShopLiannaX digital assets including realistic eyebrow PNG overlays, beard overlays, true alpha PNG textures and premium resources for digital artists and creators." name="description"/><meta content="index,follow" name="robots"/><link href="https://shopliannax.com/products.html" rel="canonical"/></head>
 <body>
