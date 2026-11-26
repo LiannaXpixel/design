@@ -133,14 +133,13 @@
     .card-gallery {
         position: relative;
         overflow: hidden;
-        cursor: pointer;
+        cursor: pointer; /* Indicates it's clickable */
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
         width: 100%;
-        aspect-ratio: 12 / 7;
-        height: auto;
-        background-color: var(--card-background);
+        height: 420px;
+        background-color: var(--border-color); /* Fallback background */
     }
 
     .card-gallery-images {
@@ -162,18 +161,15 @@
         align-items: center;
     }
 
-       .card-gallery img {
-        width: 100%;
-        height: 100%;
+    .card-gallery img {
         max-width: 100%;
         max-height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         display: block;
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
         border-radius: inherit;
     }
-
 
     .card-gallery img.loaded {
         opacity: 1;
@@ -238,12 +234,11 @@
 
     .card-content h2 {
         font-size: 26px;
-        color: #b8a79d;
         margin: 0 0 12px 0; /* Added margin reset for clarity */
     }
 
     .description {
-        color: #b8a79d;
+        color: var(--text-color-highlight);
         line-height: 1.6;
         margin-bottom: 20px;
     }
@@ -472,8 +467,7 @@
     }
 
     .card-gallery-image-wrapper.placeholder-visible {
-        background: var(--card-background);
-
+        background: linear-gradient(135deg, #191919, #101010);
     }
     .card-gallery-image-wrapper.placeholder-visible::after {
         content: "PRODUCT IMAGE — ADD LATER";
@@ -512,10 +506,287 @@
         </p>
 </section>
 <!-- PRODUCTS -->
-<section class="products" id="productGrid" aria-live="polite"></section>
+<section class="products">
+<!-- PRODUCT 2 -->
+<div class="card">
+<div class="card-gallery" id="gallery2">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="20 Realistic Beard Overlays – 4K PNG True Alpha – product preview 1" class="loaded" loading="lazy" src="realistic-beard-overlays-4k-png-assets.png" style="opacity:1;"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="20 Realistic Beard Overlays – 4K PNG True Alpha – product preview 2" loading="lazy" src="realistic-beard-overlays-true-alpha-preview.png"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="20 Realistic Beard Overlays – 4K PNG True Alpha – product preview 3" loading="lazy" src="realistic-beard-overlay-alpha-transparency-preview.png"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery2')">←</button>
+<button onclick="changeImage(1, 'gallery2')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>20 Realistic Beard Overlays – 4K PNG True Alpha</h2>
+<div class="description">20 realistic beard overlay PNGs in 4K resolution with true alpha transparency. Perfect for photo editing, digital art, retouching, and character design.</div>
+<div class="price">$14.50</div>
+<a class="buy-btn" href="20-Realistic-Beard-Overlays-4K-PNG-True-Alpha.html">More Info</a>
+</div>
+</div>
+<!-- PRODUCT 1 -->
+<div class="card">
+<div class="card-gallery" id="gallery1">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="35 Realistic Eyebrows Pack – product preview 1" class="loaded" fetchpriority="high" loading="eager" src="35-realistic-eyebrows-pack-true-alpha.png" style="opacity:1;"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="35 Realistic Eyebrows Pack – product preview 2" loading="lazy" src="35-realistic-eyebrows-true-alpha-preview.png"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="35 Realistic Eyebrows Pack – product preview 3" loading="lazy" src="35-realistic-eyebrows-character-preview.png"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery1')">←</button>
+<button onclick="changeImage(1, 'gallery1')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>35 Realistic Eyebrows Pack</h2>
+<div class="description">35 high-quality eyebrow PNGs with true alpha transparency and realistic detail. Designed for digital artists, character creators, photo editing, and content creation. Compatible with Photoshop, Procreate, and other editing software.</div>
+<div class="price">$13.99</div>
+<a class="buy-btn" href="realistic-eyebrows-asset.html">More Info</a>
+</div>
+</div>
+<!-- PRODUCT 3: SOLENE -->
+<div class="card">
+<div class="card-gallery" id="gallery3">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="Solene Lelutka EvoX & Body Skin Templates preview 1" loading="lazy" src="solene-image-1.jpg" onerror="this.style.display='none';this.parentElement.classList.add('placeholder-visible')"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Solene Lelutka EvoX & Body Skin Templates preview 2" loading="lazy" src="solene-image-2.jpg" onerror="this.style.display='none';this.parentElement.classList.add('placeholder-visible')"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Solene Lelutka EvoX & Body Skin Templates preview 3" loading="lazy" src="solene-image-3.jpg" onerror="this.style.display='none';this.parentElement.classList.add('placeholder-visible')"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery3')">←</button>
+<button onclick="changeImage(1, 'gallery3')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>Solene • Lelutka EvoX &amp; Body Skin Templates PSD • 5 Tones Full Perm</h2>
+<div class="description">Lelutka EvoX and body skin templates in 5 tones, supplied as PSD files with full permissions.</div>
+<div class="price">$11.00</div>
+<a class="buy-btn" href="Solene-Lelutka-EvoX-Body-Skin-Templates.html">More Info</a>
+</div>
+</div>
+<!-- PRODUCT 4: LELUTKA EVOX -->
+<div class="card">
+<div class="card-gallery" id="gallery4">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="Lelutka EvoX Skin Templates 5 Tones preview 1" loading="lazy" src="evox-templates-image-1.jpg" onerror="this.style.display='none';this.parentElement.classList.add('placeholder-visible')"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Lelutka EvoX Skin Templates 5 Tones preview 2" loading="lazy" src="evox-templates-image-2.jpg" onerror="this.style.display='none';this.parentElement.classList.add('placeholder-visible')"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Lelutka EvoX Skin Templates 5 Tones preview 3" loading="lazy" src="evox-templates-image-3.jpg" onerror="this.style.display='none';this.parentElement.classList.add('placeholder-visible')"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery4')">←</button>
+<button onclick="changeImage(1, 'gallery4')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>Lelutka EvoX Skin Templates – 5 Tones</h2>
+<div class="description">Lelutka EvoX skin templates in five tones for Second Life creators.</div>
+<div class="price">$11.99</div>
+<a class="buy-btn" href="Lelutka-Evox-Skin-Templates-5-Tones.html">More Info</a>
+</div>
+</div>
 
-<!-- DYNAMIC PAGINATION -->
-<nav class="pagination" id="productPagination" aria-label="Product pages"></nav>
+<!-- PRODUCT 5 -->
+<div class="card">
+<div class="card-gallery" id="gallery5">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="Product Five – product preview 1" class="loaded" loading="lazy" src="images/product5_img1.jpg" style="opacity:1;"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Five – product preview 2" loading="lazy" src="images/product5_img2.jpg"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Five – product preview 3" loading="lazy" src="images/product5_img3.jpg"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery5')">←</button>
+<button onclick="changeImage(1, 'gallery5')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>Product Five</h2>
+<div class="description">Premium quality digital asset preview showcase.</div>
+<div class="price">$39.99</div>
+<a class="buy-btn" href="product-5.html">More Info</a>
+</div>
+</div>
+<!-- PRODUCT 6 -->
+<div class="card">
+<div class="card-gallery" id="gallery6">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="Product Six – product preview 1" class="loaded" loading="lazy" src="images/product6_img1.jpg" style="opacity:1;"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Six – product preview 2" loading="lazy" src="images/product6_img2.jpg"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Six – product preview 3" loading="lazy" src="images/product6_img3.jpg"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery6')">←</button>
+<button onclick="changeImage(1, 'gallery6')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>Product Six</h2>
+<div class="description">Premium quality digital asset preview showcase.</div>
+<div class="price">$44.99</div>
+<a class="buy-btn" href="product-6.html">More Info</a>
+</div>
+</div>
+<!-- PRODUCT 7 -->
+<div class="card">
+<div class="card-gallery" id="gallery7">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="Product Seven – product preview 1" class="loaded" loading="lazy" src="images/product7_img1.jpg" style="opacity:1;"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Seven – product preview 2" loading="lazy" src="images/product7_img2.jpg"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Seven – product preview 3" loading="lazy" src="images/product7_img3.jpg"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery7')">←</button>
+<button onclick="changeImage(1, 'gallery7')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>Product Seven</h2>
+<div class="description">Premium quality digital asset preview showcase.</div>
+<div class="price">$49.99</div>
+<a class="buy-btn" href="product-7.html">More Info</a>
+</div>
+</div>
+<!-- PRODUCT 8 -->
+<div class="card">
+<div class="card-gallery" id="gallery8">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="Product Eight – product preview 1" class="loaded" loading="lazy" src="images/product8_img1.jpg" style="opacity:1;"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Eight – product preview 2" loading="lazy" src="images/product8_img2.jpg"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Eight – product preview 3" loading="lazy" src="images/product8_img3.jpg"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery8')">←</button>
+<button onclick="changeImage(1, 'gallery8')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>Product Eight</h2>
+<div class="description">Premium quality digital asset preview showcase.</div>
+<div class="price">$54.99</div>
+<a class="buy-btn" href="product-8.html">More Info</a>
+</div>
+</div>
+<!-- PRODUCT 9 -->
+<div class="card">
+<div class="card-gallery" id="gallery9">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="Product Nine – product preview 1" class="loaded" loading="lazy" src="images/product9_img1.jpg" style="opacity:1;"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Nine – product preview 2" loading="lazy" src="images/product9_img2.jpg"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Nine – product preview 3" loading="lazy" src="images/product9_img3.jpg"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery9')">←</button>
+<button onclick="changeImage(1, 'gallery9')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>Product Nine</h2>
+<div class="description">Premium quality digital asset preview showcase.</div>
+<div class="price">$59.99</div>
+<a class="buy-btn" href="product-9.html">More Info</a>
+</div>
+</div>
+<!-- PRODUCT 10 -->
+<div class="card">
+<div class="card-gallery" id="gallery10">
+<div class="card-gallery-images">
+<div class="card-gallery-image-wrapper" style="display:block;">
+<img alt="Product Ten – product preview 1" class="loaded" loading="lazy" src="images/product10_img1.jpg" style="opacity:1;"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Ten – product preview 2" loading="lazy" src="images/product10_img2.jpg"/>
+</div>
+<div class="card-gallery-image-wrapper">
+<img alt="Product Ten – product preview 3" loading="lazy" src="images/product10_img3.jpg"/>
+</div>
+</div>
+<div class="card-gallery-nav">
+<button onclick="changeImage(-1, 'gallery10')">←</button>
+<button onclick="changeImage(1, 'gallery10')">→</button>
+</div>
+<div class="zoom-label">Click on image to Zoom</div>
+</div>
+<div class="card-content">
+<h2>Product Ten</h2>
+<div class="description">Premium quality digital asset preview showcase.</div>
+<div class="price">$64.99</div>
+<a class="buy-btn" href="product-10.html">More Info</a>
+</div>
+</div>
+</section>
+<!-- PAGINATION -->
+<div class="pagination">
+<a class="active" href="products.html">1</a>
+<a href="products-page2.html">2</a>
+<a href="products-page3.html">3</a>
+<a href="products-page4.html">4</a>
+<a href="products-page5.html">5</a>
+</div>
 <!-- IMAGE POPUP -->
 <div class="image-popup" id="imagePopup">
 <button class="close-image" onclick="closeImage()">×</button>
@@ -603,13 +874,12 @@
             const imagesContainer = gallery.querySelector('.card-gallery-images');
             const imageWrappers = Array.from(imagesContainer.querySelectorAll('.card-gallery-image-wrapper'));
 
-                       let currentIndex = -1;
+            let currentIndex = -1;
             for (let i = 0; i < imageWrappers.length; i++) {
-                if (imageWrappers[i].style.display === 'flex') {
+                if (imageWrappers[i].style.display === 'block') {
                     currentIndex = i;
                     break;
                 }
-
             }
             if (currentIndex === -1) currentIndex = 0; /* Default to first image if none active */
 
@@ -623,7 +893,7 @@
 
             imageWrappers.forEach((wrapper, index) => {
                 if (index === newIndex) {
-                    wrapper.style.display = 'flex';
+                    wrapper.style.display = 'block';
                     const img = wrapper.querySelector('img');
                     if (img) {
                         updateGalleryImage(wrapper, img); /* Apply updates and listener */
@@ -639,14 +909,13 @@
             const galleries = document.querySelectorAll('.card-gallery');
             galleries.forEach(gallery => {
                 const imageWrappers = gallery.querySelectorAll('.card-gallery-image-wrapper');
-                                imageWrappers.forEach((wrapper, index) => {
+                imageWrappers.forEach((wrapper, index) => {
                     if (index === 0) {
-                        wrapper.style.display = 'flex';
+                        wrapper.style.display = 'block';
                         const img = wrapper.querySelector('img');
                         if (img) {
                             updateGalleryImage(wrapper, img); /* Initialize for the first image */
                         }
-
                     } else {
                         wrapper.style.display = 'none';
                     }
@@ -665,154 +934,5 @@
             }
         });
     </script>
-
-<script>
-(function () {
-  "use strict";
-  const WORKER_URL = "https://plata-shopliannax.slleek-estetique.workers.dev";
-  const PAGE_SIZE = 10;
-  const grid = document.getElementById("productGrid");
-  const pagination = document.getElementById("productPagination");
-
-  function escapeHtml(value) {
-    return String(value ?? "").replace(/[&<>"']/g, c => ({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-    })[c]);
-  }
-
-  function imageUrl(value) {
-    const image = String(value || "");
-    if (/^https?:\/\//i.test(image)) return image;
-    if (image.startsWith("product-images/")) {
-      return WORKER_URL + "/asset?key=" + encodeURIComponent(image);
-    }
-    return image;
-  }
-
-  function createCard(product, index) {
-    const card = document.createElement("div");
-    card.className = "card";
-    const galleryId = "catalog-gallery-" + index;
-    const images = Array.isArray(product.images) ? product.images.filter(Boolean) : [];
-    const gallery = document.createElement("div");
-    gallery.className = "card-gallery";
-    gallery.id = galleryId;
-    const imageContainer = document.createElement("div");
-    imageContainer.className = "card-gallery-images";
-
-    (images.length ? images : [""]).forEach((src, imageIndex) => {
-      const wrapper = document.createElement("div");
-      wrapper.className = "card-gallery-image-wrapper";
-      wrapper.style.display = imageIndex === 0 ? "flex" : "none";
-
-      if (!src) wrapper.classList.add("placeholder-visible");
-      const img = document.createElement("img");
-      img.alt = product.name + " – product preview " + (imageIndex + 1);
-      img.loading = imageIndex === 0 ? "eager" : "lazy";
-      if (src) img.src = imageUrl(src);
-      img.onerror = function () {
-        this.style.display = "none";
-        wrapper.classList.add("placeholder-visible");
-      };
-      wrapper.appendChild(img);
-      imageContainer.appendChild(wrapper);
-    });
-
-    gallery.appendChild(imageContainer);
-    const nav = document.createElement("div");
-    nav.className = "card-gallery-nav";
-    const prev = document.createElement("button");
-    prev.type = "button"; prev.textContent = "←";
-    prev.setAttribute("aria-label", "Previous image");
-    prev.addEventListener("click", () => changeImage(-1, galleryId));
-    const next = document.createElement("button");
-    next.type = "button"; next.textContent = "→";
-    next.setAttribute("aria-label", "Next image");
-    next.addEventListener("click", () => changeImage(1, galleryId));
-    nav.append(prev, next);
-    gallery.appendChild(nav);
-
-    const zoom = document.createElement("div");
-    zoom.className = "zoom-label";
-    zoom.textContent = "Click on image to Zoom";
-    gallery.appendChild(zoom);
-    card.appendChild(gallery);
-
-    const content = document.createElement("div");
-    content.className = "card-content";
-    const title = document.createElement("h2");
-    title.textContent = product.name || "";
-    const description = document.createElement("div");
-    description.className = "description";
-    description.textContent = product.shortDescription || product.description || "";
-    const price = document.createElement("div");
-    price.className = "price";
-    price.textContent = "$" + product.amount;
-    const more = document.createElement("a");
-    more.className = "buy-btn";
-    more.textContent = "More Info";
-    more.href = "product.html?id=" + encodeURIComponent(product.id);
-    content.append(title, description, price, more);
-    card.appendChild(content);
-
-    const firstImage = imageContainer.querySelector("img");
-    if (firstImage) updateGalleryImage(imageContainer.firstElementChild, firstImage);
-    return card;
-  }
-
-  function renderPagination(totalPages, currentPage) {
-    pagination.replaceChildren();
-    for (let page = 1; page <= totalPages; page++) {
-      const link = document.createElement("a");
-      link.href = page === 1 ? "products.html" : "products.html?page=" + page;
-      link.textContent = String(page);
-      if (page === currentPage) {
-        link.className = "active";
-        link.setAttribute("aria-current", "page");
-      }
-      pagination.appendChild(link);
-    }
-  }
-
-  async function loadCatalog() {
-    grid.innerHTML = '<p class="catalog-loading">Loading products...</p>';
-    try {
-      const response = await fetch(WORKER_URL + "/catalog", { method: "GET", cache: "no-store" });
-      if (!response.ok) throw new Error("Catalog request failed (" + response.status + ").");
-      const data = await response.json();
-      const allProducts = Array.isArray(data.products) ? data.products : [];
-      const totalPages = Math.max(1, Math.ceil(allProducts.length / PAGE_SIZE));
-      const requestedPage = Math.max(1, parseInt(new URLSearchParams(location.search).get("page") || "1", 10) || 1);
-      const currentPage = Math.min(requestedPage, totalPages);
-      if (currentPage !== requestedPage) {
-        const url = new URL(location.href);
-        if (currentPage === 1) url.searchParams.delete("page");
-        else url.searchParams.set("page", String(currentPage));
-        history.replaceState({}, "", url);
-      }
-      const pageProducts = allProducts.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
-      grid.replaceChildren();
-      if (!pageProducts.length) {
-        const empty = document.createElement("p");
-        empty.textContent = "No products are currently available.";
-        grid.appendChild(empty);
-      } else {
-        pageProducts.forEach((product, index) => grid.appendChild(createCard(product, (currentPage - 1) * PAGE_SIZE + index + 1)));
-      }
-      renderPagination(totalPages, currentPage);
-    } catch (error) {
-      grid.innerHTML = "";
-      const message = document.createElement("p");
-      message.textContent = "Products could not be loaded right now. Please refresh the page.";
-      grid.appendChild(message);
-      pagination.replaceChildren();
-      console.error("ShopLiannaX catalog:", error);
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", loadCatalog);
-})();
-</script>
-
 </body>
 </html>
