@@ -142,6 +142,21 @@
         background-color: var(--border-color); /* Fallback background */
     }
 
+
+    /* Slim champagne satin strip — gallery dimensions and images unchanged */
+    .card-gallery::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 7px;
+        background: linear-gradient(180deg, #f5eee5 0%, #e6d7c8 55%, #d9c4b1 100%);
+        box-shadow: 0 -1px 4px rgba(255, 250, 243, .25);
+        pointer-events: none;
+        z-index: 5;
+    }
+
     .card-gallery-images {
         display: flex;
         transition: transform 0.5s ease-in-out;
