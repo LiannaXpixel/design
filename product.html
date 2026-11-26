@@ -968,6 +968,20 @@
 #dynamicProductDetail .card-content { width:100% !important; min-width:0 !important; box-sizing:border-box !important; }
 #dynamicProductDetail .card-content h2 { width:100% !important; text-align:center !important; margin-left:auto !important; margin-right:auto !important; }
 
+
+/* Independent replacement gallery component — deliberately isolated from legacy .card-gallery CSS */
+.slx-product-gallery { position:relative; display:block; width:100%; max-width:1200px; aspect-ratio:12/7; height:auto; margin:0 auto; padding:0; overflow:hidden; box-sizing:border-box; background:#151515; }
+.slx-gallery-stage { position:absolute; inset:0; width:100%; height:100%; margin:0; padding:0; }
+.slx-gallery-slide { position:absolute; inset:0; width:100%; height:100%; margin:0; padding:0; display:flex; align-items:center; justify-content:center; box-sizing:border-box; }
+.slx-gallery-slide[hidden] { display:none !important; }
+.slx-gallery-slide img { display:block; width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; object-position:center; margin:0; padding:0; cursor:zoom-in; }
+.slx-gallery-controls { position:absolute; z-index:5; inset:0; display:flex; align-items:center; justify-content:space-between; padding:0 12px; pointer-events:none; }
+.slx-gallery-controls button { pointer-events:auto; display:flex; align-items:center; justify-content:center; width:42px; height:42px; border:1px solid rgba(220,190,130,.75); border-radius:50%; background:rgba(0,0,0,.72); color:#e7c98d; font-size:25px; line-height:1; cursor:pointer; }
+.slx-gallery-controls button:hover { background:rgba(220,190,130,.2); }
+#productGrid .slx-product-gallery { width:100%; max-width:none; }
+#dynamicProductDetail .slx-product-gallery { width:100%; max-width:1200px; }
+@media(max-width:600px) { .slx-gallery-controls { padding:0 6px; } .slx-gallery-controls button { width:34px; height:34px; font-size:20px; } }
+
 </style>
 </head>
 
@@ -1163,6 +1177,18 @@
     if (image.startsWith("product-images/")) return WORKER_URL + "/asset?key=" + encodeURIComponent(image);
     return image;
   }
+  function wrapClick(img) { img.onclick = () => {}; }
+
+  function slxMoveGallery(galleryId, direction) {
+    const gallery = document.getElementById(galleryId);
+    if (!gallery) return;
+    const slides = Array.from(gallery.querySelectorAll(".slx-gallery-slide"));
+    if (slides.length < 2) return;
+    const current = slides.findIndex(slide => !slide.hidden);
+    const next = (Math.max(0, current) + direction + slides.length) % slides.length;
+    slides.forEach((slide, index) => { slide.hidden = index !== next; });
+  }
+
   async function loadProductDetail() {
     const id = new URLSearchParams(location.search).get("id");
     const root = document.getElementById("dynamicProductDetail");
@@ -1177,28 +1203,31 @@
       const card = document.createElement("div");
       card.className = "card";
       const gallery = document.createElement("div");
-      gallery.className = "card-gallery";
+      gallery.className = "slx-product-gallery";
       gallery.id = "dynamic-product-gallery";
       const images = document.createElement("div");
-      images.className = "card-gallery-images";
+      images.className = "slx-gallery-stage";
       (product.images && product.images.length ? product.images.slice(0, 3) : [""]).forEach((src, i) => {
-        const wrap = document.createElement("div");
-        wrap.className = "card-gallery-image-wrapper";
-        wrap.style.display = i === 0 ? "block" : "none";
-        if (!src) wrap.classList.add("placeholder-visible");
+        const slide = document.createElement("div");
+        slide.className = "slx-gallery-slide";
+        slide.hidden = i !== 0;
+        if (!src) slide.classList.add("placeholder-visible");
         const img = document.createElement("img");
         img.alt = product.name + " preview " + (i + 1);
         img.loading = i ? "lazy" : "eager";
         if (src) img.src = imageUrl(src);
-        img.onerror = function(){ this.style.display="none"; wrap.classList.add("placeholder-visible"); };
-        wrap.appendChild(img); images.appendChild(wrap);
+        img.onerror = function(){ this.hidden=true; slide.classList.add("placeholder-visible"); };
+        wrapClick(img);
+        slide.appendChild(img); images.appendChild(slide);
       });
       gallery.appendChild(images);
-      const nav = document.createElement("div"); nav.className = "card-gallery-nav";
+      const nav = document.createElement("div"); nav.className = "slx-gallery-controls";
       const prev = document.createElement("button"); prev.textContent = "←"; prev.type="button";
-      prev.onclick = () => changeImage(-1, gallery.id);
+      prev.setAttribute("aria-label","Previous image");
+      prev.onclick = () => slxMoveGallery(gallery.id, -1);
       const next = document.createElement("button"); next.textContent = "→"; next.type="button";
-      next.onclick = () => changeImage(1, gallery.id);
+      next.setAttribute("aria-label","Next image");
+      next.onclick = () => slxMoveGallery(gallery.id, 1);
       nav.append(prev,next); gallery.appendChild(nav);
       card.appendChild(gallery);
 
@@ -1210,8 +1239,7 @@
       const description = document.createElement("div"); description.className="description";
       description.textContent = product.longDescription || product.description || "";
       content.append(title,price,buy,description); card.append(content); root.replaceChildren(card);
-      const first = images.querySelector("img");
-      if (first) updateGalleryImage(images.firstElementChild, first);
+
     } catch (error) {
       root.textContent = "This product could not be loaded. Please try again later.";
       console.error(error);
