@@ -706,6 +706,74 @@
     object-position: center center !important;
 }
 
+
+/* Final alignment correction: remove the 35px side inset that was narrowing
+   the parent and causing the gallery to overflow the card on the right. */
+.products {
+    display: block !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+}
+.card {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+}
+.card-gallery {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    height: auto !important;
+    aspect-ratio: 12 / 7 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+}
+.card-gallery-images {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+.card-gallery-image-wrapper {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+.card-gallery img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+}
+@media (max-width: 1200px) {
+    .products, .card, .card-gallery {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
 </style>
 </head>
 
