@@ -625,6 +625,43 @@
         background: #c97b90 !important;
         color: #ffffff !important;
     }
+
+/* Individual product layout width: 1200px maximum, responsive on smaller screens */
+.products {
+    width: 100% !important;
+    max-width: 1270px !important;
+    box-sizing: border-box !important;
+}
+.card {
+    width: 100% !important;
+    max-width: 1200px !important;
+    box-sizing: border-box !important;
+}
+.card-gallery {
+    width: 100% !important;
+    max-width: 1200px !important;
+    height: auto !important;
+    aspect-ratio: 12 / 7 !important;
+    box-sizing: border-box !important;
+}
+.card-gallery-images,
+.card-gallery-image-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+}
+.card-gallery img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: contain !important;
+}
+@media (max-width: 1270px) {
+    .products { max-width: 100% !important; }
+    .card, .card-gallery { max-width: 100% !important; }
+}
+
 </style>
 </head>
 
