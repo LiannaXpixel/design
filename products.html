@@ -703,7 +703,8 @@
     (images.length ? images : [""]).forEach((src, imageIndex) => {
       const wrapper = document.createElement("div");
       wrapper.className = "card-gallery-image-wrapper";
-      wrapper.style.display = imageIndex === 0 ? "block" : "none";
+      wrapper.style.display = imageIndex === 0 ? "flex" : "none";
+
       if (!src) wrapper.classList.add("placeholder-visible");
       const img = document.createElement("img");
       img.alt = product.name + " – product preview " + (imageIndex + 1);
