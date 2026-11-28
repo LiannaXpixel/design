@@ -95,12 +95,57 @@
     }
 
     .hero-text-section p {
-        font-size: 17px;
+        font-size: 19px;
         max-width: 100%;
-        margin: 7px 0;
+        margin: 10px 0;
         color: var(--text-color-muted);
-        line-height: 1.55;
+        line-height: 1.65;
         text-align: left;
+    }
+
+    .full-perm-notice {
+        margin: 22px 0 26px;
+        padding: 20px 24px;
+        border-left: 3px solid #d8b991;
+        background: rgba(216, 185, 145, .055);
+        border-radius: 0 12px 12px 0;
+    }
+
+    .full-perm-notice h2 {
+        margin: 0 0 12px;
+        color: #e0c29f;
+        font-size: 25px;
+        line-height: 1.35;
+        font-weight: 600;
+        letter-spacing: .35px;
+    }
+
+    .full-perm-notice p {
+        margin: 9px 0;
+        font-size: 19px;
+        line-height: 1.65;
+    }
+
+    .full-perm-notice a,
+    .full-perm-notice a:link,
+    .full-perm-notice a:visited {
+        color: #d8b991;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        font-weight: 700;
+    }
+
+    .full-perm-notice a:hover,
+    .full-perm-notice a:focus-visible {
+        color: #f0d9b5;
+    }
+
+    @media (max-width: 700px) {
+        .hero-text-section { padding: 24px 20px 12px; }
+        .hero-text-section p,
+        .full-perm-notice p { font-size: 18px; }
+        .full-perm-notice { padding: 17px 18px; }
+        .full-perm-notice h2 { font-size: 22px; }
     }
 
     /* PRODUCTS */
@@ -531,6 +576,12 @@
 <!-- HERO TEXT -->
 <section class="hero-text-section">
 <h1>ShopLiannaX Digital Assets</h1>
+<div class="full-perm-notice">
+    <h2>BUILD YOUR OWN FULL PERM STORE WITH SHOPLIANNAX!</h2>
+    <p>All ShopLiannaX products created for Second Life and OpenSim come with Full Permission resale rights under the ShopLiannaX License Agreement.</p>
+    <p>Resell your creations exclusively within Second Life and OpenSim. External website and online store resale is not permitted.</p>
+    <p><a href="https://shopliannax.com/license.html" target="_blank" rel="noopener noreferrer">READ THE SHOPLIANNAX LICENSE AGREEMENT</a></p>
+</div>
 <p>
             High quality realistic assets for creators and character artists - true alpha eyebrow packs, beard textures, 3K-4K facial details, skin templates, body references, hands, feet and digital resources for Second Life and 3D character projects.
         </p>
