@@ -7,40 +7,17 @@
 
 <title>Product Details | ShopLiannaX</title>
 
-<meta name="description" content="Explore premium digital assets from ShopLiannaX.">
-
-<meta name="keywords" content="realistic beard overlays, beard PNG, 4K beard overlays, true alpha beard, facial hair PNG, Photoshop beard, character beard assets, digital art">
-
+<meta name="description" content="Explore premium digital products for Second Life and 3D creators at ShopLiannaX.">
 <meta name="robots" content="index,follow">
 
-<link rel="canonical" href="https://shopliannax.com/product.html">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="ShopLiannaX">
+<meta property="og:title" content="Product Details | ShopLiannaX">
+<meta property="og:description" content="Explore premium digital products for Second Life and 3D creators at ShopLiannaX.">
 
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "20 Realistic Beard Overlays – 4K PNG True Alpha",
-  "image": [
-    "https://shopliannax.com/realistic-beard-overlay-alpha-transparency-preview.png",
-    "https://shopliannax.com/realistic-beard-overlays-4k-png-assets.png",
-    "https://shopliannax.com/realistic-beard-overlays-true-alpha-preview.png"
-  ],
-  "description": "20 realistic beard overlay PNG assets in 4K resolution with true alpha transparency. Perfect for photo editing, retouching, digital art, and character design.",
-  "brand": {
-    "@type": "Brand",
-    "name": "ShopLiannaX"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://shopliannax.com/20-Realistic-Beard-Overlays-4K-PNG-True-Alpha.html",
-    "priceCurrency": "USD",
-    "price": "14.50",
-    "availability": "https://schema.org/InStock",
-    "itemCondition": "https://schema.org/NewCondition"
-  }
-}
-</script>
-    
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Product Details | ShopLiannaX">
+<meta name="twitter:description" content="Explore premium digital products for Second Life and 3D creators at ShopLiannaX.">
 
 <style>
     /* CSS Variables */
@@ -287,6 +264,7 @@
         flex-grow: 1;
     }
 
+    .card-content h1,
     .card-content h2 {
         font-size: 26px;
         margin: 0 0 12px 0;
@@ -612,7 +590,7 @@
 
     <!-- PRODUCTS -->
     <section class="products" id="dynamicProductDetail">
-  <div class="card"><div class="card-content"><h2>Loading product...</h2></div></div>
+  <div class="card"><div class="card-content"><h1>Loading product...</h1></div></div>
 </section>
 
    <!-- IMAGE POPUP -->
@@ -790,17 +768,144 @@
     if (image.startsWith("product-images/")) return WORKER_URL + "/asset?key=" + encodeURIComponent(image);
     return image;
   }
+
+  function cleanSeoText(value) {
+    return String(value || "")
+      .replace(/https?:\/\/[^\s<]+/gi, " ")
+      .replace(/[\r\n\t]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function makeSeoDescription(product) {
+    const parts = [product.shortDescription, product.description, product.longDescription]
+      .map(cleanSeoText)
+      .filter(Boolean);
+    const description = [...new Set(parts)].join(" ");
+    if (description.length <= 160) {
+      return description || "Explore this premium digital product from ShopLiannaX.";
+    }
+    let shortened = description.slice(0, 157);
+    const lastSpace = shortened.lastIndexOf(" ");
+    if (lastSpace > 115) shortened = shortened.slice(0, lastSpace);
+    return shortened.replace(/[\s,;:.-]+$/, "") + "…";
+  }
+
+  function makeSeoTitle(name) {
+    const suffix = " | ShopLiannaX";
+    const maxNameLength = 60 - suffix.length;
+    let shortName = cleanSeoText(name);
+    if (shortName.length > maxNameLength) {
+      shortName = shortName.slice(0, maxNameLength - 1);
+      const lastSpace = shortName.lastIndexOf(" ");
+      if (lastSpace > 20) shortName = shortName.slice(0, lastSpace);
+      shortName = shortName.replace(/[\s,;:.-]+$/, "") + "…";
+    }
+    return shortName + suffix;
+  }
+
+  function setMetaTag(attribute, key, value) {
+    let tag = document.head.querySelector('meta[' + attribute + '="' + key + '"]');
+    if (!tag) {
+      tag = document.createElement("meta");
+      tag.setAttribute(attribute, key);
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute("content", value);
+  }
+
+  function setCanonical(url) {
+    let link = document.head.querySelector('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "canonical";
+      document.head.appendChild(link);
+    }
+    link.href = url;
+  }
+
+  function updateProductSeo(product) {
+    const canonical = new URL("/product.html", "https://shopliannax.com");
+    canonical.searchParams.set("id", product.id);
+    const canonicalUrl = canonical.href;
+    const seoTitle = makeSeoTitle(product.name);
+    const seoDescription = makeSeoDescription(product);
+
+    document.title = seoTitle;
+    setMetaTag("name", "description", seoDescription);
+    setMetaTag("name", "robots", "index,follow");
+    setMetaTag("property", "og:type", "product");
+    setMetaTag("property", "og:site_name", "ShopLiannaX");
+    setMetaTag("property", "og:title", seoTitle);
+    setMetaTag("property", "og:description", seoDescription);
+    setMetaTag("property", "og:url", canonicalUrl);
+    setMetaTag("name", "twitter:card", "summary_large_image");
+    setMetaTag("name", "twitter:title", seoTitle);
+    setMetaTag("name", "twitter:description", seoDescription);
+    setCanonical(canonicalUrl);
+
+    const schemaImages = (product.images || [])
+      .filter(Boolean)
+      .map(src => {
+        try { return new URL(imageUrl(src), window.location.href).href; }
+        catch (_) { return ""; }
+      })
+      .filter(Boolean);
+
+    const schemaDescription = cleanSeoText(
+      product.longDescription || product.description || product.shortDescription
+    ) || seoDescription;
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": product.name,
+      "description": schemaDescription,
+      "sku": product.id,
+      "image": schemaImages,
+      "brand": {
+        "@type": "Brand",
+        "name": "ShopLiannaX"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": canonicalUrl,
+        "priceCurrency": product.currency || "USD",
+        "price": String(product.amount),
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+    };
+
+    let schemaTag = document.getElementById("dynamic-product-schema");
+    if (!schemaTag) {
+      schemaTag = document.createElement("script");
+      schemaTag.id = "dynamic-product-schema";
+      schemaTag.type = "application/ld+json";
+      document.head.appendChild(schemaTag);
+    }
+    schemaTag.textContent = JSON.stringify(schema);
+  }
+
   async function loadProductDetail() {
     const id = new URLSearchParams(location.search).get("id");
     const root = document.getElementById("dynamicProductDetail");
-    if (!id) { root.textContent = "Product not found."; return; }
+    if (!id) {
+      setMetaTag("name", "robots", "noindex,follow");
+      root.textContent = "Product not found.";
+      return;
+    }
     try {
       const response = await fetch(WORKER_URL + "/catalog", { cache: "no-store" });
       if (!response.ok) throw new Error("Catalog unavailable.");
       const data = await response.json();
       const product = (data.products || []).find(item => item.id === id);
-      if (!product) { root.textContent = "Product not found."; return; }
-      document.title = product.name + " | ShopLiannaX";
+      if (!product) {
+        setMetaTag("name", "robots", "noindex,follow");
+        root.textContent = "Product not found.";
+        return;
+      }
+      updateProductSeo(product);
       const card = document.createElement("div");
       card.className = "card";
       const gallery = document.createElement("div");
@@ -830,7 +935,7 @@
       card.appendChild(gallery);
 
       const content = document.createElement("div"); content.className = "card-content";
-      const title = document.createElement("h2"); title.textContent = product.name;
+      const title = document.createElement("h1"); title.textContent = product.name;
       const price = document.createElement("div"); price.className = "price price-top"; price.textContent = "$" + product.amount;
       const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="BUY NOW";
       buy.onclick = function(e){ e.preventDefault(); openCheckout(product.id); };
