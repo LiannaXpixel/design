@@ -804,6 +804,15 @@
     return shortName + suffix;
   }
 
+  function makeProductHeading(name) {
+    const heading = cleanSeoText(name);
+    if (heading.length <= 55) return heading;
+    let shortened = heading.slice(0, 54);
+    const lastSpace = shortened.lastIndexOf(" ");
+    if (lastSpace > 25) shortened = shortened.slice(0, lastSpace);
+    return shortened.replace(/[\\s,;:.-]+$/, "") + "…";
+  }
+
   function setMetaTag(attribute, key, value) {
     let tag = document.head.querySelector('meta[' + attribute + '="' + key + '"]');
     if (!tag) {
@@ -935,12 +944,20 @@
       card.appendChild(gallery);
 
       const content = document.createElement("div"); content.className = "card-content";
-      const title = document.createElement("h1"); title.textContent = product.name;
+      const title = document.createElement("h1"); title.textContent = makeProductHeading(product.name);
       const price = document.createElement("div"); price.className = "price price-top"; price.textContent = "$" + product.amount;
       const buy = document.createElement("a"); buy.href="#"; buy.className="buy-btn buy-btn-top"; buy.textContent="BUY NOW";
       buy.onclick = function(e){ e.preventDefault(); openCheckout(product.id); };
+      const shortSummaryText = String(product.shortDescription || "").trim();
+      const longDetailsText = String(product.longDescription || product.description || "").trim();
+      let summary = null;
+      if (shortSummaryText && cleanSeoText(shortSummaryText) !== cleanSeoText(longDetailsText)) {
+        summary = document.createElement("p");
+        summary.className = "description product-summary";
+        summary.textContent = shortSummaryText;
+      }
       const description = document.createElement("div"); description.className="description";
-      const descriptionText = product.longDescription || product.description || "";
+      const descriptionText = longDetailsText;
       const urlPattern = /https?:\/\/[^\s<]+/g;
       let lastIndex = 0;
       for (const match of descriptionText.matchAll(urlPattern)) {
@@ -971,7 +988,7 @@
         lastIndex = match.index + rawUrl.length;
       }
       if (lastIndex < descriptionText.length) description.appendChild(document.createTextNode(descriptionText.slice(lastIndex)));
-      content.append(title,price,buy,description); card.append(content); root.replaceChildren(card);
+      content.append(title,price,buy); if (summary) content.appendChild(summary); content.appendChild(description); card.append(content); root.replaceChildren(card);
       const first = images.querySelector("img");
       if (first) updateGalleryImage(images.firstElementChild, first);
     } catch (error) {
