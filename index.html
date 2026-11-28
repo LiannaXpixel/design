@@ -74,25 +74,6 @@ display:block;
 position:relative;
 }
 
-.install-app-image{
-position:absolute;
-top:65%;
-left:48%;
-width:16%;
-height:auto;
-display:none;
-cursor:pointer;
-border:0;
-padding:0;
-background:transparent;
-z-index:1;
-}
-
-.install-app-image:focus-visible{
-outline:2px solid #fff;
-outline-offset:4px;
-}
-
 .main-menu{
 
 display:flex;
@@ -301,9 +282,7 @@ border-radius:12px;
 
 <div class="hero-banner">
 
-<button id="installBtn" class="install-app-image" type="button" aria-label="Install the ShopLiannaX app">
-<img src="install-app-button.png" alt="Install app">
-</button>
+
 
 <img src="shopliannax-digital-creator-resources-banner.jpg"
 alt="ShopLiannaX premium digital assets for Second Life and 3D creators"
@@ -416,24 +395,7 @@ if ('serviceWorker' in navigator){
  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 }
 
-let deferredPrompt;
-const btn=document.getElementById('installBtn');
 
-window.addEventListener('beforeinstallprompt',(e)=>{
- e.preventDefault();
- deferredPrompt=e;
- btn.style.display='block';
-});
-
-btn.addEventListener('click',async()=>{
- if(!deferredPrompt)return;
- deferredPrompt.prompt();
- await deferredPrompt.userChoice;
- deferredPrompt=null;
- btn.style.display='none';
-});
-
-window.addEventListener('appinstalled',()=>btn.style.display='none');
 </script>
 
 </body>
