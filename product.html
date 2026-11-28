@@ -767,6 +767,43 @@
       .trim();
   }
 
+
+  function appendDescriptionWithLinks(container, value) {
+    const text = String(value || "");
+    const pattern = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)|(https?:\/\/[^\s<]+)/gi;
+    let lastIndex = 0;
+    for (const match of text.matchAll(pattern)) {
+      if (match.index > lastIndex) container.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+      const isMarkdown = Boolean(match[1] && match[2]);
+      const rawUrl = isMarkdown ? match[2] : match[3];
+      const cleanUrl = isMarkdown ? rawUrl : rawUrl.replace(/[),.!?]+$/, "");
+      const trailing = isMarkdown ? "" : rawUrl.slice(cleanUrl.length);
+      let parsed;
+      try { parsed = new URL(cleanUrl); } catch (_) { parsed = null; }
+      if (parsed && (parsed.protocol === "https:" || parsed.protocol === "http:")) {
+        const link = document.createElement("a");
+        link.href = parsed.href;
+        link.textContent = isMarkdown ? match[1] : ((parsed.hostname === "youtube.com" || parsed.hostname.endsWith(".youtube.com") || parsed.hostname === "youtu.be") ? "Watch the free YouTube preview ↗" : cleanUrl);
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        if (!isMarkdown && (parsed.hostname === "youtube.com" || parsed.hostname.endsWith(".youtube.com") || parsed.hostname === "youtu.be")) {
+          link.className = "youtube-demo-link";
+          link.style.display = "inline-block";
+          link.style.color = "#f0d9c2";
+          link.style.textDecoration = "underline";
+          link.style.fontWeight = "700";
+          link.style.cursor = "pointer";
+        }
+        container.appendChild(link);
+      } else {
+        container.appendChild(document.createTextNode(isMarkdown ? match[0] : cleanUrl));
+      }
+      if (trailing) container.appendChild(document.createTextNode(trailing));
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex < text.length) container.appendChild(document.createTextNode(text.slice(lastIndex)));
+  }
+
   function makeSeoDescription(product) {
     const parts = [product.shortDescription, product.description, product.longDescription]
       .map(cleanSeoText)
@@ -944,40 +981,10 @@
       if (shortSummaryText && cleanSeoText(shortSummaryText) !== cleanSeoText(longDetailsText)) {
         summary = document.createElement("p");
         summary.className = "description product-summary";
-        summary.textContent = shortSummaryText;
+        appendDescriptionWithLinks(summary, shortSummaryText);
       }
       const description = document.createElement("div"); description.className="description";
-      const descriptionText = longDetailsText;
-      const urlPattern = /https?:\/\/[^\s<]+/g;
-      let lastIndex = 0;
-      for (const match of descriptionText.matchAll(urlPattern)) {
-        const before = descriptionText.slice(lastIndex, match.index);
-        if (before) description.appendChild(document.createTextNode(before));
-        const rawUrl = match[0];
-        const cleanUrl = rawUrl.replace(/[),.!?]+$/, "");
-        const trailing = rawUrl.slice(cleanUrl.length);
-        let parsedUrl;
-        try { parsedUrl = new URL(cleanUrl); } catch (_) { parsedUrl = null; }
-        if (parsedUrl && (parsedUrl.hostname === "youtube.com" || parsedUrl.hostname.endsWith(".youtube.com") || parsedUrl.hostname === "youtu.be")) {
-          const link = document.createElement("a");
-          link.href = parsedUrl.href;
-          link.textContent = "Watch the free YouTube preview ↗";
-          link.className = "youtube-demo-link";
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.style.display = "inline-block";
-          link.style.color = "#f0d9c2";
-          link.style.textDecoration = "underline";
-          link.style.fontWeight = "700";
-          link.style.cursor = "pointer";
-          description.appendChild(link);
-        } else {
-          description.appendChild(document.createTextNode(cleanUrl));
-        }
-        if (trailing) description.appendChild(document.createTextNode(trailing));
-        lastIndex = match.index + rawUrl.length;
-      }
-      if (lastIndex < descriptionText.length) description.appendChild(document.createTextNode(descriptionText.slice(lastIndex)));
+      appendDescriptionWithLinks(description, longDetailsText);
       content.append(title,price,buy); if (summary) content.appendChild(summary); content.appendChild(description); card.append(content); root.replaceChildren(card);
       const first = images.querySelector("img");
       if (first) updateGalleryImage(images.firstElementChild, first);
