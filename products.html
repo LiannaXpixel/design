@@ -702,6 +702,42 @@ ShopLiannaX sells digital downloads rather than physical goods. Check the Licens
     return image;
   }
 
+  function appendDescriptionWithLinks(container, value) {
+    const text = String(value || "");
+    const pattern = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)|(https?:\/\/[^\s<]+)/gi;
+    let lastIndex = 0;
+    for (const match of text.matchAll(pattern)) {
+      if (match.index > lastIndex) container.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+      const isMarkdown = Boolean(match[1] && match[2]);
+      const rawUrl = isMarkdown ? match[2] : match[3];
+      const cleanUrl = isMarkdown ? rawUrl : rawUrl.replace(/[),.!?]+$/, "");
+      const trailing = isMarkdown ? "" : rawUrl.slice(cleanUrl.length);
+      let parsed;
+      try { parsed = new URL(cleanUrl); } catch (_) { parsed = null; }
+      if (parsed && (parsed.protocol === "https:" || parsed.protocol === "http:")) {
+        const link = document.createElement("a");
+        link.href = parsed.href;
+        link.textContent = isMarkdown ? match[1] : ((parsed.hostname === "youtube.com" || parsed.hostname.endsWith(".youtube.com") || parsed.hostname === "youtu.be") ? "Watch the free YouTube preview ↗" : cleanUrl);
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        if (!isMarkdown && (parsed.hostname === "youtube.com" || parsed.hostname.endsWith(".youtube.com") || parsed.hostname === "youtu.be")) {
+          link.className = "youtube-demo-link";
+          link.style.display = "inline-block";
+          link.style.color = "#f0d9c2";
+          link.style.textDecoration = "underline";
+          link.style.fontWeight = "700";
+          link.style.cursor = "pointer";
+        }
+        container.appendChild(link);
+      } else {
+        container.appendChild(document.createTextNode(isMarkdown ? match[0] : cleanUrl));
+      }
+      if (trailing) container.appendChild(document.createTextNode(trailing));
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex < text.length) container.appendChild(document.createTextNode(text.slice(lastIndex)));
+  }
+
   function createCard(product, index) {
     const card = document.createElement("div");
     card.className = "card";
@@ -756,7 +792,7 @@ ShopLiannaX sells digital downloads rather than physical goods. Check the Licens
     title.textContent = product.name || "";
     const description = document.createElement("div");
     description.className = "description";
-    description.textContent = product.shortDescription || product.description || "";
+    appendDescriptionWithLinks(description, product.shortDescription || product.description || "");
     const price = document.createElement("div");
     price.className = "price";
     price.textContent = "$" + product.amount;
