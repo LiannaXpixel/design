@@ -139,23 +139,9 @@
         align-items: center; /* Center content vertically */
         width: 100%;
         height: 420px;
-        background-color: var(--border-color); /* Fallback background */
+        background-color: var(--card-background); /* Fallback background */
     }
-
-
-    /* Slim champagne satin strip — gallery dimensions and images unchanged */
-    .card-gallery::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 7px;
-        background: #151515;
-        box-shadow: none;
-        pointer-events: none;
-        z-index: 5;
-    }
+    /* Gallery blends directly into the card background; no separate bottom strip. */
 
     .card-gallery-images {
         display: flex;
